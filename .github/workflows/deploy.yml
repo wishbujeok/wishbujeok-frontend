@@ -43,4 +43,4 @@ jobs:
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/wishbujeok_frontend
             docker stop ${{ secrets.FRONTEND_PROJECT_NAME }}
             docker run --name=${{ secrets.FRONTEND_PROJECT_NAME }} -d --rm -p 8080:3000 ${{ secrets.DOCKERHUB_USERNAME  }}/wishbujeok_frontend
-            docker images prune -f
+            docker image prune -f
