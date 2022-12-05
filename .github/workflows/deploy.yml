@@ -29,8 +29,8 @@ jobs:
 
     - name: web docker build and push
       run: |
-        docker build -t ${{ secrets.DOCKERHUB_FRONTEND }}/wishbujeok_frontend .
-        docker push ${{ secrets.DOCKERHUB_FRONTEND }}/wishbujeok_frontend
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME  }}/wishbujeok_frontend .
+        docker push ${{ secrets.DOCKERHUB_USERNAME  }}/wishbujeok_frontend
         
 #     - name: SSH Action
 #       # You may pin to the exact commit or the version.
