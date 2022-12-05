@@ -16,9 +16,9 @@ COPY . .
 RUN rm -rf node_modules
 RUN rm -rf package-lock.json
 
-RUN npm install
+RUN yarn install
 
-RUN npm build
+RUN yarn build
 
 FROM node:14.20.1-alpine
 EXPOSE 3000
@@ -27,4 +27,4 @@ WORKDIR /app
 
 COPY --from=BUILD /app/ .
 
-ENTRYPOINT ["npm", "start"]
+ENTRYPOINT ["yarn", "start"]
