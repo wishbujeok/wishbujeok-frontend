@@ -1,30 +1,11 @@
 FROM node:14.20.1-alpine as BUILD
 
-# yarn 설치
-RUN npm install -g yarn --force
-WORKDIR /app
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
+COPY package.json /usr/src/app/package.json
+RUN npm install
 
-COPY package.json .
-COPY yarn.lock .
-
-COPY package.json ./app
-
-RUN yarn config set "strict-ssl" false -g
-RUN yarn set version berry
-
-COPY . .
-RUN rm -rf node_modules
-RUN rm -rf package-lock.json
-
-RUN yarn install
-
-RUN yarn build
-
-FROM node:14.20.1-alpine
-EXPOSE 3000
-
-WORKDIR /app
-
-COPY --from=BUILD /app/ .
-
-ENTRYPOINT ["yarn", "start"]
+# 소스를 작업폴더로 복사하고 앱 실행
+COPY . /usr/src/app
+CMD ["npm", "start"]
