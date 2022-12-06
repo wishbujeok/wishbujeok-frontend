@@ -1,5 +1,4 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { BACKEND_URL } from "../../stores/Url";
 import { checkAccessToken } from "../../stores/Token";
 import { useEffect } from "react";
 import { setAuthorization } from "../../stores/Token";
@@ -10,12 +9,17 @@ const KakaoLogin = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const KAKAO_CODE = location.search.split("=")[1];
+  console.log(KAKAO_CODE);
 
   useEffect(() => {
+    console.log(KAKAO_CODE);
     // ${KAKAO_CODE} 가 인가코드래
-    fetch(`${BACKEND_URL}/auth/kakao/login/?code=${KAKAO_CODE}`, {
-      method: "GET",
-    })
+    fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/auth/kakao/login/?code=${KAKAO_CODE}`,
+      {
+        method: "GET",
+      }
+    )
       .then((res) => res.json())
       .then((res) => {
         // 서버 전용 access refresh token
@@ -28,7 +32,7 @@ const KakaoLogin = () => {
           JWT_EXPIRE_TIME - 60000,
           res.refresh_token
         ); // 1 minute before expiration
-        navigate("/");
+        navigate("/create");
       });
   }, []);
   return <></>;
