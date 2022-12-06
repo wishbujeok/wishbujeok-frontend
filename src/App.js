@@ -1,5 +1,3 @@
-import React from "react";
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -13,11 +11,11 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
+          {/* <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/kakaoLogin" element={<KakaoLogin />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/kakaoLogin" element={<KakaoLogin />} /> */}
           <Route path="/create" element={<Create />} />
-          <Route path="/confirm" element={<Confirm />} />
+          <Route path="/confirm" element={<Confirm />} />;
         </Routes>
       </Router>
     </div>
