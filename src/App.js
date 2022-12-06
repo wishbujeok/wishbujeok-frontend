@@ -11,9 +11,9 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          {/* <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/kakaoLogin" element={<KakaoLogin />} /> */}
+          <Route path="/kakaoLogin" element={<KakaoLogin />} />
           <Route path="/create" element={<Create />} />
           <Route path="/confirm" element={<Confirm />} />;
         </Routes>
