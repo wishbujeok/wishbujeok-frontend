@@ -1,4 +1,3 @@
-import { BACKEND_URL } from "./Url";
 import axios from "axios";
 
 export const setAuthorization = (token) => {
@@ -7,7 +6,7 @@ export const setAuthorization = (token) => {
 
 export const refreshAccessToken = async (refresh_token) => {
   return await axios
-    .post(`${BACKEND_URL}/api/user/token/refresh/`, {
+    .post(`${process.env.BACKEND_URL}/api/user/token/refresh/`, {
       refresh: refresh_token,
     })
     .then((res) => {

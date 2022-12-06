@@ -4,16 +4,14 @@ import styled from "styled-components";
 import "../components/shared/theme.css";
 import { ReactComponent as Logo } from "../assets/img/새해부적.svg";
 import kLogin from "../assets/img/klogin.png";
-import { REST_API_KEY } from "../stores/Url";
-import { REDIRECT_URL } from "../stores/Url";
 
 const Home = () => {
-  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URL}&response_type=code&scope=account_email`;
-
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code&scope=account_email`;
   const handleLogin = () => {
     window.location.href = KAKAO_AUTH_URL;
   };
 
+  console.log(process.env.REACT_APP_REDIRECT_URI);
   // http://localhost:3000/KakaoLogin?code=NXUqHihuX8uJbv-guRRIOePk3gJakTjGEiyx-cBArMw1JQMnP32gUN2UzKYauWaMIG6NFQopcSEAAAGE4Ta8jw
 
   return (
@@ -24,7 +22,7 @@ const Home = () => {
           <Logo />
         </Content>
         <KakaoLoginBtn>
-          <img src={kLogin} onClick={handleLogin} />
+          <img src={kLogin} onClick={handleLogin} alt="kakaoLogin" />
         </KakaoLoginBtn>
       </AppLayout>
     </div>
