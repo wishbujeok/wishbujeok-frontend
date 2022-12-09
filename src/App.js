@@ -6,6 +6,7 @@ import Create from "./pages/Create.js";
 import Confirm from "./pages/Confirm.js";
 import KakaoLogin from "./components/features/KakaoLogin";
 import Loading from "./pages/Loading";
+import "./components/shared/reset.css";
 
 function App() {
   return (
