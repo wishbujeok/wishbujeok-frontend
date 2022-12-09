@@ -24,7 +24,8 @@ const Create = () => {
   useEffect(() => {
     axios
       .get("https://wishbujeok.shop/bujeok-management/bujeok")
-      .then((res) => setGetData(res.data.response));
+      .then((res) => setGetData(res.data.response))
+      .catch((err) => console.log(err));
   }, []);
 
   const [myTypingNum, setMyTypingNum] = useState("");
@@ -65,9 +66,9 @@ ${getData.userName}님의 소원을 익명으로 전달받아 따뜻한
     };
 
     console.log(result);
-    // axios
-    //   .get("http://localhost:8080/bujeok-management/bujeok")
-    //   .then((res) => console.log(res));
+    axios
+      .post("https://wishbujeok.shop/bujeok-management/bujeok", result)
+      .then((res) => console.log(res)).catch(err => console.log(err))
   };
 
   if (getData === null) {
@@ -112,9 +113,11 @@ ${getData.userName}님의 소원을 익명으로 전달받아 따뜻한
           onChange={(e) => handleTextOtherWish(e)}
         ></TextBox>
         <TextLength>{otherTypingNum.length}/160</TextLength>
-        {/* <Button onClick={checkGET} title="소원아 이루어져라!" page="loading" /> */}
+        {/* <Link to="/create">
+          <Button onClick={checkGET} title="소원아 이루어져라!" page="loading" />
+        </Link> */}
 
-        <BujeokBtn onClick={checkGET}>
+        <BujeokBtn onClick={checkPost}>
           {/* <Link to="/loading"> */}
           소원아 이루어져라!
           {/* </Link> */}
