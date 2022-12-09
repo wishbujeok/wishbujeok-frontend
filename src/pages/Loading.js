@@ -4,7 +4,8 @@ import styled from "styled-components";
 import AppLayout from "../components/layout/AppLayout";
 import bujeok from "../assets/img/로딩이미지.svg";
 
-const Loading = () => {
+const Loading = (props) => {
+  console.log(props.onClick);
   return (
     <div className="loading">
       <AppLayout>
@@ -26,8 +27,6 @@ const LoadingContainer = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  /* border: 1px solid white; */
 `;
 
 const LoadingImg = styled.img``;

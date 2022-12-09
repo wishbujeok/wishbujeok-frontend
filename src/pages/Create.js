@@ -5,18 +5,27 @@ import styled from "styled-components";
 import "../components/shared/theme.css";
 
 import AppLayout from "../components/layout/AppLayout";
+import Button from "../components/Button";
 
 const Create = () => {
   const myWish = useRef(); // 내 소원 textarea
   const otherWish = useRef(); // 다른 소원 textarea
+  const [getData, setGetData] = useState({
+    userName: "check async",
+  });
+  // 서버에서 받아온 값을 담은 변수
 
   const [comeTrue, setComeTrue] = useState({
     otherWishId: 1,
     content: "내 소원",
     cheerUp: "다른사람 소원",
   });
-  const [data, setData] = useState("");
-  // 서버에서 받아온 값을 담은 변수
+
+  useEffect(() => {
+    axios
+      .get("https://wishbujeok.shop/bujeok-management/bujeok")
+      .then((res) => setGetData(res.data.response));
+  }, []);
 
   const [myTypingNum, setMyTypingNum] = useState("");
   // 내 소원 textarea의 변경 이벤트를 감지하는 변수
@@ -30,15 +39,9 @@ const Create = () => {
   // 띄어쓰기 다 되어 있는겁니다. 수정 자제 부탁드립니다.
 
   const otherWishHolder = `진심어린 응원을 부탁드려요.다른 분도
-${"000"}님의 소원을 익명으로 전달받아 따뜻한
+${getData.userName}님의 소원을 익명으로 전달받아 따뜻한
 응원을 해주실 거에요.`;
   // 띄어쓰기 다 되어 있는겁니다. 수정 자제 부탁드립니다. ${} 안에는 서버에서 받아온 이름 넣어야 합니다.
-
-  useEffect(() => {
-    // axios
-    //   .get("http://localhost:8080/bujeok-management/bujeok")
-    //   .then((res) => console.log(res));
-  }, []);
 
   const handleMyWishText = (e) => {
     // 내 소원 textarea 에 글자수를 받아오기 위해 필요한 함수
@@ -51,9 +54,7 @@ ${"000"}님의 소원을 익명으로 전달받아 따뜻한
   };
 
   const checkGET = () => {
-    // axios
-    //   .get("http://localhost:8080/bujeok-management/bujeok")
-    //   .then((res) => console.log(res));
+    console.log(getData.response);
   };
 
   const checkPost = () => {
@@ -68,12 +69,16 @@ ${"000"}님의 소원을 익명으로 전달받아 따뜻한
     //   .get("http://localhost:8080/bujeok-management/bujeok")
     //   .then((res) => console.log(res));
   };
+
+  if (getData === null) {
+    return;
+  }
   return (
     <div className="Create">
       <AppLayout>
         <TitleLarge>
-          {/* data.name */}
-          000님이 2023년에 이루고 싶은
+          {getData.userName}
+          님이 2023년에 이루고 싶은
           <br />
           소원을 말해주세요.
         </TitleLarge>
@@ -93,8 +98,10 @@ ${"000"}님의 소원을 익명으로 전달받아 따뜻한
           남겨주세요.
         </TitleLarge>
         <OtherWishText>
-          코시국도 많이 풀렸겠다 꼭 여러 곳으로 여행을 다니고 싶어요. 특히
-          북유럽 한달 여행! 다양한 것들을 보고 느끼는 2023년이 되길...
+          {/* 플로우가 넘쳤을 경우 어떻게 처리할것인지. */}
+          {getData.otherWish}
+          {/* 코시국도 많이 풀렸겠다 꼭 여러 곳으로 여행을 다니고 싶어요. 특히
+          북유럽 한달 여행! 다양한 것들을 보고 느끼는 2023년이 되길... */}
         </OtherWishText>
         <TextBox
           col="25"
@@ -105,8 +112,12 @@ ${"000"}님의 소원을 익명으로 전달받아 따뜻한
           onChange={(e) => handleTextOtherWish(e)}
         ></TextBox>
         <TextLength>{otherTypingNum.length}/160</TextLength>
-        <BujeokBtn onClick={checkPost}>
-          <Link to="/loading">소원아 이루어져라!</Link>
+        {/* <Button onClick={checkGET} title="소원아 이루어져라!" page="loading" /> */}
+
+        <BujeokBtn onClick={checkGET}>
+          {/* <Link to="/loading"> */}
+          소원아 이루어져라!
+          {/* </Link> */}
         </BujeokBtn>
       </AppLayout>
     </div>
@@ -122,6 +133,7 @@ const TitleLarge = styled.div`
   padding: 12px 16px;
   color: white;
   border-radius: 4px;
+  /* border: 1px solid white; */
 
   font-family: "Hahmlet";
   font-style: normal;
@@ -133,12 +145,14 @@ const TitleLarge = styled.div`
 `;
 
 const TextBox = styled.textarea`
+  /* border: 1px solid white; */
+
   box-sizing: border-box;
   border-radius: 4px;
   width: 327px;
   height: 100px;
   padding: 12px 16px;
-  border: none;
+  /* border: none; */
   outline-color: rgba(255, 255, 255, 0.1);
   background-color: rgba(255, 255, 255, 0.1);
   color: white;
@@ -208,6 +222,7 @@ const TextLength = styled.p`
   width: 327px;
   border: none;
   color: white;
+  /* border: 1px solid white; */
 
   font-family: "Hahmlet";
   font-style: normal;
