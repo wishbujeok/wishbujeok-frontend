@@ -5,7 +5,7 @@ import styled from "styled-components";
 import "../components/shared/theme.css";
 
 import AppLayout from "../components/layout/AppLayout";
-import Button from "../components/Button";
+// import Button from "../components/Button";
 
 const Create = () => {
   const myWish = useRef(); // 내 소원 textarea
