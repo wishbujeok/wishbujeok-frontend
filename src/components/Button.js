@@ -1,13 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export default function Button(props) {
-  return (
-    <Link to={`/${props.page}`}>
-      <ButtonContainer>{props.title}</ButtonContainer>
-    </Link>
-  );
+  return <ButtonContainer>{props.title}</ButtonContainer>;
 }
 
 const ButtonContainer = styled.button`
