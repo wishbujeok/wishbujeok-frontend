@@ -3,6 +3,7 @@ import AppLayout from "../components/layout/AppLayout";
 import styled from "styled-components";
 import "../components/shared/theme.css";
 import { ReactComponent as Wish } from "../assets/img/wishbujeok.svg";
+import son from "../assets/img/부적을잡은손.svg";
 import kLogin from "../assets/img/klogin.png";
 
 const Home = () => {
@@ -11,7 +12,6 @@ const Home = () => {
     window.location.href = KAKAO_AUTH_URL;
   };
 
-  console.log(process.env.REACT_APP_REDIRECT_URI);
   // http://localhost:3000/KakaoLogin?code=NXUqHihuX8uJbv-guRRIOePk3gJakTjGEiyx-cBArMw1JQMnP32gUN2UzKYauWaMIG6NFQopcSEAAAGE4Ta8jw
 
   return (
@@ -19,8 +19,9 @@ const Home = () => {
       <AppLayout>
         <Title>
           새해부적
-          <Wish />
+          <Wish></Wish>
         </Title>
+        <Logo src={son} alt="손"></Logo>
         <Content>2023년, 당신의 소원을 이루어 줄 부적</Content>
         <KakaoLoginBtn>
           <img src={kLogin} onClick={handleLogin} alt="kakaoLogin" />
@@ -30,6 +31,7 @@ const Home = () => {
   );
 };
 
+// 아직 이미지 넣지 않음!
 let Title = styled.div`
   display: flex;
   flex-direction: row;
@@ -37,8 +39,13 @@ let Title = styled.div`
   justify-content: center;
   font-size: 60px;
   font-weight: 500;
-  margin: 30vh 0;
+  letter-spacing: -0.1em;
+  margin-top: 30vh;
   color: white;
+`;
+
+let Logo = styled.img`
+  height: 280px;
 `;
 
 let Content = styled.div`
@@ -50,10 +57,11 @@ let Content = styled.div`
   line-height: 150%;
   letter-spacing: -0.07em;
   color: white;
-  margin-top: 10vh;
+  margin-top: 15vh;
 `;
 
 let KakaoLoginBtn = styled.div`
+  margin-top: 2.8vh;
   &:hover {
     cursor: pointer;
   }
