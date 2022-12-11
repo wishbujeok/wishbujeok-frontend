@@ -5,7 +5,7 @@ import styled from "styled-components";
 import "../components/shared/theme.css";
 
 import AppLayout from "../components/layout/AppLayout";
-// import Button from "../components/Button";
+// import Button from "../components/features/Button";
 
 const Create = () => {
   const myWish = useRef(); // 내 소원 textarea
@@ -68,7 +68,8 @@ ${getData.userName}님의 소원을 익명으로 전달받아 따뜻한
     console.log(result);
     axios
       .post("https://wishbujeok.shop/bujeok-management/bujeok", result)
-      .then((res) => console.log(res)).catch(err => console.log(err))
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   if (getData === null) {
