@@ -5,13 +5,28 @@ import "../components/shared/theme.css";
 import { ReactComponent as Wish } from "../assets/img/wishbujeok.svg";
 import son from "../assets/img/부적을잡은손.svg";
 import kLogin from "../assets/img/klogin.png";
+// import { decrypt, encrypt } from "../hooks/crypto-decrypto";
 
 const Home = () => {
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code&scope=account_email`;
+  // const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${encrypt(
+  //   process.env.REACT_APP_REDIRECT_URI
+  // )}`;
   const handleLogin = () => {
     window.location.href = KAKAO_AUTH_URL;
   };
 
+  // 암호화 ${encrypt(prcess.env.REACT_APP_REDIRECT_URI)} => 이런식으로 할 수 있는데
+  // env 파일이 git ignore에 추가가 되면 어떻게 그걸 또 숨겨놓지?
+  // console.log(encrypt(process.env.REACT_APP_REDIRECT_URI));
+  // console.log(encrypt(process.env.REACT_APP_REST_API_KEY));
+  // 복호화
+  // console.log(
+  //   decrypt(encrypt(process.env.REACT_APP_REDIRECT_URI)),
+  //   process.env.REACT_APP_REDIRECT_URI
+  // );
+
+  // code=다음이 인가코드, 이런식으로 전달됨.
   // http://localhost:3000/KakaoLogin?code=NXUqHihuX8uJbv-guRRIOePk3gJakTjGEiyx-cBArMw1JQMnP32gUN2UzKYauWaMIG6NFQopcSEAAAGE4Ta8jw
 
   return (
