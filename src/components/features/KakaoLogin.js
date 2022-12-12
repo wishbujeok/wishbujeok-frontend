@@ -24,7 +24,8 @@ const KakaoLogin = () => {
       .then((res) => {
         // 서버 전용 access refresh token
         sessionStorage.setItem("access_token", res.access_token);
-        console.log(res.response.access_token);
+        console.log(res.response.accessToken);
+        console.log(res.accessToken);
         sessionStorage.setItem("refresh_token", res.refresh_token);
         // sessionStorage.setItem("user_id", res.user.pk);
         setAuthorization(res.access_token);
