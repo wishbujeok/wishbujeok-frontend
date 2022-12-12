@@ -9,10 +9,10 @@ const KakaoLogin = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const KAKAO_CODE = location.search.split("=")[1];
-  console.log(KAKAO_CODE);
+  // console.log(KAKAO_CODE);
 
   useEffect(() => {
-    console.log(KAKAO_CODE);
+    // console.log(KAKAO_CODE);
     // ${KAKAO_CODE} 가 인가코드래
     fetch(
       `${process.env.REACT_APP_BACKEND_URL}/auth/kakao/login/?code=${KAKAO_CODE}`,
