@@ -26,7 +26,10 @@ const Confirm = () => {
             부적 저장하기
             {/* </Link> */}
           </BujeokBtn>
-          <Share>공유하기</Share>
+          <Share>
+            공유하기
+            <Social>공유 버튼 있을듯</Social>
+          </Share>
         </Wish>
       </AppLayout>
     </div>
@@ -117,3 +120,5 @@ const Share = styled.div`
   margin-top: 6vh;
   // border: 1px solid;
 `;
+
+const Social = styled.div``;
