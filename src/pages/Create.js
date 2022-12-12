@@ -4,8 +4,7 @@ import axios from "axios";
 import styled from "styled-components";
 import "../components/shared/theme.css";
 
-import AppLayout from "../components/layout/AppLayout";
-// import Button from "../components/Button";
+// import Button from "../components/features/Button";
 
 const Create = () => {
   const myWish = useRef(); // 내 소원 textarea
@@ -68,7 +67,8 @@ ${getData.userName}님의 소원을 익명으로 전달받아 따뜻한
     console.log(result);
     axios
       .post("https://wishbujeok.shop/bujeok-management/bujeok", result)
-      .then((res) => console.log(res)).catch(err => console.log(err))
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   if (getData === null) {
@@ -76,53 +76,51 @@ ${getData.userName}님의 소원을 익명으로 전달받아 따뜻한
   }
   return (
     <div className="Create">
-      <AppLayout>
-        <TitleLarge>
-          {getData.userName}
-          님이 2023년에 이루고 싶은
-          <br />
-          소원을 말해주세요.
-        </TitleLarge>
-        <TextBox
-          placeholder={myWishHolder}
-          col="25"
-          row="3"
-          maxLength={160}
-          ref={myWish}
-          onChange={(e) => handleMyWishText(e)}
-        ></TextBox>
-        <TextLength>{myTypingNum.length}/160</TextLength>
-        <TitleLarge>
-          다른 분은 이런 소원을 빌었답니다! <br />
-          소원이 꼭 이루어지도록 응원의 메세지를
-          <br />
-          남겨주세요.
-        </TitleLarge>
-        <OtherWishText>
-          {/* 플로우가 넘쳤을 경우 어떻게 처리할것인지. */}
-          {getData.otherWish}
-          {/* 코시국도 많이 풀렸겠다 꼭 여러 곳으로 여행을 다니고 싶어요. 특히
+      <TitleLarge>
+        {getData.userName}
+        님이 2023년에 이루고 싶은
+        <br />
+        소원을 말해주세요.
+      </TitleLarge>
+      <TextBox
+        placeholder={myWishHolder}
+        col="25"
+        row="3"
+        maxLength={160}
+        ref={myWish}
+        onChange={(e) => handleMyWishText(e)}
+      ></TextBox>
+      <TextLength>{myTypingNum.length}/160</TextLength>
+      <TitleLarge>
+        다른 분은 이런 소원을 빌었답니다! <br />
+        소원이 꼭 이루어지도록 응원의 메세지를
+        <br />
+        남겨주세요.
+      </TitleLarge>
+      <OtherWishText>
+        {/* 플로우가 넘쳤을 경우 어떻게 처리할것인지. */}
+        {getData.otherWish}
+        {/* 코시국도 많이 풀렸겠다 꼭 여러 곳으로 여행을 다니고 싶어요. 특히
           북유럽 한달 여행! 다양한 것들을 보고 느끼는 2023년이 되길... */}
-        </OtherWishText>
-        <TextBox
-          col="25"
-          row="3"
-          maxLength={160}
-          placeholder={otherWishHolder}
-          ref={otherWish}
-          onChange={(e) => handleTextOtherWish(e)}
-        ></TextBox>
-        <TextLength>{otherTypingNum.length}/160</TextLength>
-        {/* <Link to="/create">
+      </OtherWishText>
+      <TextBox
+        col="25"
+        row="3"
+        maxLength={160}
+        placeholder={otherWishHolder}
+        ref={otherWish}
+        onChange={(e) => handleTextOtherWish(e)}
+      ></TextBox>
+      <TextLength>{otherTypingNum.length}/160</TextLength>
+      {/* <Link to="/create">
           <Button onClick={checkGET} title="소원아 이루어져라!" page="loading" />
         </Link> */}
 
-        <BujeokBtn onClick={checkPost}>
-          {/* <Link to="/loading"> */}
-          소원아 이루어져라!
-          {/* </Link> */}
-        </BujeokBtn>
-      </AppLayout>
+      <BujeokBtn onClick={checkPost}>
+        {/* <Link to="/loading"> */}
+        소원아 이루어져라!
+        {/* </Link> */}
+      </BujeokBtn>
     </div>
   );
 };
