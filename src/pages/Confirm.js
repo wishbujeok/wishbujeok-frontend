@@ -1,5 +1,4 @@
 import React from "react";
-import AppLayout from "../components/layout/AppLayout";
 import styled from "styled-components";
 import "../components/shared/theme.css";
 import bujeok from "../assets/img/로딩이미지.svg";
@@ -9,29 +8,27 @@ import bujeok from "../assets/img/로딩이미지.svg";
 const Confirm = () => {
   return (
     <div className="Create">
-      <AppLayout>
-        <TitleLarge>부적이 도착했어요!</TitleLarge>
-        {/* 임시로 해놓았습니다. */}
-        <LoadingImg src={bujeok} alt="새해 부적" />
-        <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
-        <Wish>
-          <TitleSmall>ㅇㅇㅇ님이 빌었던 소원이에요.</TitleSmall>
-          <Content>
-            정말 간절해요 어쩌구 저쩌구 삐용삐용
-            <br />
-            이거 참 재밌다~! 혹시 내용이 넘어가면 어떡하지?
-          </Content>
-          <BujeokBtn>
-            {/* <Link to="/loading"> */}
-            부적 저장하기
-            {/* </Link> */}
-          </BujeokBtn>
-          <Share>
-            공유하기
-            <Social>공유 버튼 있을듯</Social>
-          </Share>
-        </Wish>
-      </AppLayout>
+      <TitleLarge>부적이 도착했어요!</TitleLarge>
+      {/* 임시로 해놓았습니다. */}
+      <LoadingImg src={bujeok} alt="새해 부적" />
+      <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
+      <Wish>
+        <TitleSmall>ㅇㅇㅇ님이 빌었던 소원이에요.</TitleSmall>
+        <Content>
+          정말 간절해요 어쩌구 저쩌구 삐용삐용
+          <br />
+          이거 참 재밌다~! 혹시 내용이 넘어가면 어떡하지?
+        </Content>
+        <BujeokBtn>
+          {/* <Link to="/loading"> */}
+          부적 저장하기
+          {/* </Link> */}
+        </BujeokBtn>
+        <Share>
+          공유하기
+          <Social>공유 버튼 있을듯</Social>
+        </Share>
+      </Wish>
     </div>
   );
 };

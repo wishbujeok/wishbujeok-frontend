@@ -1,19 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-import AppLayout from "../components/layout/AppLayout";
 import bujeok from "../assets/img/로딩이미지.svg";
 
 const Loading = (props) => {
   console.log(props.onClick);
   return (
     <div className="loading">
-      <AppLayout>
-        <LoadingContainer>
-          <LoadingImg src={bujeok} alt="새해 부적" />
-          <MakeBujeok>부적 제작하는 중...</MakeBujeok>
-        </LoadingContainer>
-      </AppLayout>
+      <LoadingContainer>
+        <LoadingImg src={bujeok} alt="새해 부적" />
+        <MakeBujeok>부적 제작하는 중...</MakeBujeok>
+      </LoadingContainer>
     </div>
   );
 };
