@@ -23,12 +23,21 @@ const KakaoLogin = () => {
       .then((res) => res.json())
       .then((res) => {
         // 서버 전용 access refresh token
-        sessionStorage.setItem("access_token", res.access_token);
+        sessionStorage.setItem("accessToken", res.response.accessToken);
+        // accessToken 확인됨. 아래와 같이 백엔드에서 넘어옴.
+        //   {
+        //     "success": true,
+        //     "response": {
+        //         "tokenType": "Bearer",
+        //         "accessToken": "eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRvb2x5c21pbGUxQG5hdmVyLmNvbSIsInN1YiI6ImFjY2Vzc190b2tlbiIsImlhdCI6MTY3MDg1OTMwMSwiZXhwIjoxNjcwODk1MzAxfQ.VpmBME8IeUXvOOuXPfQ9ZMasxVirmDsFaqV9-oguESY",
+        //         "refreshToken": null
+        //     },
+        //     "error": null
+        // }
         console.log(res.response.accessToken);
-        console.log(res.accessToken);
-        sessionStorage.setItem("refresh_token", res.refresh_token);
-        // sessionStorage.setItem("user_id", res.user.pk);
-        setAuthorization(res.access_token);
+        sessionStorage.setItem("refreshToken", res.response.refreshToken);
+        // sessionStorage.setItem("user_id", res.response.user.pk);
+        setAuthorization(res.response.accessToken);
         setTimeout(
           checkAccessToken,
           JWT_EXPIRE_TIME - 60000,
