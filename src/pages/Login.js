@@ -6,7 +6,7 @@ import son from "../assets/img/부적을잡은손.svg";
 import kLogin from "../assets/img/kakaoLogin.svg";
 
 const Login = () => {
-  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code&scope=account_email`;
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code&scope=profile_nickname,account_email`;
   const handleLogin = () => {
     window.location.href = KAKAO_AUTH_URL;
   };
