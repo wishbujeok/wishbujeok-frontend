@@ -15,7 +15,7 @@ let Box = styled.div`
   text-align: center;
   margin: 0 auto;
   width: 430px;
-  height: 110vh;
+  height: 115vh;
   // background: black;
   box-shadow: 0 0 2rem 0.1rem rgba(0, 0, 0, 0.2);
   font-family: "Hahmlet-Regular";

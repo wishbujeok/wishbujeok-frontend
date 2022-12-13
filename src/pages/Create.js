@@ -202,12 +202,13 @@ const OtherWishText = styled.div`
   box-sizing: border-box;
   width: 327px;
   height: 100px;
-  background-color: #524eff;
+  background-color: rgba(255, 255, 255, 0.1);
   color: white;
   padding: 12px 16px;
   border-radius: 4px;
   text-align: left;
   margin-bottom: 8px;
+  display: inline-block;
 
   font-family: "Hahmlet";
   font-style: normal;

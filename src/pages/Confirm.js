@@ -60,7 +60,6 @@ const BodyLarge = styled.div`
 
 const Wish = styled.div``;
 
-// TitleSmall 하고 Content 왼쪽정렬해야함.
 const TitleSmall = styled.div`
   color: white;
   font-size: 18px;
@@ -81,6 +80,7 @@ const Content = styled.div`
   margin-top: 2vh;
   padding: 12px 16px 16px;
   background: rgba(255, 255, 255, 0.1);
+  text-align: left;
 `;
 
 const BujeokBtn = styled.button`

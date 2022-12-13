@@ -3,7 +3,7 @@ import styled from "styled-components";
 import "../components/shared/theme.css";
 import { ReactComponent as Wish } from "../assets/img/wishbujeok.svg";
 import son from "../assets/img/부적을잡은손.svg";
-import kLogin from "../assets/img/klogin.png";
+import kLogin from "../assets/img/kakaoLogin.svg";
 
 const Login = () => {
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code&scope=account_email`;
@@ -49,11 +49,11 @@ let Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 300;
   line-height: 150%;
   letter-spacing: -0.07em;
-  color: white;
+  color: #f7f7f7;
   margin-top: 15vh;
 `;
 
