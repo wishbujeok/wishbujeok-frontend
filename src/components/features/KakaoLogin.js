@@ -51,3 +51,27 @@ const KakaoLogin = () => {
 };
 
 export default KakaoLogin;
+
+// 에러를 보내주면 token
+// export const setAuthorization = (token) => {
+//   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+// };
+
+// export const refreshAccessToken = async (refreshToken) => {
+//   return await axios
+//     .post(`${process.env.BACKEND_URL}/api/user/token/refresh/`, {
+//       refresh: refreshToken,
+//     })
+//     .then((res) => {
+//       sessionStorage.setItem("accessToken", res.data.access);
+//       setAuthorization(res.data.access);
+//       return res.data.access;
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
+
+// export const checkAccessToken = async (refreshToken) => {
+//   await refreshAccessToken(refreshToken);
+// };
