@@ -26,12 +26,18 @@ import axios from "axios";
 
 // 요청을 보내는 baseURL을 설정.
 const client = axios.create({
-  // 수정해야할듯!
-  baseURL: `${process.env.BACKEND_URL}/api/user/`,
+  // 수정해야할듯! 이거는 그냥 정말 baseUrl
+  baseURL: `${process.env.BACKEND_URL}`,
 });
+
+// 모든 요청에 대해서 헤더에 담아서 보내야해 알겠어?
+export const setAuthorization = (token) => {
+  client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+};
 
 // request를 보낼 때 localStorage에 token 정보가 있다면
 // 헤더에 토큰 정보를 저장하고 없다면 Null로 처리함.
+
 client.interceptors.request.use(function (config) {
   const user = localStorage.getItem("user");
   if (!user) {
