@@ -36,7 +36,6 @@ const KakaoLogin = () => {
         // }
         console.log(res.response.accessToken);
         sessionStorage.setItem("refreshToken", res.response.refreshToken);
-        // sessionStorage.setItem("user_id", res.response.user.pk);
         setAuthorization(res.response.accessToken);
         setTimeout(
           checkAccessToken,
