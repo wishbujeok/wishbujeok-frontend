@@ -37,7 +37,6 @@ export const setAuthorization = (token) => {
 
 // request를 보낼 때 localStorage에 token 정보가 있다면
 // 헤더에 토큰 정보를 저장하고 없다면 Null로 처리함.
-
 client.interceptors.request.use(function (config) {
   const user = localStorage.getItem("user");
   if (!user) {

@@ -1,15 +1,19 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { checkAccessToken } from "../../stores/Token";
+// import { checkAccessToken } from "../../stores/Token";
 import { useEffect } from "react";
 import { setAuthorization } from "../../stores/Token";
+import { useDispatch } from "react-redux";
+import { loginAccount } from "../shared/Reducer";
 
-const JWT_EXPIRE_TIME = 2 * 3600 * 1000; // expiration time(2 hours in milliseconds)
+// const JWT_EXPIRE_TIME = 2 * 3600 * 1000; // expiration time(2 hours in milliseconds)
 
 const KakaoLogin = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const KAKAO_CODE = location.search.split("=")[1];
   // console.log(KAKAO_CODE);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // console.log(KAKAO_CODE);
@@ -37,11 +41,15 @@ const KakaoLogin = () => {
         console.log(res.response.accessToken);
         sessionStorage.setItem("refreshToken", res.response.refreshToken);
         setAuthorization(res.response.accessToken);
+        // 굳이 필요없어 보이긴 함.
         // setTimeout(
         //   checkAccessToken,
         //   JWT_EXPIRE_TIME - 60000,
-        //   res.refresh_token
+        //   res.response.refresh_token
         // ); // 1 minute before expiration
+        // redux store 에 저장해줌.
+        dispatch(loginAccount({ accessToken: "kim" }));
+        // dispatch(loginAccount({ accessToken: res.response.accessToken}))
         navigate("/create");
       });
   }, []);

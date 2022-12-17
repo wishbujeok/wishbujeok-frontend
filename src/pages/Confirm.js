@@ -1,14 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import "../components/shared/theme.css";
+import { useSelector } from "react-redux";
 // import bujeok from "../assets/img/로딩이미지.svg";
 // import Button from "../components/features/Button";
 // import { IconName } from "react-icons/ai";
 
 const Confirm = () => {
+  const user = useSelector((state) => state.user.value);
+
+  // {user.user_nickName}
+  // {user.어쩌구로} 사용할 수 있음!
   return (
     <div className="Create">
-      <TitleLarge>부적이 도착했어요!</TitleLarge>
+      <TitleLarge>{user.accessToken}의 부적이 도착했어요!</TitleLarge>
       {/* 임시로 해놓았습니다. */}
       {/* <LoadingImg src={bujeok} alt="새해 부적" /> */}
       <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
