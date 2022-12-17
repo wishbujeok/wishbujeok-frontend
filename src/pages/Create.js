@@ -4,7 +4,12 @@ import axios from "axios";
 import styled from "styled-components";
 import "../components/shared/theme.css";
 
+<<<<<<< HEAD
+import AppLayout from "../components/layout/AppLayout";
+import Button from "../components/Button";
+=======
 // import Button from "../components/features/Button";
+>>>>>>> 8435f23a6718b07854f13fae8c5fa4f67ddc796b
 
 const Create = () => {
   const myWish = useRef(); // 내 소원 textarea
@@ -39,7 +44,7 @@ const Create = () => {
   // 띄어쓰기 다 되어 있는겁니다. 수정 자제 부탁드립니다.
 
   const otherWishHolder = `진심어린 응원을 부탁드려요.다른 분도
-${getData.userName}님의 소원을 익명으로 전달받아 따뜻한
+${getData.userName} 님의 소원을 익명으로 전달받아 따뜻한
 응원을 해주실 거에요.`;
   // 띄어쓰기 다 되어 있는겁니다. 수정 자제 부탁드립니다. ${} 안에는 서버에서 받아온 이름 넣어야 합니다.
 
@@ -51,10 +56,6 @@ ${getData.userName}님의 소원을 익명으로 전달받아 따뜻한
   const handleTextOtherWish = (e) => {
     // 상대방 소원 textarea 에 글자수를 받아오기 위해 필요한 함수
     setOtherTypingNum(e.target.value);
-  };
-
-  const checkGET = () => {
-    console.log(getData.response);
   };
 
   const checkPost = () => {
@@ -102,6 +103,32 @@ ${getData.userName}님의 소원을 익명으로 전달받아 따뜻한
         {getData.otherWish}
         {/* 코시국도 많이 풀렸겠다 꼭 여러 곳으로 여행을 다니고 싶어요. 특히
           북유럽 한달 여행! 다양한 것들을 보고 느끼는 2023년이 되길... */}
+<<<<<<< HEAD
+        </OtherWishText>
+        <TextBox
+          col="25"
+          row="3"
+          maxLength={160}
+          placeholder={otherWishHolder}
+          ref={otherWish}
+          onChange={(e) => handleTextOtherWish(e)}
+        ></TextBox>
+        <TextLength>{otherTypingNum.length}/160</TextLength>
+        <Link to="/create">
+          <Button
+            // onClick={checkGET}
+            title="소원아 이루어져라!"
+            page="loading"
+          />
+        </Link>
+
+        {/* <BujeokBtn onClick={checkPost}> */}
+        {/* <Link to="/loading"> */}
+        {/* 소원아 이루어져라! */}
+        {/* </Link> */}
+        {/* </BujeokBtn> */}
+      </AppLayout>
+=======
       </OtherWishText>
       <TextBox
         col="25"
@@ -121,6 +148,7 @@ ${getData.userName}님의 소원을 익명으로 전달받아 따뜻한
         소원아 이루어져라!
         {/* </Link> */}
       </BujeokBtn>
+>>>>>>> 8435f23a6718b07854f13fae8c5fa4f67ddc796b
     </div>
   );
 };
