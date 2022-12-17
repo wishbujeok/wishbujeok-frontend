@@ -5,7 +5,7 @@ import styled from "styled-components";
 import "../components/shared/theme.css";
 
 import AppLayout from "../components/layout/AppLayout";
-// import Button from "../components/Button";
+import Button from "../components/Button";
 
 const Create = () => {
   const myWish = useRef(); // 내 소원 textarea
@@ -40,7 +40,7 @@ const Create = () => {
   // 띄어쓰기 다 되어 있는겁니다. 수정 자제 부탁드립니다.
 
   const otherWishHolder = `진심어린 응원을 부탁드려요.다른 분도
-${getData.userName}님의 소원을 익명으로 전달받아 따뜻한
+${getData.userName} 님의 소원을 익명으로 전달받아 따뜻한
 응원을 해주실 거에요.`;
   // 띄어쓰기 다 되어 있는겁니다. 수정 자제 부탁드립니다. ${} 안에는 서버에서 받아온 이름 넣어야 합니다.
 
@@ -54,10 +54,6 @@ ${getData.userName}님의 소원을 익명으로 전달받아 따뜻한
     setOtherTypingNum(e.target.value);
   };
 
-  const checkGET = () => {
-    console.log(getData.response);
-  };
-
   const checkPost = () => {
     const result = {
       otherWishId: 1,
@@ -68,7 +64,8 @@ ${getData.userName}님의 소원을 익명으로 전달받아 따뜻한
     console.log(result);
     axios
       .post("https://wishbujeok.shop/bujeok-management/bujeok", result)
-      .then((res) => console.log(res)).catch(err => console.log(err))
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   if (getData === null) {
@@ -113,15 +110,19 @@ ${getData.userName}님의 소원을 익명으로 전달받아 따뜻한
           onChange={(e) => handleTextOtherWish(e)}
         ></TextBox>
         <TextLength>{otherTypingNum.length}/160</TextLength>
-        {/* <Link to="/create">
-          <Button onClick={checkGET} title="소원아 이루어져라!" page="loading" />
-        </Link> */}
+        <Link to="/create">
+          <Button
+            // onClick={checkGET}
+            title="소원아 이루어져라!"
+            page="loading"
+          />
+        </Link>
 
-        <BujeokBtn onClick={checkPost}>
-          {/* <Link to="/loading"> */}
-          소원아 이루어져라!
-          {/* </Link> */}
-        </BujeokBtn>
+        {/* <BujeokBtn onClick={checkPost}> */}
+        {/* <Link to="/loading"> */}
+        {/* 소원아 이루어져라! */}
+        {/* </Link> */}
+        {/* </BujeokBtn> */}
       </AppLayout>
     </div>
   );
