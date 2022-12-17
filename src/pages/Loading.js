@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import AppLayout from "../components/layout/AppLayout";
 import bujeok from "../assets/img/로딩이미지.svg";
 
 const Loading = (props) => {
@@ -15,6 +14,7 @@ const Loading = (props) => {
 
   return (
     <div className="loading">
+<<<<<<< HEAD
       <AppLayout>
         <LoadingContainer>
           <img src={bujeok} alt="새해 부적" />
@@ -22,6 +22,12 @@ const Loading = (props) => {
         </LoadingContainer>
         {/* <LoadingImg id="screen"></LoadingImg> */}
       </AppLayout>
+=======
+      <LoadingContainer>
+        <LoadingImg src={bujeok} alt="새해 부적" />
+        <MakeBujeok>부적 제작하는 중...</MakeBujeok>
+      </LoadingContainer>
+>>>>>>> 8435f23a6718b07854f13fae8c5fa4f67ddc796b
     </div>
   );
 };

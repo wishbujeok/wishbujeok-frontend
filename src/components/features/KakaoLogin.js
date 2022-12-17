@@ -9,10 +9,10 @@ const KakaoLogin = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const KAKAO_CODE = location.search.split("=")[1];
-  console.log(KAKAO_CODE);
+  // console.log(KAKAO_CODE);
 
   useEffect(() => {
-    console.log(KAKAO_CODE);
+    // console.log(KAKAO_CODE);
     // ${KAKAO_CODE} 가 인가코드래
     fetch(
       `${process.env.REACT_APP_BACKEND_URL}/auth/kakao/login/?code=${KAKAO_CODE}`,
@@ -23,10 +23,20 @@ const KakaoLogin = () => {
       .then((res) => res.json())
       .then((res) => {
         // 서버 전용 access refresh token
-        sessionStorage.setItem("access_token", res.access_token);
-        sessionStorage.setItem("refresh_token", res.refresh_token);
-        sessionStorage.setItem("user_id", res.user.pk);
-        setAuthorization(res.access_token);
+        sessionStorage.setItem("accessToken", res.response.accessToken);
+        // accessToken 확인됨. 아래와 같이 백엔드에서 넘어옴.
+        //   {
+        //     "success": true,
+        //     "response": {
+        //         "tokenType": "Bearer",
+        //         "accessToken": "eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRvb2x5c21pbGUxQG5hdmVyLmNvbSIsInN1YiI6ImFjY2Vzc190b2tlbiIsImlhdCI6MTY3MDg1OTMwMSwiZXhwIjoxNjcwODk1MzAxfQ.VpmBME8IeUXvOOuXPfQ9ZMasxVirmDsFaqV9-oguESY",
+        //         "refreshToken": null
+        //     },
+        //     "error": null
+        // }
+        console.log(res.response.accessToken);
+        sessionStorage.setItem("refreshToken", res.response.refreshToken);
+        setAuthorization(res.response.accessToken);
         setTimeout(
           checkAccessToken,
           JWT_EXPIRE_TIME - 60000,
@@ -40,3 +50,27 @@ const KakaoLogin = () => {
 };
 
 export default KakaoLogin;
+
+// 에러를 보내주면 token
+// export const setAuthorization = (token) => {
+//   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+// };
+
+// export const refreshAccessToken = async (refreshToken) => {
+//   return await axios
+//     .post(`${process.env.BACKEND_URL}/api/user/token/refresh/`, {
+//       refresh: refreshToken,
+//     })
+//     .then((res) => {
+//       sessionStorage.setItem("accessToken", res.data.access);
+//       setAuthorization(res.data.access);
+//       return res.data.access;
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
+
+// export const checkAccessToken = async (refreshToken) => {
+//   await refreshAccessToken(refreshToken);
+// };

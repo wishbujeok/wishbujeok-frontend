@@ -4,8 +4,12 @@ import axios from "axios";
 import styled from "styled-components";
 import "../components/shared/theme.css";
 
+<<<<<<< HEAD
 import AppLayout from "../components/layout/AppLayout";
 import Button from "../components/Button";
+=======
+// import Button from "../components/features/Button";
+>>>>>>> 8435f23a6718b07854f13fae8c5fa4f67ddc796b
 
 const Create = () => {
   const myWish = useRef(); // 내 소원 textarea
@@ -73,33 +77,33 @@ ${getData.userName} 님의 소원을 익명으로 전달받아 따뜻한
   }
   return (
     <div className="Create">
-      <AppLayout>
-        <TitleLarge>
-          {getData.userName}
-          님이 2023년에 이루고 싶은
-          <br />
-          소원을 말해주세요.
-        </TitleLarge>
-        <TextBox
-          placeholder={myWishHolder}
-          col="25"
-          row="3"
-          maxLength={160}
-          ref={myWish}
-          onChange={(e) => handleMyWishText(e)}
-        ></TextBox>
-        <TextLength>{myTypingNum.length}/160</TextLength>
-        <TitleLarge>
-          다른 분은 이런 소원을 빌었답니다! <br />
-          소원이 꼭 이루어지도록 응원의 메세지를
-          <br />
-          남겨주세요.
-        </TitleLarge>
-        <OtherWishText>
-          {/* 플로우가 넘쳤을 경우 어떻게 처리할것인지. */}
-          {getData.otherWish}
-          {/* 코시국도 많이 풀렸겠다 꼭 여러 곳으로 여행을 다니고 싶어요. 특히
+      <TitleLarge>
+        {getData.userName}
+        님이 2023년에 이루고 싶은
+        <br />
+        소원을 말해주세요.
+      </TitleLarge>
+      <TextBox
+        placeholder={myWishHolder}
+        col="25"
+        row="3"
+        maxLength={160}
+        ref={myWish}
+        onChange={(e) => handleMyWishText(e)}
+      ></TextBox>
+      <TextLength>{myTypingNum.length}/160</TextLength>
+      <TitleLarge>
+        다른 분은 이런 소원을 빌었답니다! <br />
+        소원이 꼭 이루어지도록 응원의 메세지를
+        <br />
+        남겨주세요.
+      </TitleLarge>
+      <OtherWishText>
+        {/* 플로우가 넘쳤을 경우 어떻게 처리할것인지. */}
+        {getData.otherWish}
+        {/* 코시국도 많이 풀렸겠다 꼭 여러 곳으로 여행을 다니고 싶어요. 특히
           북유럽 한달 여행! 다양한 것들을 보고 느끼는 2023년이 되길... */}
+<<<<<<< HEAD
         </OtherWishText>
         <TextBox
           col="25"
@@ -124,6 +128,27 @@ ${getData.userName} 님의 소원을 익명으로 전달받아 따뜻한
         {/* </Link> */}
         {/* </BujeokBtn> */}
       </AppLayout>
+=======
+      </OtherWishText>
+      <TextBox
+        col="25"
+        row="3"
+        maxLength={160}
+        placeholder={otherWishHolder}
+        ref={otherWish}
+        onChange={(e) => handleTextOtherWish(e)}
+      ></TextBox>
+      <TextLength>{otherTypingNum.length}/160</TextLength>
+      {/* <Link to="/create">
+          <Button onClick={checkGET} title="소원아 이루어져라!" page="loading" />
+        </Link> */}
+
+      <BujeokBtn onClick={checkPost}>
+        {/* <Link to="/loading"> */}
+        소원아 이루어져라!
+        {/* </Link> */}
+      </BujeokBtn>
+>>>>>>> 8435f23a6718b07854f13fae8c5fa4f67ddc796b
     </div>
   );
 };
@@ -205,12 +230,13 @@ const OtherWishText = styled.div`
   box-sizing: border-box;
   width: 327px;
   height: 100px;
-  background-color: #524eff;
+  background-color: rgba(255, 255, 255, 0.1);
   color: white;
   padding: 12px 16px;
   border-radius: 4px;
   text-align: left;
   margin-bottom: 8px;
+  display: inline-block;
 
   font-family: "Hahmlet";
   font-style: normal;
