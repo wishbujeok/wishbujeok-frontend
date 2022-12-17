@@ -8,7 +8,7 @@ import ImgReducer from "../reducer/ImgReducer";
 // reducer에 상태관리할 것들을 저장할 것들을 넣으면 됨.
 const rootReducer = combineReducers({
   user: Reducer,
-  img: ImgReducer,
+  // img: ImgReducer,
 });
 
 const store = configureStore({
