@@ -7,15 +7,15 @@ import KakaoLogin from "./components/features/KakaoLogin";
 import Loading from "./pages/Loading";
 import "./components/shared/reset.css";
 import AppLayout from "./components/layout/AppLayout";
-import ScreenShot from "./components/features/ScreenShot";
 
+import ScreenShot from "./components/features/ScreenShot";
 import a from "./assets/img/mainPageImg.png";
 
 function App() {
   return (
     <div className="App">
       <AppLayout>
-        {/* <Router>
+        <Router>
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/kakaoLogin" element={<KakaoLogin />} />
@@ -23,8 +23,8 @@ function App() {
             <Route path="/confirm" element={<Confirm />} />
             <Route path="/loading" element={<Loading />} />
           </Routes>
-        </Router> */}
-        <ScreenShot HopeImg={a} />
+        </Router>
+        {/* <ScreenShot HopeImg={a} /> */}
       </AppLayout>
     </div>
   );
