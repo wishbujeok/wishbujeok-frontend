@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import "../components/shared/theme.css";
-import bujeok from "../assets/img/로딩이미지.svg";
+// import bujeok from "../assets/img/로딩이미지.svg";
 // import Button from "../components/features/Button";
 // import { IconName } from "react-icons/ai";
 
@@ -10,7 +10,7 @@ const Confirm = () => {
     <div className="Create">
       <TitleLarge>부적이 도착했어요!</TitleLarge>
       {/* 임시로 해놓았습니다. */}
-      <LoadingImg src={bujeok} alt="새해 부적" />
+      {/* <LoadingImg src={bujeok} alt="새해 부적" /> */}
       <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
       <Wish>
         <TitleSmall>ㅇㅇㅇ님이 빌었던 소원이에요.</TitleSmall>

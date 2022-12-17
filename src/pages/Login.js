@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+
 import "../components/shared/theme.css";
-import { ReactComponent as Wish } from "../assets/img/wishbujeok.svg";
-import son from "../assets/img/부적을잡은손.svg";
 import kLogin from "../assets/img/kakaoLogin.svg";
+import son from "../assets/img/mainPageImg.png";
 
 const Login = () => {
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code&scope=profile_nickname,account_email`;
@@ -16,10 +16,8 @@ const Login = () => {
   return (
     <div className="Home">
       <Title>
-        새해부적
-        <Wish></Wish>
+        <Logo src={son} alt="손"></Logo>
       </Title>
-      <Logo src={son} alt="손"></Logo>
       <Content>2023년, 당신의 소원을 이루어 줄 부적</Content>
       <KakaoLoginBtn>
         <img src={kLogin} onClick={handleLogin} alt="kakaoLogin" />

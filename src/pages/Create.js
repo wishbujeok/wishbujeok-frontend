@@ -94,12 +94,7 @@ ${getData.userName} 님의 소원을 익명으로 전달받아 따뜻한
         <br />
         남겨주세요.
       </TitleLarge>
-      <OtherWishText>
-        {/* 플로우가 넘쳤을 경우 어떻게 처리할것인지. */}
-        {getData.otherWish}
-        {/* 코시국도 많이 풀렸겠다 꼭 여러 곳으로 여행을 다니고 싶어요. 특히
-          북유럽 한달 여행! 다양한 것들을 보고 느끼는 2023년이 되길... */}
-      </OtherWishText>
+      <OtherWishText>{getData.otherWish}</OtherWishText>
       <TextBox
         col="25"
         row="3"
@@ -131,26 +126,21 @@ const TitleLarge = styled.div`
   padding: 12px 16px;
   color: white;
   border-radius: 4px;
-  /* border: 1px solid white; */
 
   font-family: "Hahmlet";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 150%;
-  /* or 27px */
   letter-spacing: -0.07em;
 `;
 
 const TextBox = styled.textarea`
-  /* border: 1px solid white; */
-
   box-sizing: border-box;
   border-radius: 4px;
   width: 327px;
   height: 100px;
   padding: 12px 16px;
-  /* border: none; */
   outline-color: rgba(255, 255, 255, 0.1);
   background-color: rgba(255, 255, 255, 0.1);
   color: white;
@@ -160,8 +150,8 @@ const TextBox = styled.textarea`
   font-weight: 300;
   font-size: 16px;
   line-height: 150%;
-  /* or 24px */
   letter-spacing: -0.07em;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -184,7 +174,6 @@ const BujeokBtn = styled.button`
   font-weight: 600;
   font-size: 16px;
   line-height: 150%;
-  /* or 24px */
   text-align: center;
   letter-spacing: -0.07em;
 
@@ -195,7 +184,6 @@ const BujeokBtn = styled.button`
 `;
 
 const OtherWishText = styled.div`
-  /* border: 1px solid white; */
   box-sizing: border-box;
   width: 327px;
   height: 100px;
@@ -212,8 +200,6 @@ const OtherWishText = styled.div`
   font-weight: 500;
   font-size: 16px;
   line-height: 120%;
-  /* or 22px */
-  /* text-align: center; */
   letter-spacing: -0.07em;
 `;
 
@@ -221,14 +207,12 @@ const TextLength = styled.p`
   width: 327px;
   border: none;
   color: white;
-  /* border: 1px solid white; */
 
   font-family: "Hahmlet";
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
   line-height: 150%;
-  /* identical to box height, or 21px */
   text-align: right;
   letter-spacing: -0.07em;
 `;

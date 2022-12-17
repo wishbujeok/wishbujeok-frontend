@@ -1,17 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import bujeok from "../assets/img/로딩이미지.svg";
+import bujeok from "../assets/img/loadingImgPNG.png";
 
-const Loading = (props) => {
-  const screen = document.getElementById("screen");
-
-  const clickScreen = () => {
-    screen.onclick();
-  };
-
-  console.log(screen);
-
+const Loading = () => {
   return (
     <div className="loading">
       <LoadingContainer>
@@ -33,10 +25,9 @@ const LoadingContainer = styled.section`
   align-items: center;
 `;
 
-const LoadingImg = styled.div`
+const LoadingImg = styled.img`
   width: 200px;
   height: 200px;
-  background-color: white;
 `;
 
 const MakeBujeok = styled.div`
