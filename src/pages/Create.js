@@ -22,7 +22,7 @@ const Create = () => {
 
   useEffect(() => {
     axios
-      .get("https://wishbujeok.shop/bujeok-management/bujeok")
+      .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/bujeok`)
       .then((res) => setGetData(res.data.response))
       .catch((err) => console.log(err));
   }, []);
@@ -59,7 +59,10 @@ const Create = () => {
 
     console.log(result);
     axios
-      .post("https://wishbujeok.shop/bujeok-management/bujeok", result)
+      .post(
+        `${process.env.REACT_APP_BACKEND_URL}/bujeok-management/bujeok`,
+        result
+      )
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
