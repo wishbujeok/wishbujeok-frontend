@@ -37,11 +37,11 @@ const KakaoLogin = () => {
         console.log(res.response.accessToken);
         sessionStorage.setItem("refreshToken", res.response.refreshToken);
         setAuthorization(res.response.accessToken);
-        setTimeout(
-          checkAccessToken,
-          JWT_EXPIRE_TIME - 60000,
-          res.refresh_token
-        ); // 1 minute before expiration
+        // setTimeout(
+        //   checkAccessToken,
+        //   JWT_EXPIRE_TIME - 60000,
+        //   res.refresh_token
+        // ); // 1 minute before expiration
         navigate("/create");
       });
   }, []);
