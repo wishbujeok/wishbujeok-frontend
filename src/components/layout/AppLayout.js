@@ -14,9 +14,10 @@ let Box = styled.div`
   align-items: center;
   text-align: center;
   margin: 0 auto;
-  width: 430px;
-  height: 115vh;
+  width: 327px;
+  height: 100%;
+  // border: 1px solid;
   // background: black;
-  box-shadow: 0 0 2rem 0.1rem rgba(0, 0, 0, 0.2);
+  // box-shadow: 0 0 2rem 0.1rem rgba(0, 0, 0, 0.2);
   font-family: "Hahmlet-Regular";
 `;
