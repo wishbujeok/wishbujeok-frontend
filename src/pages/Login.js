@@ -26,17 +26,8 @@ const Login = () => {
   );
 };
 
-// 아직 이미지 넣지 않음!
 let Title = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: 60px;
-  font-weight: 500;
-  letter-spacing: -0.1em;
-  margin-top: 30vh;
-  color: white;
+  margin-top: 21vh;
 `;
 
 let Logo = styled.img`

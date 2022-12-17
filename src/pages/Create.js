@@ -4,7 +4,6 @@ import axios from "axios";
 import styled from "styled-components";
 import "../components/shared/theme.css";
 
-import AppLayout from "../components/layout/AppLayout";
 // import Button from "../components/Button";
 
 const Create = () => {
@@ -34,13 +33,11 @@ const Create = () => {
   const [otherTypingNum, setOtherTypingNum] = useState("");
   // 다른 사람 소원 textarea의 변경 이벤트를 감지하는 변수
 
-  const myWishHolder = `선택한 키워드와 관련해서 이루고 
-싶은 것을 마음껏 솔직하게
-털어놓아주세요.`;
+  const myWishHolder = `이루고 싶은 것이라면 무엇이든 털어놓아 주세요.`;
   // 띄어쓰기 다 되어 있는겁니다. 수정 자제 부탁드립니다.
 
-  const otherWishHolder = `진심어린 응원을 부탁드려요.다른 분도
-${getData.userName}님의 소원을 익명으로 전달받아 따뜻한 응원을 해주실 거에요.`;
+  const otherWishHolder = `응원 메시지를 남기면 ${getData.userName}님의 소원도
+익명으로 전달되어 응원 메시지를 받게 돼요.`;
   // 띄어쓰기 다 되어 있는겁니다. 수정 자제 부탁드립니다. ${} 안에는 서버에서 받아온 이름 넣어야 합니다.
 
   const handleMyWishText = (e) => {
@@ -88,25 +85,33 @@ ${getData.userName}님의 소원을 익명으로 전달받아 따뜻한 응원�
       ></TextBox>
       <TextLength>{myTypingNum.length}/160</TextLength>
       <TitleLarge>
-        다른 분은 이런 소원을 빌었답니다! <br />
-        소원이 꼭 이루어지도록 응원의 메세지를
-        <br />
-        남겨주세요.
+        다른 분은 이런 소원을 빌었어요! <br />
+        진심 어린 응원의 메시지를 남겨주세요.
       </TitleLarge>
-      <OtherWishText>{getData.otherWish}</OtherWishText>
-      <TextBox
-        col="25"
-        row="3"
-        maxLength={160}
-        placeholder={otherWishHolder}
-        ref={otherWish}
-        onChange={(e) => handleTextOtherWish(e)}
-      ></TextBox>
-      <TextLength>{otherTypingNum.length}/160</TextLength>
-      {/* <Link to="/create">
+      <CheerUpText>
+        <OtherWishText>
+          {getData.otherWish}테스트입니다!!!!
+          <br />
+          테스트입니다!!!!
+          <br />
+          테스트입니다!!!!
+          <br />
+          테스트입니다!!!
+          <br />
+        </OtherWishText>
+        <TextBox
+          col="25"
+          row="3"
+          maxLength={160}
+          placeholder={otherWishHolder}
+          ref={otherWish}
+          onChange={(e) => handleTextOtherWish(e)}
+        ></TextBox>
+        <TextLength>{otherTypingNum.length}/160</TextLength>
+        {/* <Link to="/create">
           <Button onClick={checkGET} title="소원아 이루어져라!" page="loading" />
         </Link> */}
-
+      </CheerUpText>
       <BujeokBtn onClick={checkPost}>
         {/* <Link to="/loading"> */}
         소원아 이루어져라!
@@ -119,14 +124,13 @@ ${getData.userName}님의 소원을 익명으로 전달받아 따뜻한 응원�
 export default Create;
 
 const TitleLarge = styled.div`
-  width: 327px;
-  margin: 37px 24px 24px;
+  width: 100%;
+  height: 100%;
+  margin: 37px 12px 24px 0px;
   text-align: left;
-  padding: 12px 16px;
-  color: white;
-  border-radius: 4px;
 
-  font-family: "Hahmlet";
+  color: #f7f7f7;
+  font-family: "Hahmlet-Regular";
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -136,15 +140,16 @@ const TitleLarge = styled.div`
 
 const TextBox = styled.textarea`
   box-sizing: border-box;
+  border: 0.75px solid #f7f7f7;
   border-radius: 4px;
-  width: 327px;
+  padding: 12px 12px;
+  width: 100%;
   height: 100px;
-  padding: 12px 16px;
   outline-color: rgba(255, 255, 255, 0.1);
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
+  background: border-box;
 
-  font-family: "Hahmlet";
+  color: #f7f7f7;
+  font-family: "Hahmlet-Regular";
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
@@ -160,15 +165,20 @@ const TextBox = styled.textarea`
   }
 `;
 
+const CheerUpText = styled.div`
+  flex-direction: column;
+`;
+
 const BujeokBtn = styled.button`
   background-color: #da234f;
   color: white;
-  width: 327px;
-  height: 56px;
-  border-radius: 10px;
+  width: 100%;
+  height: 52px;
+  border-radius: 8px;
   border: none;
+  margin-top: 81px;
 
-  font-family: "Hahmlet";
+  font-family: "Hahmlet-Regular";
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -182,32 +192,39 @@ const BujeokBtn = styled.button`
   }
 `;
 
+// 세 줄 이상 넘어가면 스크롤 되게끔 구현.
+// pre 태그 사용하면 되긴 함.
 const OtherWishText = styled.div`
   box-sizing: border-box;
-  width: 327px;
+  width: 100%;
   height: 100px;
   background-color: rgba(255, 255, 255, 0.1);
-  color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #f7f7f7;
   padding: 12px 16px;
   border-radius: 4px;
   text-align: left;
   margin-bottom: 8px;
   display: inline-block;
 
-  font-family: "Hahmlet";
+  font-family: "Hahmlet-Regular";
   font-style: normal;
-  font-weight: 500;
+  font-weight: 300;
   font-size: 16px;
-  line-height: 120%;
+  line-height: 150%;
   letter-spacing: -0.07em;
+
+  overflow: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const TextLength = styled.p`
-  width: 327px;
-  border: none;
-  color: white;
-
-  font-family: "Hahmlet";
+  width: 100%;
+  color: #ffffff;
+  font-family: "Hahmlet-Regular";
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
