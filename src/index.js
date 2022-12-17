@@ -9,9 +9,10 @@ import { Provider } from "react-redux";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
-  // <Provider store={store}>
-  <App />
-  // </Provider>
+  // Provider가 뭐냐면 store가 리액트앱 전체를 감싸도록 해주는 애다.
+  <Provider store={store}>
+    <App />
+  </Provider>
   // </React.StrictMode>
 );
 
