@@ -40,8 +40,7 @@ const Create = () => {
   // 띄어쓰기 다 되어 있는겁니다. 수정 자제 부탁드립니다.
 
   const otherWishHolder = `진심어린 응원을 부탁드려요.다른 분도
-${getData.userName} 님의 소원을 익명으로 전달받아 따뜻한
-응원을 해주실 거에요.`;
+${getData.userName}님의 소원을 익명으로 전달받아 따뜻한 응원을 해주실 거에요.`;
   // 띄어쓰기 다 되어 있는겁니다. 수정 자제 부탁드립니다. ${} 안에는 서버에서 받아온 이름 넣어야 합니다.
 
   const handleMyWishText = (e) => {
