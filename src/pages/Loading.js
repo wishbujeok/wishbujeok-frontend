@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import bujeok from "../assets/img/loadingImgPNG.png";
+import bujeok from "../assets/img/LoadingImg.svg";
 
 const Loading = () => {
   return (

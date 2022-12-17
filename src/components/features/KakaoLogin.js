@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { setAuthorization } from "../../stores/Token";
 import { useDispatch } from "react-redux";
-import { loginAccount } from "../shared/Reducer";
+import { loginAccount } from "../reducer/Reducer";
 
 // const JWT_EXPIRE_TIME = 2 * 3600 * 1000; // expiration time(2 hours in milliseconds)
 
