@@ -63,7 +63,7 @@ client.interceptors.response.use(
   async function (error) {
     if (error.response && error.response.status === 401) {
       // body를 실어서 줄 수 있잖아 ?
-      if (error.response.message === "JWT_ERROR") {
+      if (error.response.JWT_ERROR === "expired") {
         try {
           const originalRequest = error.config;
           const data = await client.get(
