@@ -51,9 +51,9 @@ client.interceptors.request.use(function (config) {
 });
 
 // response를 받았을 때, error가 발생.
-// 해당 error의 status가 403? =>
+// 해당 error의 status가 401? =>
 // 기존 originalRequest를 refreshToken 확인 url에 보내고 토큰을 재발급
-// 여기서 403 이외의 오류다? 모두 실패.
+// 여기서 401 이외의 오류다? 모두 실패.
 // 재발급 받은 토큰은 다시 로컬스토리지에 저장하고 헤더부분에서 토큰 정보를 변경하고
 // 다시 originalRequest를 보냄.
 client.interceptors.response.use(
@@ -61,12 +61,14 @@ client.interceptors.response.use(
     return response;
   },
   async function (error) {
-    if (error.response && error.response.status === 403) {
+    if (error.response && error.response.status === 401) {
       // body를 실어서 줄 수 있잖아 ?
-      if (error.response.message === "expire") {
+      if (error.response.message === "JWT_ERROR") {
         try {
           const originalRequest = error.config;
-          const data = await client.get("refreshToken 얻는 URL");
+          const data = await client.get(
+            `${process.env.BACKEND_URL}/auth/token`
+          );
           if (data) {
             const { accessToken, refreshToken } = data.data;
             localStorage.removeItem("user");
