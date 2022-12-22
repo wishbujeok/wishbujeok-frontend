@@ -15,7 +15,8 @@ const Create = () => {
   const otherWish = useRef(); // 다른 소원 textarea
   const [getData, setGetData] = useState({
     // userName: "check asyne",
-    userName: getData.userName,
+    // 현준님 이거 어떻게 가지고 오나요 ? ㅎㅎ,,
+    userName: null,
   });
   // 서버에서 받아온 값을 담은 변수
 
