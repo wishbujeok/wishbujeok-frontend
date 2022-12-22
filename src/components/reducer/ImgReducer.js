@@ -1,5 +1,3 @@
-import { TRUTH, FALSY } from "./ImgType";
-
 const initialState = {
   boolean: false,
 };

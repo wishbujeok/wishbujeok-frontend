@@ -10,3 +10,5 @@ export const BooleanData = (boolean) => {
     },
   };
 };
+
+// 복주머니 데이터가 있으면 true 로 바꿔줄것.

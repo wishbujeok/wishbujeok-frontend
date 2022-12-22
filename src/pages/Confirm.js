@@ -9,6 +9,8 @@ import { useSelector } from "react-redux";
 const Confirm = () => {
   const user = useSelector((state) => state.user.value);
 
+  const handleSaveImg = () => {};
+
   // {user.user_nickName}
   // {user.어쩌구로} 사용할 수 있음!
   return (
@@ -24,7 +26,7 @@ const Confirm = () => {
           <br />
           이거 참 재밌다~! 혹시 내용이 넘어가면 어떡하지?
         </Content>
-        <BujeokBtn>
+        <BujeokBtn onClick={handleSaveImg}>
           {/* <Link to="/loading"> */}
           부적 저장하기
           {/* </Link> */}

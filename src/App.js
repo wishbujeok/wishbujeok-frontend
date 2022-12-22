@@ -8,8 +8,7 @@ import Loading from "./pages/Loading";
 import "./components/shared/reset.css";
 import AppLayout from "./components/layout/AppLayout";
 
-import ScreenShot from "./components/features/ScreenShot";
-import a from "./assets/img/mainPageImg.png";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -22,9 +21,9 @@ function App() {
             <Route path="/create" element={<Create />} />
             <Route path="/confirm" element={<Confirm />} />
             <Route path="/loading" element={<Loading />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </Router>
-        {/* <ScreenShot HopeImg={a} /> */}
       </AppLayout>
     </div>
   );
