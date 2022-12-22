@@ -14,7 +14,8 @@ const Create = () => {
   const myWish = useRef(); // 내 소원 textarea
   const otherWish = useRef(); // 다른 소원 textarea
   const [getData, setGetData] = useState({
-    userName: "check async",
+    // userName: "check asyne",
+    // userName:
   });
   // 서버에서 받아온 값을 담은 변수
 
@@ -96,16 +97,7 @@ const Create = () => {
         진심 어린 응원의 메시지를 남겨주세요.
       </TitleLarge>
       <CheerUpText>
-        <OtherWishText>
-          {getData.otherWish}테스트입니다!!!!
-          <br />
-          테스트입니다!!!!
-          <br />
-          테스트입니다!!!!
-          <br />
-          테스트입니다!!!
-          <br />
-        </OtherWishText>
+        <OtherWishText>{getData.otherWish}</OtherWishText>
         <TextBox
           col="25"
           row="3"
