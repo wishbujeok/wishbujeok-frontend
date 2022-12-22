@@ -49,13 +49,13 @@ const KakaoLogin = () => {
         // ); // 1 minute before expiration
         // redux store 에 저장해줌.
         dispatch(loginAccount({ accessToken: res.response.accessToken }));
-        // dispatch(loginAccount({ accessToken: res.response.accessToken}))
         // 부적이 있으면? confirm 부적이 없으면? create
-        console.log(res.response.hasBujeok);
+        console.log(res.response.hasBujeok); // false 가 뜨면 create로 가야하는데 confirm 으로 감.
         if (res.response.hasBujeok === false) {
           navigate("/create");
+        } else {
+          navigate("/confirm");
         }
-        navigate("/confirm");
       });
   }, []);
   return <></>;

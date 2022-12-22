@@ -1,12 +1,16 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import "../components/shared/theme.css";
 
 // import Button from "../components/Button";
 
 const Create = () => {
+  // redux .. 왜 해줬을까? 이거?
+  const user = useSelector((state) => state.user.value);
+
   const myWish = useRef(); // 내 소원 textarea
   const otherWish = useRef(); // 다른 소원 textarea
   const [getData, setGetData] = useState({
