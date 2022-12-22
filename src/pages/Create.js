@@ -16,7 +16,6 @@ const Create = () => {
   const [getData, setGetData] = useState({
     // userName: "check asyne",
     // 현준님 이거 어떻게 가지고 오나요 ? ㅎㅎ,,
-    userName: null,
   });
   // 서버에서 받아온 값을 담은 변수
 
@@ -32,6 +31,7 @@ const Create = () => {
       .then((res) => setGetData(res.data.response))
       .catch((err) => console.log(err));
   }, []);
+  console.log(getData);
 
   const [myTypingNum, setMyTypingNum] = useState("");
   // 내 소원 textarea의 변경 이벤트를 감지하는 변수
