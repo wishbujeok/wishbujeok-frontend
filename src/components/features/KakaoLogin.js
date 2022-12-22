@@ -52,7 +52,7 @@ const KakaoLogin = () => {
         // dispatch(loginAccount({ accessToken: res.response.accessToken}))
         // 부적이 있으면? confirm 부적이 없으면? create
         console.log(res.response.hasBujeok);
-        if (res.response.hasBujeok === true) {
+        if (res.response.hasBujeok === false) {
           navigate("/create");
         }
         navigate("/confirm");
