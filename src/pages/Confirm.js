@@ -1,15 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import "../components/shared/theme.css";
 import { useSelector } from "react-redux";
-// import bujeok from "../assets/img/로딩이미지.svg";
+import { axios } from "axios";
+import {
+  ScreenShot,
+  onSaveAs,
+  handleScreenShot,
+} from "../components/features/ScreenShot";
+
+import { SiInstagram } from "react-icons/si";
+import { RiKakaoTalkFill } from "react-icons/ri";
+
+import "../components/shared/theme.css";
 // import Button from "../components/features/Button";
 // import { IconName } from "react-icons/ai";
 
+import themeImg from "../assets/img/DefaultBujeokImg.svg";
+const themeText = "응원합니다. 잘 될꺼에요. ( 서버에서 텍스트 받기 )";
+
 const Confirm = () => {
+  const [userData, setUserData] = useState();
+
+  // useEffect(() => {
+  //   axios.get("/bujeok-management/reply").then((data) => console.log(data));
+  // }, []),;
+
   const user = useSelector((state) => state.user.value);
 
-  const handleSaveImg = () => {};
+  const handleSaveImg = () => {
+    handleScreenShot();
+  };
+
+  const handleShareInstar = () => {
+    window.open("http://www.facebook.com/sharer/sharer.php?u=");
+  };
 
   // {user.user_nickName}
   // {user.어쩌구로} 사용할 수 있음!
@@ -18,6 +42,7 @@ const Confirm = () => {
       <TitleLarge>{user.accessToken}의 부적이 도착했어요!</TitleLarge>
       {/* 임시로 해놓았습니다. */}
       {/* <LoadingImg src={bujeok} alt="새해 부적" /> */}
+      <ScreenShot HopeImg={themeImg} text={themeText} />
       <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
       <Wish>
         <TitleSmall>ㅇㅇㅇ님이 빌었던 소원이에요.</TitleSmall>
@@ -32,8 +57,16 @@ const Confirm = () => {
           {/* </Link> */}
         </BujeokBtn>
         <Share>
-          공유하기
-          <Social>공유 버튼 있을듯</Social>
+          <ShareBorder>공유하기</ShareBorder>
+          <Social>
+            <IconWrapper>
+              <SiInstagram className="iconSize" />
+            </IconWrapper>
+            <IconWrapper>
+              <RiKakaoTalkFill className="iconSize" />
+            </IconWrapper>
+          </Social>
+          {/* <button onClick={handleShareInstar}>인스타그램</button> */}
         </Share>
       </Wish>
     </div>
@@ -122,7 +155,51 @@ const Share = styled.div`
   text-align: center;
   color: white;
   margin-top: 6vh;
-  // border: 1px solid;
 `;
 
-const Social = styled.div``;
+const ShareBorder = styled.div`
+  width: 100%;
+  &:before {
+    content: "";
+    display: inline-block;
+    width: 36%;
+    height: auto;
+    margin-right: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transform: translateY(-6px);
+  }
+
+  &:after {
+    content: "";
+    display: inline-block;
+    width: 36%;
+    height: auto;
+    margin-left: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transform: translateY(-6px);
+  }
+`;
+
+const Social = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+`;
+
+const IconWrapper = styled.div`
+  width: 72px;
+  height: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 8px;
+
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+
+  .iconSize {
+    width: 40px;
+    height: 40px;
+  }
+`;
