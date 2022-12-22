@@ -13,13 +13,10 @@ const Create = () => {
 
   const myWish = useRef(); // 내 소원 textarea
   const otherWish = useRef(); // 다른 소원 textarea
-  const [getData, setGetData] = useState(
-    // ({
-    []
-  );
-  // userName: "check asyne",
-  // userName:
-  // });
+  const [getData, setGetData] = useState({
+    // userName: "check asyne",
+    userName: getData.userName,
+  });
   // 서버에서 받아온 값을 담은 변수
 
   const [comeTrue, setComeTrue] = useState({
