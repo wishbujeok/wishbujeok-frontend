@@ -7,11 +7,15 @@ import KakaoLogin from "./components/features/KakaoLogin";
 import Loading from "./pages/Loading";
 import "./components/shared/reset.css";
 import AppLayout from "./components/layout/AppLayout";
-import ScreenShot from "./components/features/ScreenShot";
+// import ScreenShot from "./components/features/ScreenShot";
 
-import a from "./assets/img/mainPageImg.png";
+// import a from "./assets/img/mainPageImg.png";
+// import { appendFile } from "fs";
+
+// const cors = require("cors");
 
 function App() {
+  // app.use(cors());
   return (
     <div className="App">
       <AppLayout>
