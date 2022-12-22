@@ -24,6 +24,10 @@ import axios from "axios";
 //   await refreshAccessToken(refreshToken);
 // };
 
+// if (axios.defaults.headers.common["Authorization"] === undefined) {
+//   setAuthorization(sessionStorage.getItem("access_token"));
+// }
+
 // 요청을 보내는 baseURL을 설정.
 const client = axios.create({
   // 수정해야할듯! 이거는 그냥 정말 baseUrl
