@@ -47,6 +47,7 @@ export const setUseAccessToken = (token) => {
   console.log("setuseAccessToken " + token);
   // console.log(`${token}`);
   const setToken = token;
+  console.log(setToken);
   // return `${token}`;
   return setToken;
 };
