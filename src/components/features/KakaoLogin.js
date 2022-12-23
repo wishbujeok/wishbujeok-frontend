@@ -45,37 +45,35 @@ const KakaoLogin = () => {
         //   JWT_EXPIRE_TIME - 60000,
         //   res.response.refresh_token
         // ); // 1 minute before expiration
+
+        //원래 redux dispatch 있던 자리..
+
         if (res.response.hasBujeok === false) {
           navigate("/create");
         } else {
           navigate("/confirm");
         }
-      })
-      .then((res) => {
-        // redux store 에 저장해줌.
-        // 지금 여기서 계속 undefined 가 뜨고 있음.
-        dispatch(() => {
-          loginAccount({
-            accessToken: sessionStorage.accessToken,
-            hasBujeok: sessionStorage.hasBujeok,
-          });
-          console.log("dispatch " + loginAccount);
-          console.log("dispatchaccessToken " + loginAccount.accessToken);
-          console.log("dispatchhasBujeok " + loginAccount.hasBujeok);
-        });
-        // 부적이 있으면? confirm 부적이 없으면? create
-        // console.log("hasBujeok " + res.response.hasBujeok);
-        // if (res.response.hasBujeok === false) {
-        //   navigate("/create");
-        // } else {
-        //   navigate("/confirm");
-        // }
       });
+
+    // redux store 에 저장해줌.
+    // 지금 여기서 계속 undefined 가 뜨고 있음.
+    dispatch(() => {
+      loginAccount({
+        accessToken: sessionStorage.accessToken,
+        hasBujeok: sessionStorage.hasBujeok,
+      });
+      console.log("dispatch " + loginAccount);
+      console.log("dispatchAccessToken " + loginAccount.accessToken);
+      console.log("dispatchHasBujeok " + loginAccount.hasBujeok);
+    });
   }, []);
   return <></>;
   //이쪽에 스플래시를 넣어봅시다
 };
 
+// const action = { KakaoLogin };
+
+// export { action };
 export default KakaoLogin;
 
 // 에러를 보내주면 token

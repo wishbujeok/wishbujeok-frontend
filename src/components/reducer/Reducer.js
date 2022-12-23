@@ -8,7 +8,7 @@ import { createSlice } from "@reduxjs/toolkit";
 // reducer에서 이제 상태가 변하면 어떻게 실행될지 정하는 부분.
 const initialState = {
   value: {
-    isLogged: false,
+    // isLogged: false,
     accessToken: null,
     hasBujeok: null,
   },
@@ -21,12 +21,12 @@ export const LoggedState = createSlice({
     loginAccount: (state, action) => {
       console.log("reducer " + state.accessToken);
       console.log("reducer" + state.hasBujeok);
-      state.isLogged = true;
+      // state.isLogged = true;
       state.accessToken = action.payload.accessToken;
       state.hasBujeok = action.payload.hasBujeok;
     },
     logoutAccount: (state) => {
-      state.isLogged = false;
+      // state.isLogged = false;
       state.accessToken = null;
       state.hasBujeok = null;
     },
