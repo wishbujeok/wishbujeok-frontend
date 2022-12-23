@@ -47,7 +47,7 @@ const KakaoLogin = () => {
         setAuthorization(res.response.accessToken);
         setUseAccessToken(res.response.accessToken);
         console.log(setUseAccessToken);
-        console.log(useAccessToken);
+        console.log(`${useAccessToken}`);
         // 굳이 필요없어 보이긴 함.
         // setTimeout(
         //   checkAccessToken,
@@ -62,7 +62,7 @@ const KakaoLogin = () => {
           dispatch(() => {
             loginAccount({
               // accessToken: setUseAccessToken,
-              accessToken: useAccessToken,
+              accessToken: `${useAccessToken}`,
               hasBujeok: sessionStorage.hasBujeok,
             });
             console.log("dispatch " + loginAccount);
@@ -75,7 +75,7 @@ const KakaoLogin = () => {
             console.log("dispatchAccessResponse " + res.response.accessToken);
             console.log("dispatchHasBujeokResponse " + res.response.hasBujeok);
             console.log("dispatchSetUseAccessToken " + setUseAccessToken);
-            console.log("dispatchUseAccessToken " + useAccessToken);
+            console.log(`dispatchUseAccessToken ${useAccessToken.accessToken}`);
             console.log("dispatchPayLoad " + "??");
           });
           console.log("밖dispatch " + loginAccount);
