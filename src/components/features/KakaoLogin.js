@@ -52,8 +52,8 @@ const KakaoLogin = () => {
         // redux store 에 저장해줌.
         dispatch(() => {
           loginAccount({
-            accessToken: res.response.accessToken,
-            hasBujeok: res.response.hasBujeok,
+            accessToken: sessionStorage.accessToken,
+            hasBujeok: sessionStorage.hasBujeok,
           });
           console.log("dispatch " + loginAccount);
           console.log("dispatchaccessToken " + loginAccount.accessToken);
