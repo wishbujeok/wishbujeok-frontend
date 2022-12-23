@@ -12,6 +12,8 @@ const rootReducer = combineReducers({
   ImgReducer,
 });
 
+console.log("rootReducer " + rootReducer);
+
 const store = configureStore({
   reducer: rootReducer,
 });

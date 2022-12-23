@@ -38,7 +38,7 @@ const KakaoLogin = () => {
         //     },
         //     "error": null
         // }
-        console.log(res.response.accessToken);
+        console.log("kakaologin " + res.response.accessToken);
         sessionStorage.setItem("refreshToken", res.response.refreshToken);
         setAuthorization(res.response.accessToken);
         // 굳이 필요없어 보이긴 함.
@@ -48,9 +48,14 @@ const KakaoLogin = () => {
         //   res.response.refresh_token
         // ); // 1 minute before expiration
         // redux store 에 저장해줌.
-        dispatch(loginAccount({ accessToken: "kim" }));
-        // dispatch(loginAccount({ accessToken: res.response.accessToken}))
-        navigate("/create");
+        dispatch(loginAccount({ accessToken: res.response.accessToken }));
+        // 부적이 있으면? confirm 부적이 없으면? create
+        console.log("hasBujeok " + res.response.hasBujeok);
+        if (res.response.hasBujeok === false) {
+          navigate("/create");
+        } else {
+          navigate("/confirm");
+        }
       });
   }, []);
   return <></>;

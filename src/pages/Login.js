@@ -11,8 +11,6 @@ const Login = () => {
     window.location.href = KAKAO_AUTH_URL;
   };
 
-  // http://localhost:3000/KakaoLogin?code=NXUqHihuX8uJbv-guRRIOePk3gJakTjGEiyx-cBArMw1JQMnP32gUN2UzKYauWaMIG6NFQopcSEAAAGE4Ta8jw
-
   return (
     <div className="Home">
       <Title>

@@ -4,12 +4,20 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import styled from "styled-components";
 import "../components/shared/theme.css";
+import { setAuthorization } from "../stores/Token";
 
 const Create = () => {
+  if (axios.defaults.headers.common["Authorization"] === undefined) {
+    setAuthorization(sessionStorage.getItem("accessToken"));
+  }
+  // redux .. 왜 해줬을까? 이거?
+  const user = useSelector((state) => state.user.value);
+
   const myWish = useRef(); // 내 소원 textarea
   const otherWish = useRef(); // 다른 소원 textarea
   const [getData, setGetData] = useState({
-    userName: "check async",
+    // userName: "check asyne",
+    // 현준님 이거 어떻게 가지고 오나요 ? ㅎㅎ,,
   });
   // 서버에서 받아온 값을 담은 변수
 
@@ -29,6 +37,7 @@ const Create = () => {
       })
       .catch((err) => console.log(err));
   }, []);
+  console.log(getData);
 
   const [myTypingNum, setMyTypingNum] = useState("");
   // 내 소원 textarea의 변경 이벤트를 감지하는 변수
@@ -96,16 +105,7 @@ const Create = () => {
         진심 어린 응원의 메시지를 남겨주세요.
       </TitleLarge>
       <CheerUpText>
-        <OtherWishText>
-          {getData.otherWish}테스트입니다!!!!
-          <br />
-          테스트입니다!!!!
-          <br />
-          테스트입니다!!!!
-          <br />
-          테스트입니다!!!
-          <br />
-        </OtherWishText>
+        <OtherWishText>{getData.otherWish}</OtherWishText>
         <TextBox
           col="25"
           row="3"

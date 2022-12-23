@@ -10,7 +10,7 @@ const initialState = {
   value: {
     isLogged: false,
     accessToken: null,
-    user_id: null,
+    hasBujeok: null,
   },
 };
 
@@ -19,14 +19,16 @@ export const LoggedState = createSlice({
   initialState,
   reducers: {
     loginAccount(state, action) {
+      console.log("reducer " + action.payload.accessToken);
+      console.log("reducer" + action.payload.hasBujeok);
       state.isLogged = true;
       state.accessToken = action.payload.accessToken;
-      state.user_id = action.payload.user_id;
+      state.hasBujeok = action.payload.hasBujeok;
     },
     logoutAccount(state) {
       state.isLogged = false;
       state.accessToken = null;
-      state.user_id = null;
+      state.hasBujeok = null;
     },
   },
 });

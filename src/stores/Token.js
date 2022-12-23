@@ -24,6 +24,10 @@ import axios from "axios";
 //   await refreshAccessToken(refreshToken);
 // };
 
+// if (axios.defaults.headers.common["Authorization"] === undefined) {
+//   setAuthorization(sessionStorage.getItem("access_token"));
+// }
+
 // 요청을 보내는 baseURL을 설정.
 const client = axios.create({
   // 수정해야할듯! 이거는 그냥 정말 baseUrl
@@ -34,6 +38,8 @@ const client = axios.create({
 export const setAuthorization = (token) => {
   client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 };
+
+console.log("setAuthorization " + setAuthorization);
 
 // request를 보낼 때 localStorage에 token 정보가 있다면
 // 헤더에 토큰 정보를 저장하고 없다면 Null로 처리함.
