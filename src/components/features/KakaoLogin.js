@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { setAuthorization, setUseAccessToken } from "../../stores/Token";
 import { useDispatch } from "react-redux";
 import { loginAccount } from "../reducer/Reducer";
+// import storage from "redux-persist/lib/storage";
+import storageSession from "redux-persist/lib/storage/session";
 
 // const JWT_EXPIRE_TIME = 2 * 3600 * 1000; // expiration time(2 hours in milliseconds)
 
