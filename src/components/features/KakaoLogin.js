@@ -80,22 +80,6 @@ const KakaoLogin = () => {
               accessToken: setUseAccessToken(res.response.accessToken),
               hasBujeok: sessionStorage.hasBujeok,
             });
-            console.log("dispatch " + loginAccount);
-            console.log("dispatchAccessToken " + loginAccount.accessToken);
-            console.log("dispatchHasBujeok " + loginAccount.hasBujeok);
-            console.log("dispatchSession " + sessionStorage);
-            console.log("dispatchAccessSession " + sessionStorage.accessToken);
-            console.log("dispatchHasBujeokSession " + sessionStorage.hasBujeok);
-            console.log("dispatchResponse " + res.response);
-            console.log("dispatchAccessResponse " + res.response.accessToken);
-            console.log("dispatchHasBujeokResponse " + res.response.hasBujeok);
-            console.log("dispatchSetUseAccessToken " + setUseAccessToken);
-            console.log(
-              "dispatchSETUSEACCESSTOKEN " +
-                setUseAccessToken(res.response.accessToken)
-            );
-            // console.log(`dispatchUseAccessToken ${useAccessToken}`);
-            console.log("dispatchPayLoad " + "??");
           });
           console.log("밖dispatch " + loginAccount);
           console.log("밖dispatchAccessToken " + loginAccount.accessToken);

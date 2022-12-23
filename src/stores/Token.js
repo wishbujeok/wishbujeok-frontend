@@ -44,7 +44,7 @@ export const client = axios.create({
   // 수정해야할듯! 이거는 그냥 정말 baseUrl
   baseURL: `${process.env.BACKEND_URL}`,
   headers: {
-    // "Content-Type": "application/json",
+    "Content-Type": "application/json",
     Authorization: `Bearer ${setUseAccessToken}`,
   },
 });
@@ -54,6 +54,7 @@ export const setAuthorization = (token) => {
   // const dispatch = useDispatch();
   client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   console.log("Token " + token);
+  console.log(client.defaults.headers.common.Authorization);
 };
 
 // request를 보낼 때 localStorage에 token 정보가 있다면
