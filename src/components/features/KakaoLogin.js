@@ -12,7 +12,7 @@ const KakaoLogin = () => {
   const navigate = useNavigate();
   const KAKAO_CODE = location.search.split("=")[1];
 
-  const [useAccessToken, setUseAccessToken] = useState([]);
+  const [useAccessToken, setUseAccessToken] = useState();
   console.log("밖useAccessToken " + useAccessToken.getUseAccessToken);
   console.log(`밖useAccessToken  ${useAccessToken.getUseAccessToken}`);
   console.log("밖setUseAccessToken " + setUseAccessToken.getUseAccessToken);
@@ -44,7 +44,8 @@ const KakaoLogin = () => {
         console.log("kakaologin " + res.response.accessToken);
         sessionStorage.setItem("refreshToken", res.response.refreshToken);
         setAuthorization(res.response.accessToken);
-        setUseAccessToken(res.response.accessToken);
+        // setUseAccessToken(res.response.accessToken);
+        setUseAccessToken("hhhhhhhhhhhhhhhhhhhhhhhhlfkf");
         // setUseAccessToken.getUseAccessToken(res.response.accessToken);
         // console.log(setUseAccessToken.getUseAccessToken); 타입에러남..ㅅㅂ
         // console.log(`${useAccessToken.getUseAccessToken}`);
