@@ -25,8 +25,10 @@ export const LoggedState = createSlice({
       console.log("reducerActionAccess " + action.payload.accessToken);
       console.log("reducerActionHasBujeok " + action.payload.hasBujeok);
       // state.isLogged = true;
-      state.accessToken = action.payload.accessToken;
-      state.hasBujeok = action.payload.hasBujeok;
+      // state.accessToken = action.payload.accessToken;
+      // state.hasBujeok = action.payload.hasBujeok;
+      state.accessToken = action.payload;
+      state.hasBujeok = action.payload;
     },
     logoutAccount: (state) => {
       // state.isLogged = false;

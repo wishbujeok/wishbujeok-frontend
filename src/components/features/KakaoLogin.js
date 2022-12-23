@@ -71,6 +71,7 @@ const KakaoLogin = () => {
             console.log("dispatchHasBujeokResponse " + res.response.hasBujeok);
             console.log("dispatchSetUseAccessToken " + setUseAccessToken);
             console.log("dispatchUseAccessToken " + useAccessToken);
+            console.log("dispatchPayLoad " + "??");
           });
           console.log("밖dispatch " + loginAccount);
           console.log("밖dispatchAccessToken " + loginAccount.accessToken);
