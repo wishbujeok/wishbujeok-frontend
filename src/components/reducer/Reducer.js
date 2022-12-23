@@ -9,8 +9,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   value: {
     // isLogged: false,
-    accessToken: null,
-    hasBujeok: null,
+    accessToken: "null",
+    hasBujeok: "null",
   },
 };
 
