@@ -14,8 +14,7 @@ const Create = () => {
   const myWish = useRef(); // 내 소원 textarea
   const otherWish = useRef(); // 다른 소원 textarea
   const [getData, setGetData] = useState({
-    // userName: "check asyne",
-    // 현준님 이거 어떻게 가지고 오나요 ? ㅎㅎ,, d이거 꼭 해주십쇼
+    // userName: "check async",
   });
   // 서버에서 받아온 값을 담은 변수
 
