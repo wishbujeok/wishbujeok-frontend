@@ -97,6 +97,7 @@ const KakaoLogin = () => {
           });
           console.log("밖dispatch " + loginAccount);
           console.log("밖dispatchAccessToken " + loginAccount.accessToken);
+          console.log(`밖dispatchAccessToken  + ${loginAccount.accessToken}`);
           console.log("밖dispatchHasBujeok " + loginAccount.hasBujeok);
 
           navigate("/create");
