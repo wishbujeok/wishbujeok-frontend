@@ -22,7 +22,7 @@ const Create = () => {
       // 토큰값을 안보내서 get 요청이 안오는듯.
       .then((res) => {
         console.log(res.data);
-        // setGetData(res.data.response)
+        setGetData(res.data.response);
       })
       .catch((err) => console.log(err));
   }, []);
