@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 // import { checkAccessToken } from "../../stores/Token";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setAuthorization } from "../../stores/Token";
 import { useDispatch } from "react-redux";
 import { loginAccount } from "../reducer/Reducer";
@@ -12,6 +12,9 @@ const KakaoLogin = () => {
   const navigate = useNavigate();
   const KAKAO_CODE = location.search.split("=")[1];
 
+  const [useAccessToken, setUseAccessToken] = useState({
+    useAccessToken: "null",
+  });
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -39,6 +42,7 @@ const KakaoLogin = () => {
         console.log("kakaologin " + res.response.accessToken);
         sessionStorage.setItem("refreshToken", res.response.refreshToken);
         setAuthorization(res.response.accessToken);
+        setUseAccessToken(res.response.accessToken);
         // 굳이 필요없어 보이긴 함.
         // setTimeout(
         //   checkAccessToken,
@@ -52,7 +56,7 @@ const KakaoLogin = () => {
           // 지금 여기서 계속 undefined 가 뜨고 있음.
           dispatch(() => {
             loginAccount({
-              accessToken: "accessToken",
+              accessToken: setUseAccessToken,
               hasBujeok: sessionStorage.hasBujeok,
             });
             console.log("dispatch " + loginAccount);
@@ -64,6 +68,7 @@ const KakaoLogin = () => {
             console.log("dispatchResponse " + res.response);
             console.log("dispatchAccessResponse " + res.response.accessToken);
             console.log("dispatchHasBujeokResponse " + res.response.hasBujeok);
+            console.log("dispatchSetUseAccessToken " + setUseAccessToken);
           });
           console.log("밖dispatch " + loginAccount);
           console.log("밖dispatchAccessToken " + loginAccount.accessToken);
