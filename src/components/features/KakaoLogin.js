@@ -47,6 +47,8 @@ const KakaoLogin = () => {
         //   JWT_EXPIRE_TIME - 60000,
         //   res.response.refresh_token
         // ); // 1 minute before expiration
+      })
+      .then((res) => {
         // redux store 에 저장해줌.
         dispatch(() => {
           loginAccount({
@@ -54,6 +56,8 @@ const KakaoLogin = () => {
             hasBujeok: res.response.hasBujeok,
           });
           console.log("dispatch " + loginAccount);
+          console.log("dispatchaccessToken " + loginAccount.accessToken);
+          console.log("dispatchhasBujeok " + loginAccount.hasBujeok);
         });
 
         // 부적이 있으면? confirm 부적이 없으면? create
