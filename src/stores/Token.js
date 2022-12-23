@@ -41,19 +41,6 @@ export const setAuthorization = (token) => {
   // const dispatch = useDispatch();
   client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   console.log("Token " + token);
-
-  //여기에 dispatch를 써준다면 ?
-  // redux store 에 저장해줌.
-  // 지금 여기서 계속 undefined 가 뜨고 있음.
-  // dispatch(() => {
-  //   loginAccount({
-  //     accessToken: sessionStorage.accessToken,
-  //     hasBujeok: sessionStorage.hasBujeok,
-  //   });
-  //   console.log("dispatch " + loginAccount);
-  //   console.log("dispatchAccessToken " + loginAccount.accessToken);
-  //   console.log("dispatchHasBujeok " + loginAccount.hasBujeok);
-  // });
 };
 
 // request를 보낼 때 localStorage에 token 정보가 있다면

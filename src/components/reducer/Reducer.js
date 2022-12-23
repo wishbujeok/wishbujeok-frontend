@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { setAuthorization } from "../../stores/Token";
 
 // reducer란 해당 컴포넌트에서 사용할 초기 상태 값을 지정하고,
 // action이 전달하는 값들의 타입을 지정.
@@ -9,8 +10,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   value: {
     // isLogged: false,
-    accessToken: "null",
-    hasBujeok: "null",
+    accessToken: null,
+    hasBujeok: null,
   },
 };
 
@@ -19,8 +20,10 @@ export const LoggedState = createSlice({
   initialState,
   reducers: {
     loginAccount: (state, action) => {
-      console.log("reducer " + state.accessToken);
-      console.log("reducer" + state.hasBujeok);
+      console.log("reducerAcccess " + state.accessToken);
+      console.log("reducerBujeok " + state.hasBujeok);
+      console.log("reducerActionAccess " + action.payload.accessToken);
+      console.log("reducerActionHasBujeok " + action.payload.hasBujeok);
       // state.isLogged = true;
       state.accessToken = action.payload.accessToken;
       state.hasBujeok = action.payload.hasBujeok;
@@ -33,6 +36,16 @@ export const LoggedState = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
+// Action creators are generated for each case Account function
 export const { loginAccount, logoutAccount } = LoggedState.actions;
+
+// export const {
+//   loginAccount,
+//   logoutAccount,
+// } = () => {
+//   return (dispatch) => {
+//     dispatch(loginReducer(setAuthorization));
+//   };
+// };
+
 export default LoggedState.reducer;
