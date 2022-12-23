@@ -4,10 +4,14 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import "../components/shared/theme.css";
+import { setAuthorization } from "../utils/Token";
 
 // import Button from "../components/Button";
 
 const Create = () => {
+  if (axios.defaults.headers.common["Authorization"] === undefined) {
+    setAuthorization(sessionStorage.getItem("accessToken"));
+  }
   // redux .. 왜 해줬을까? 이거?
   const user = useSelector((state) => state.user.value);
 
