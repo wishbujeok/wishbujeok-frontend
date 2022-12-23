@@ -19,6 +19,13 @@ const KakaoLogin = () => {
   // console.log("밖useAccessToken " + setUseAccessToken);
   // console.log(`밖useAccessToken  ${useAccessToken}`);
   console.log("밖setUseAccessToken " + setUseAccessToken);
+  console.log(
+    `setUseAccessToken$$  + ${setUseAccessToken} or ${setUseAccessToken.token}`
+  );
+  console.log("밖setAuthorization " + setAuthorization);
+  console.log(
+    `setAuthorization$$  + ${setAuthorization} or ${setAuthorization.token}`
+  );
 
   const dispatch = useDispatch();
 
@@ -47,12 +54,12 @@ const KakaoLogin = () => {
         console.log("kakaologin " + res.response.accessToken);
         sessionStorage.setItem("refreshToken", res.response.refreshToken);
         setAuthorization(res.response.accessToken);
-        console.log(setAuthorization.accessToken);
+        // console.log(setAuthorization.accessToken);
         console.log("setAuthorization " + setAuthorization);
+        console.log(
+          `setAuthorization$$  + ${setAuthorization} or ${setAuthorization.token}`
+        );
         setUseAccessToken(res.response.accessToken);
-        // setUseAccessToken.getUseAccessToken(res.response.accessToken);
-        // console.log(setUseAccessToken.getUseAccessToken); 타입에러남..ㅅㅂ
-        // console.log(`${useAccessToken.getUseAccessToken}`);
         console.log(setUseAccessToken);
         // console.log(`${useAccessToken}`);
         // console.log(useAccessToken);

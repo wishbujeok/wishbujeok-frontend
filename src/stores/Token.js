@@ -44,7 +44,11 @@ export const setAuthorization = (token) => {
 };
 
 export const setUseAccessToken = (token) => {
-  return token;
+  console.log("setuseAccessToken " + token);
+  // console.log(`${token}`);
+  const setToken = token;
+  // return `${token}`;
+  return setToken;
 };
 
 // request를 보낼 때 localStorage에 token 정보가 있다면
