@@ -37,6 +37,7 @@ const client = axios.create({
 // 모든 요청에 대해서 헤더에 담아서 보내야해 알겠어?
 export const setAuthorization = (token) => {
   client.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  console.log("Token " + setAuthorization);
 };
 
 // request를 보낼 때 localStorage에 token 정보가 있다면

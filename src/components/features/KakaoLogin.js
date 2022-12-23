@@ -11,12 +11,10 @@ const KakaoLogin = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const KAKAO_CODE = location.search.split("=")[1];
-  // console.log(KAKAO_CODE);
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    // console.log(KAKAO_CODE);
     // ${KAKAO_CODE} 가 인가코드래
     fetch(
       `${process.env.REACT_APP_BACKEND_URL}/auth/kakao/login/?code=${KAKAO_CODE}`,
@@ -47,28 +45,31 @@ const KakaoLogin = () => {
         //   JWT_EXPIRE_TIME - 60000,
         //   res.response.refresh_token
         // ); // 1 minute before expiration
-      })
-      .then((res) => {
-        // redux store 에 저장해줌.
-
-        // 지금 여기서 계속 undefined 가 뜨고 있음.
-        // dispatch(() => {
-        //   loginAccount({
-        //     accessToken: sessionStorage.accessToken,
-        //     hasBujeok: sessionStorage.hasBujeok,
-        //   });
-        //   console.log("dispatch " + loginAccount);
-        //   console.log("dispatchaccessToken " + loginAccount.accessToken);
-        //   console.log("dispatchhasBujeok " + loginAccount.hasBujeok);
-        // });
-
-        // 부적이 있으면? confirm 부적이 없으면? create
-        // console.log("hasBujeok " + res.response.hasBujeok);
         if (res.response.hasBujeok === false) {
           navigate("/create");
         } else {
           navigate("/confirm");
         }
+      })
+      .then((res) => {
+        // redux store 에 저장해줌.
+        // 지금 여기서 계속 undefined 가 뜨고 있음.
+        dispatch(() => {
+          loginAccount({
+            accessToken: sessionStorage.accessToken,
+            hasBujeok: sessionStorage.hasBujeok,
+          });
+          console.log("dispatch " + loginAccount);
+          console.log("dispatchaccessToken " + loginAccount.accessToken);
+          console.log("dispatchhasBujeok " + loginAccount.hasBujeok);
+        });
+        // 부적이 있으면? confirm 부적이 없으면? create
+        // console.log("hasBujeok " + res.response.hasBujeok);
+        // if (res.response.hasBujeok === false) {
+        //   navigate("/create");
+        // } else {
+        //   navigate("/confirm");
+        // }
       });
   }, []);
   return <></>;
