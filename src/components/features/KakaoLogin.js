@@ -46,9 +46,10 @@ const KakaoLogin = () => {
         console.log("kakaologin " + res.response.accessToken);
         sessionStorage.setItem("refreshToken", res.response.refreshToken);
         setAuthorization(res.response.accessToken);
-        setUseAccessToken(res.response.accessToken);
-        console.log(setUseAccessToken);
-        console.log(`${useAccessToken}`);
+        setUseAccessToken.getUseAccessToken(res.response.accessToken);
+        // setUseAccessToken.getUseAccessToken(res.response.accessToken);
+        console.log(setUseAccessToken.getUseAccessToken);
+        console.log(`${useAccessToken.getUseAccessToken}`);
         // 굳이 필요없어 보이긴 함.
         // setTimeout(
         //   checkAccessToken,
