@@ -47,7 +47,6 @@ const KakaoLogin = () => {
         // ); // 1 minute before expiration
 
         if (res.response.hasBujeok === false) {
-          navigate("/create");
           //원래 redux dispatch 있던 자리..
           // redux store 에 저장해줌.
           // 지금 여기서 계속 undefined 가 뜨고 있음.
@@ -59,10 +58,18 @@ const KakaoLogin = () => {
             console.log("dispatch " + loginAccount);
             console.log("dispatchAccessToken " + loginAccount.accessToken);
             console.log("dispatchHasBujeok " + loginAccount.hasBujeok);
+            console.log("dispatchSession " + sessionStorage);
+            console.log("dispatchAccessSession " + sessionStorage.accessToken);
+            console.log("dispatchHasBujeokSession " + sessionStorage.hasBujeok);
+            console.log("dispatchResponse " + res.response);
+            console.log("dispatchAccessResponse " + res.response.accessToken);
+            console.log("dispatchHasBujeokResponse " + res.response.hasBujeok);
           });
           console.log("밖dispatch " + loginAccount);
           console.log("밖dispatchAccessToken " + loginAccount.accessToken);
           console.log("밖dispatchHasBujeok " + loginAccount.hasBujeok);
+
+          navigate("/create");
         } else {
           navigate("/confirm");
         }
