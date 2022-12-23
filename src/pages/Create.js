@@ -17,12 +17,6 @@ const Create = () => {
   });
   // 서버에서 받아온 값을 담은 변수
 
-  // const [comeTrue, setComeTrue] = useState({
-  //   otherWishId: 1,
-  //   content: "내 소원",
-  //   cheerUp: "다른사람 소원",
-  // });
-
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/bujeok`)

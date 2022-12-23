@@ -48,12 +48,12 @@ const KakaoLogin = () => {
         //   res.response.refresh_token
         // ); // 1 minute before expiration
         // redux store 에 저장해줌.
-        dispatch(
+        dispatch(() => {
           loginAccount({
             accessToken: res.response.accessToken,
             hasBujeok: res.response.hasBujeok,
-          })
-        );
+          });
+        });
         // 부적이 있으면? confirm 부적이 없으면? create
         console.log("hasBujeok " + res.response.hasBujeok);
         if (res.response.hasBujeok === false) {

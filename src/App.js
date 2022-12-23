@@ -7,17 +7,14 @@ import KakaoLogin from "./components/features/KakaoLogin";
 import Loading from "./pages/Loading";
 import "./components/shared/reset.css";
 import AppLayout from "./components/layout/AppLayout";
-<<<<<<< HEAD
-
 import Admin from "./pages/Admin";
-=======
+
 // import ScreenShot from "./components/features/ScreenShot";
 
 // import a from "./assets/img/mainPageImg.png";
 // import { appendFile } from "fs";
 
 // const cors = require("cors");
->>>>>>> 1f9157a3665f0ae603b39e266f75da4157835044
 
 function App() {
   // app.use(cors());
