@@ -1,14 +1,26 @@
 import React from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { loginAccount } from "../reducer/Reducer";
 
 import "../components/shared/theme.css";
 import kLogin from "../assets/img/kakaoLogin.svg";
 import son from "../assets/img/mainPageImg.png";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code&scope=profile_nickname,account_email`;
   const handleLogin = () => {
     window.location.href = KAKAO_AUTH_URL;
+    dispatch(() => {
+      loginAccount({
+        accessToken: sessionStorage.accessToken,
+        hasBujeok: sessionStorage.hasBujeok,
+      });
+      console.log("dispatch " + loginAccount);
+      console.log("dispatchaccessToken " + loginAccount.accessToken);
+      console.log("dispatchhasBujeok " + loginAccount.hasBujeok);
+    });
   };
 
   return (

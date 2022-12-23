@@ -13,7 +13,7 @@ const KakaoLogin = () => {
   const KAKAO_CODE = location.search.split("=")[1];
   // console.log(KAKAO_CODE);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   useEffect(() => {
     // console.log(KAKAO_CODE);
@@ -50,15 +50,17 @@ const KakaoLogin = () => {
       })
       .then((res) => {
         // redux store 에 저장해줌.
-        dispatch(() => {
-          loginAccount({
-            accessToken: sessionStorage.accessToken,
-            hasBujeok: sessionStorage.hasBujeok,
-          });
-          console.log("dispatch " + loginAccount);
-          console.log("dispatchaccessToken " + loginAccount.accessToken);
-          console.log("dispatchhasBujeok " + loginAccount.hasBujeok);
-        });
+
+        // 지금 여기서 계속 undefined 가 뜨고 있음.
+        // dispatch(() => {
+        //   loginAccount({
+        //     accessToken: sessionStorage.accessToken,
+        //     hasBujeok: sessionStorage.hasBujeok,
+        //   });
+        //   console.log("dispatch " + loginAccount);
+        //   console.log("dispatchaccessToken " + loginAccount.accessToken);
+        //   console.log("dispatchhasBujeok " + loginAccount.hasBujeok);
+        // });
 
         // 부적이 있으면? confirm 부적이 없으면? create
         console.log("hasBujeok " + res.response.hasBujeok);
