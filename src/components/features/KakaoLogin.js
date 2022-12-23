@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 // import { checkAccessToken } from "../../stores/Token";
 import { useEffect, useState } from "react";
-import { setAuthorization } from "../../stores/Token";
+import { setAuthorization, setUseAccessToken } from "../../stores/Token";
 import { useDispatch } from "react-redux";
 import { loginAccount } from "../reducer/Reducer";
 
@@ -12,12 +12,12 @@ const KakaoLogin = () => {
   const navigate = useNavigate();
   const KAKAO_CODE = location.search.split("=")[1];
 
-  const [useAccessToken, setUseAccessToken] = useState();
+  // const [useAccessToken, setUseAccessToken] = useState();
   // console.log("밖useAccessToken " + useAccessToken.getUseAccessToken);
   // console.log(`밖useAccessToken  ${useAccessToken.getUseAccessToken}`);
   // console.log("밖setUseAccessToken " + setUseAccessToken.getUseAccessToken);
-  console.log("밖useAccessToken " + useAccessToken);
-  console.log(`밖useAccessToken  ${useAccessToken}`);
+  // console.log("밖useAccessToken " + setUseAccessToken);
+  // console.log(`밖useAccessToken  ${useAccessToken}`);
   console.log("밖setUseAccessToken " + setUseAccessToken);
 
   const dispatch = useDispatch();
@@ -47,14 +47,15 @@ const KakaoLogin = () => {
         console.log("kakaologin " + res.response.accessToken);
         sessionStorage.setItem("refreshToken", res.response.refreshToken);
         setAuthorization(res.response.accessToken);
-        // setUseAccessToken(res.response.accessToken);
-        setUseAccessToken("hhhhhhhhhhhhhhhhhhhhhhhhlfkf");
+        console.log(setAuthorization.accessToken);
+        console.log("setAuthorization " + setAuthorization);
+        setUseAccessToken(res.response.accessToken);
         // setUseAccessToken.getUseAccessToken(res.response.accessToken);
         // console.log(setUseAccessToken.getUseAccessToken); 타입에러남..ㅅㅂ
         // console.log(`${useAccessToken.getUseAccessToken}`);
         console.log(setUseAccessToken);
-        console.log(`${useAccessToken}`);
-        console.log(useAccessToken);
+        // console.log(`${useAccessToken}`);
+        // console.log(useAccessToken);
         // 굳이 필요없어 보이긴 함.
         // setTimeout(
         //   checkAccessToken,
@@ -69,7 +70,7 @@ const KakaoLogin = () => {
           dispatch(() => {
             loginAccount({
               // accessToken: setUseAccessToken,
-              accessToken: `${useAccessToken}`,
+              accessToken: setUseAccessToken,
               hasBujeok: sessionStorage.hasBujeok,
             });
             console.log("dispatch " + loginAccount);
@@ -82,7 +83,7 @@ const KakaoLogin = () => {
             console.log("dispatchAccessResponse " + res.response.accessToken);
             console.log("dispatchHasBujeokResponse " + res.response.hasBujeok);
             console.log("dispatchSetUseAccessToken " + setUseAccessToken);
-            console.log(`dispatchUseAccessToken ${useAccessToken}`);
+            // console.log(`dispatchUseAccessToken ${useAccessToken}`);
             console.log("dispatchPayLoad " + "??");
           });
           console.log("밖dispatch " + loginAccount);
