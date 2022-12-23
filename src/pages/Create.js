@@ -1,11 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { useSelector } from "react-redux";
+import axios from "axios";
 import styled from "styled-components";
 import "../components/shared/theme.css";
-
-// import Button from "../components/Button";
 
 const Create = () => {
   // redux .. 왜 해줬을까? 이거?
@@ -18,16 +16,14 @@ const Create = () => {
   });
   // 서버에서 받아온 값을 담은 변수
 
-  const [comeTrue, setComeTrue] = useState({
-    otherWishId: 1,
-    content: "내 소원",
-    cheerUp: "다른사람 소원",
-  });
-
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/bujeok`)
-      .then((res) => setGetData(res.data.response))
+      // 토큰값을 안보내서 get 요청이 안오는듯.
+      .then((res) => {
+        console.log(res.data);
+        // setGetData(res.data.response)
+      })
       .catch((err) => console.log(err));
   }, []);
   console.log(getData);
@@ -75,6 +71,7 @@ const Create = () => {
   if (getData === null) {
     return;
   }
+
   return (
     <div className="Create">
       <TitleLarge>

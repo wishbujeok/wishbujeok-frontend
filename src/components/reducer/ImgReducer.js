@@ -1,23 +1,14 @@
-import React from "react";
+const initialState = {
+  boolean: false,
+};
 
-export default function ImgReducer() {
-  const TRUTH = "true/boolean";
-  const FALSY = "false/boolean";
+const imageReducer = (state = initialState, action) => {
+  if (action.type === "result") {
+    let some = state;
+    return !some;
+  } else {
+    return state;
+  }
+};
 
-  const initialState = {
-    boolean: true,
-  };
-
-  const handleScreenImg = (state = initialState, action) => {
-    switch (action.type) {
-      case "Boolean":
-        return {
-          ...state,
-          boolean: action.type,
-        };
-
-      default:
-        return state;
-    }
-  };
-}
+export default imageReducer;

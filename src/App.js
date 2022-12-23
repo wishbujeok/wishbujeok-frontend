@@ -7,6 +7,8 @@ import KakaoLogin from "./components/features/KakaoLogin";
 import Loading from "./pages/Loading";
 import "./components/shared/reset.css";
 import AppLayout from "./components/layout/AppLayout";
+import Admin from "./pages/Admin";
+
 // import ScreenShot from "./components/features/ScreenShot";
 
 // import a from "./assets/img/mainPageImg.png";
@@ -26,9 +28,9 @@ function App() {
             <Route path="/create" element={<Create />} />
             <Route path="/confirm" element={<Confirm />} />
             <Route path="/loading" element={<Loading />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </Router>
-        {/* <ScreenShot HopeImg={a} /> */}
       </AppLayout>
     </div>
   );
