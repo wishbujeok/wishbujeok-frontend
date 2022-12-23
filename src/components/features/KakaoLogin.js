@@ -13,11 +13,11 @@ const KakaoLogin = () => {
   const KAKAO_CODE = location.search.split("=")[1];
 
   const [useAccessToken, setUseAccessToken] = useState({
-    useAccessToken: "null",
+    getUseAccessToken: "null",
   });
-  console.log("밖useAccessToken " + useAccessToken);
-  console.log(`밖useAccessToken  ${useAccessToken}`);
-  console.log("밖setUseAccessToken " + setUseAccessToken);
+  console.log("밖useAccessToken " + useAccessToken.getUseAccessToken);
+  console.log(`밖useAccessToken  ${useAccessToken.getUseAccessToken}`);
+  console.log("밖setUseAccessToken " + setUseAccessToken.getUseAccessToken);
 
   const dispatch = useDispatch();
 
@@ -63,7 +63,7 @@ const KakaoLogin = () => {
           dispatch(() => {
             loginAccount({
               // accessToken: setUseAccessToken,
-              accessToken: `${useAccessToken}`,
+              accessToken: `${useAccessToken.getUseAccessToken}`,
               hasBujeok: sessionStorage.hasBujeok,
             });
             console.log("dispatch " + loginAccount);
@@ -76,7 +76,9 @@ const KakaoLogin = () => {
             console.log("dispatchAccessResponse " + res.response.accessToken);
             console.log("dispatchHasBujeokResponse " + res.response.hasBujeok);
             console.log("dispatchSetUseAccessToken " + setUseAccessToken);
-            console.log(`dispatchUseAccessToken ${useAccessToken}`);
+            console.log(
+              `dispatchUseAccessToken ${useAccessToken.getUseAccessToken}`
+            );
             console.log("dispatchPayLoad " + "??");
           });
           console.log("밖dispatch " + loginAccount);
