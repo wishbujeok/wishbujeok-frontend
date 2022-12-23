@@ -26,7 +26,7 @@ const Create = () => {
       })
       .catch((err) => console.log(err));
   }, []);
-  console.log(getData);
+  console.log(getData.userName);
 
   const [myTypingNum, setMyTypingNum] = useState("");
   // 내 소원 textarea의 변경 이벤트를 감지하는 변수
