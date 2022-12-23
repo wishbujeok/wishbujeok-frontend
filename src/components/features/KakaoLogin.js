@@ -53,7 +53,9 @@ const KakaoLogin = () => {
             accessToken: res.response.accessToken,
             hasBujeok: res.response.hasBujeok,
           });
+          console.log("dispatch " + loginAccount);
         });
+
         // 부적이 있으면? confirm 부적이 없으면? create
         console.log("hasBujeok " + res.response.hasBujeok);
         if (res.response.hasBujeok === false) {

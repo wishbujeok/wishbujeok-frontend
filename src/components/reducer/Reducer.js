@@ -18,14 +18,14 @@ export const LoggedState = createSlice({
   name: "user",
   initialState,
   reducers: {
-    loginAccount(state, action) {
+    loginAccount: (state, action) => {
       console.log("reducer " + state.accessToken);
       console.log("reducer" + state.hasBujeok);
       state.isLogged = true;
       state.accessToken = action.payload.accessToken;
       state.hasBujeok = action.payload.hasBujeok;
     },
-    logoutAccount(state) {
+    logoutAccount: (state) => {
       state.isLogged = false;
       state.accessToken = null;
       state.hasBujeok = null;
