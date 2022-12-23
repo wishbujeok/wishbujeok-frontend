@@ -40,7 +40,7 @@ export const setUseAccessToken = (token) => {
 };
 
 // 요청을 보내는 baseURL을 설정.
-const client = axios.create({
+export const client = axios.create({
   // 수정해야할듯! 이거는 그냥 정말 baseUrl
   baseURL: `${process.env.BACKEND_URL}`,
   headers: {
