@@ -12,7 +12,7 @@ const Create = () => {
   const myWish = useRef(); // 내 소원 textarea
   const otherWish = useRef(); // 다른 소원 textarea
   const [getData, setGetData] = useState({
-    // userName: "check async",
+    userName: "check async",
   });
   // 서버에서 받아온 값을 담은 변수
 
@@ -23,9 +23,14 @@ const Create = () => {
       .then((res) => {
         console.log(res.data);
         setGetData(res.data.response);
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${user.accessToken}`;
       })
       .catch((err) => console.log(err));
   }, []);
+
+  // 지금 undefined 가 뜸.
   console.log(getData.userName);
 
   const [myTypingNum, setMyTypingNum] = useState("");
