@@ -13,9 +13,12 @@ const KakaoLogin = () => {
   const KAKAO_CODE = location.search.split("=")[1];
 
   const [useAccessToken, setUseAccessToken] = useState();
-  console.log("밖useAccessToken " + useAccessToken.getUseAccessToken);
-  console.log(`밖useAccessToken  ${useAccessToken.getUseAccessToken}`);
-  console.log("밖setUseAccessToken " + setUseAccessToken.getUseAccessToken);
+  // console.log("밖useAccessToken " + useAccessToken.getUseAccessToken);
+  // console.log(`밖useAccessToken  ${useAccessToken.getUseAccessToken}`);
+  // console.log("밖setUseAccessToken " + setUseAccessToken.getUseAccessToken);
+  console.log("밖useAccessToken " + useAccessToken);
+  console.log(`밖useAccessToken  ${useAccessToken}`);
+  console.log("밖setUseAccessToken " + setUseAccessToken);
 
   const dispatch = useDispatch();
 
