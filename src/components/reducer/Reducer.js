@@ -19,6 +19,8 @@ export const LoggedState = createSlice({
   initialState,
   reducers: {
     loginAccount(state, action) {
+      console.log("reducer " + action.payload.accessToken);
+      console.log("reducer" + action.payload.hasBujeok);
       state.isLogged = true;
       state.accessToken = action.payload.accessToken;
       state.hasBujeok = action.payload.hasBujeok;
