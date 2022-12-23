@@ -52,7 +52,7 @@ const KakaoLogin = () => {
           // 지금 여기서 계속 undefined 가 뜨고 있음.
           dispatch(() => {
             loginAccount({
-              accessToken: sessionStorage.accessToken,
+              accessToken: "accessToken",
               hasBujeok: sessionStorage.hasBujeok,
             });
             console.log("dispatch " + loginAccount);
