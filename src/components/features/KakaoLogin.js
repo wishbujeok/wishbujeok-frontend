@@ -15,6 +15,9 @@ const KakaoLogin = () => {
   const [useAccessToken, setUseAccessToken] = useState({
     useAccessToken: "null",
   });
+  console.log("밖useAccessToken " + useAccessToken);
+  console.log("밖setUseAccessToken " + setUseAccessToken);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,6 +46,7 @@ const KakaoLogin = () => {
         sessionStorage.setItem("refreshToken", res.response.refreshToken);
         setAuthorization(res.response.accessToken);
         setUseAccessToken(res.response.accessToken);
+        console.log(setUseAccessToken);
         console.log(useAccessToken);
         // 굳이 필요없어 보이긴 함.
         // setTimeout(
