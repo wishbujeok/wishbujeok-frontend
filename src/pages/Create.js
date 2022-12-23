@@ -4,14 +4,10 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import "../components/shared/theme.css";
-import { setAuthorization } from "../stores/Token";
 
 // import Button from "../components/Button";
 
 const Create = () => {
-  if (axios.defaults.headers.common["Authorization"] === undefined) {
-    setAuthorization(sessionStorage.getItem("accessToken"));
-  }
   // redux .. 왜 해줬을까? 이거?
   const user = useSelector((state) => state.user.value);
 
@@ -19,7 +15,7 @@ const Create = () => {
   const otherWish = useRef(); // 다른 소원 textarea
   const [getData, setGetData] = useState({
     // userName: "check asyne",
-    // 현준님 이거 어떻게 가지고 오나요 ? ㅎㅎ,,
+    // 현준님 이거 어떻게 가지고 오나요 ? ㅎㅎ,, d이거 꼭 해주십쇼
   });
   // 서버에서 받아온 값을 담은 변수
 
