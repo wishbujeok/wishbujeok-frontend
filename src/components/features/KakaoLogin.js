@@ -47,6 +47,20 @@ const KakaoLogin = () => {
         // ); // 1 minute before expiration
 
         //원래 redux dispatch 있던 자리..
+        // redux store 에 저장해줌.
+        // 지금 여기서 계속 undefined 가 뜨고 있음.
+        dispatch(() => {
+          loginAccount({
+            accessToken: res.response.accessToken,
+            hasBujeok: res.response.hasBujeok,
+          });
+          console.log("dispatch " + loginAccount);
+          console.log("dispatchAccessToken " + loginAccount.accessToken);
+          console.log("dispatchHasBujeok " + loginAccount.hasBujeok);
+        });
+        console.log("밖dispatch " + loginAccount);
+        console.log("밖dispatchAccessToken " + loginAccount.accessToken);
+        console.log("밖dispatchHasBujeok " + loginAccount.hasBujeok);
 
         if (res.response.hasBujeok === false) {
           navigate("/create");
@@ -54,18 +68,6 @@ const KakaoLogin = () => {
           navigate("/confirm");
         }
       });
-
-    // redux store 에 저장해줌.
-    // 지금 여기서 계속 undefined 가 뜨고 있음.
-    dispatch(() => {
-      loginAccount({
-        accessToken: sessionStorage.accessToken,
-        hasBujeok: sessionStorage.hasBujeok,
-      });
-      console.log("dispatch " + loginAccount);
-      console.log("dispatchAccessToken " + loginAccount.accessToken);
-      console.log("dispatchHasBujeok " + loginAccount.hasBujeok);
-    });
   }, []);
   return <></>;
   //이쪽에 스플래시를 넣어봅시다
