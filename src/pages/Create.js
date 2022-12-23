@@ -4,7 +4,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import "../components/shared/theme.css";
-import { setAuthorization } from "../utils/Token";
+import { setAuthorization } from "../stores/Token";
 
 // import Button from "../components/Button";
 
