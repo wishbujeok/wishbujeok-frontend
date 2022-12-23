@@ -10,11 +10,12 @@ const Create = () => {
   const user = useSelector((state) => state.user.value);
 
   console.log("redux " + user);
+  // 근데 null로 나옴..
   console.log("redux " + user.accessToken);
   console.log("redux " + user.hasBujeok);
 
-  console.log("reduxstate " + user.state.accessToken);
-  console.log("reduxstate " + user.state.hasBujeok);
+  // console.log("reduxstate " + user.state.accessToken);
+  // console.log("reduxstate " + user.state.hasBujeok);
 
   const myWish = useRef(); // 내 소원 textarea
   const otherWish = useRef(); // 다른 소원 textarea
@@ -28,11 +29,11 @@ const Create = () => {
       .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/bujeok`)
       // 토큰값을 안보내서 get 요청이 안오는듯.
       .then((res) => {
-        console.log(res.data);
-        setGetData(res.data.response);
         axios.defaults.headers.common[
           "Authorization"
-        ] = `Bearer ${user.state.accessToken}`;
+        ] = `Bearer ${user.accessToken}`;
+        console.log(res.data);
+        setGetData(res.data.response);
       })
       .catch((err) => console.log(err));
   }, []);
