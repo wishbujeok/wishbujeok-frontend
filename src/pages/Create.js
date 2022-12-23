@@ -9,6 +9,13 @@ const Create = () => {
   // redux .. 왜 해줬을까? 이거?
   const user = useSelector((state) => state.user.value);
 
+  console.log("redux " + user);
+  console.log("redux " + user.accessToken);
+  console.log("redux " + user.hasBujeok);
+
+  console.log("reduxstate " + user.state.accessToken);
+  console.log("reduxstate " + user.state.hasBujeok);
+
   const myWish = useRef(); // 내 소원 textarea
   const otherWish = useRef(); // 다른 소원 textarea
   const [getData, setGetData] = useState({
@@ -25,7 +32,7 @@ const Create = () => {
         setGetData(res.data.response);
         axios.defaults.headers.common[
           "Authorization"
-        ] = `Bearer ${user.accessToken}`;
+        ] = `Bearer ${user.state.accessToken}`;
       })
       .catch((err) => console.log(err));
   }, []);
