@@ -13,13 +13,12 @@ const Create = () => {
   if (client.defaults.headers.common["Authorization"] === undefined) {
     setAuthorization(sessionStorage.getItem("accessToken"));
   }
-
+  console.log("setAuthorization " + sessionStorage.getItem("accessToken"));
   console.log(client.defaults.headers.common.Authorization);
 
-  console.log("redux " + user);
-  // 근데 null로 나옴..
-  console.log("redux " + user.accessToken);
-  console.log("redux " + user.hasBujeok);
+  // console.log("redux " + user);
+  // console.log("redux " + user.accessToken);
+  // console.log("redux " + user.hasBujeok);
 
   // console.log("reduxstate " + user.state.accessToken);
   // console.log("reduxstate " + user.state.hasBujeok);

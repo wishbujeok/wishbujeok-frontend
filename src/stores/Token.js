@@ -43,10 +43,10 @@ export const setUseAccessToken = (token) => {
 export const client = axios.create({
   // 수정해야할듯! 이거는 그냥 정말 baseUrl
   baseURL: `${process.env.BACKEND_URL}`,
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${setUseAccessToken}`,
-  },
+  // headers: {
+  //   "Content-Type": "application/json",
+  //   Authorization: `Bearer ${setUseAccessToken}`,
+  // },
 });
 
 // 모든 요청에 대해서 헤더에 담아서 보내야해 알겠어?
