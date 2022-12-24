@@ -4,10 +4,17 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import styled from "styled-components";
 import "../components/shared/theme.css";
+import { setAuthorization } from "../stores/Token";
 
 const Create = () => {
   // redux .. 왜 해줬을까? 이거?
   const user = useSelector((state) => state.user.value);
+
+  if (axios.defaults.headers.common["Authorization"] === undefined) {
+    setAuthorization(sessionStorage.getItem("accessToken"));
+  }
+
+  console.log(axios.defaults.headers.common.Authorization);
 
   console.log("redux " + user);
   // 근데 null로 나옴..
@@ -29,9 +36,9 @@ const Create = () => {
       .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/bujeok`)
       // 토큰값을 안보내서 get 요청이 안오는듯.
       .then((res) => {
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${user.accessToken}`;
+        // axios.defaults.headers.common[
+        //   "Authorization"
+        // ] = `Bearer ${user.accessToken}`;
         console.log(axios.defaults.headers.common.Authorization);
         console.log(res.data);
         setGetData(res.data.response);
