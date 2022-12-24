@@ -27,7 +27,7 @@ const Create = () => {
   const myWish = useRef(); // 내 소원 textarea
   const otherWish = useRef(); // 다른 소원 textarea
   const [getData, setGetData] = useState({
-    userName: "check async",
+    memberName: "async",
   });
   // 서버에서 받아온 값을 담은 변수
 
@@ -47,7 +47,7 @@ const Create = () => {
   }, []);
 
   // 지금 undefined 가 뜸.
-  console.log(getData.userName);
+  console.log(getData.memberName);
 
   const [myTypingNum, setMyTypingNum] = useState("");
   // 내 소원 textarea의 변경 이벤트를 감지하는 변수
@@ -58,7 +58,7 @@ const Create = () => {
   const myWishHolder = `이루고 싶은 것이라면 무엇이든 털어놓아 주세요.`;
   // 띄어쓰기 다 되어 있는겁니다. 수정 자제 부탁드립니다.
 
-  const otherWishHolder = `응원 메시지를 남기면 ${getData.userName}님의 소원도
+  const otherWishHolder = `응원 메시지를 남기면 ${getData.memberName}소원도
 익명으로 전달되어 응원 메시지를 받게 돼요.`;
   // 띄어쓰기 다 되어 있는겁니다. 수정 자제 부탁드립니다. ${} 안에는 서버에서 받아온 이름 넣어야 합니다.
 
@@ -96,8 +96,7 @@ const Create = () => {
   return (
     <div className="Create">
       <TitleLarge>
-        {getData.userName}
-        님이 2023년에 이루고 싶은
+        {getData.memberName}님이 2023년에 이루고 싶은
         <br />
         소원을 말해주세요.
       </TitleLarge>
