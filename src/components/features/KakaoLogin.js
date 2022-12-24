@@ -53,7 +53,9 @@ const KakaoLogin = () => {
         // }
         console.log("kakaologin " + res.response.accessToken);
         sessionStorage.setItem("refreshToken", res.response.refreshToken);
-        setAuthorization(res.response.accessToken);
+        if (res.status === 200) {
+          setAuthorization(res.response.accessToken);
+        }
         // console.log(setAuthorization.accessToken);
         console.log("setAuthorization " + setAuthorization);
         console.log(
