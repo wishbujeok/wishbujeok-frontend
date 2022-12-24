@@ -20,7 +20,7 @@ export const handleScreenShot = () => {
   });
 };
 
-export const ScreenShot = ({ HopeImg, boolean, text }) => {
+export const ScreenShot = ({ HopeImg, text, message }) => {
   const [supporter, setSupporter] = useState(true);
   const [haveMessage, setHaveMessage] = useState(false);
   // boolean 값은 메세지 유무를 보내줘야함.
@@ -32,7 +32,7 @@ export const ScreenShot = ({ HopeImg, boolean, text }) => {
   return (
     <Container>
       <Div id="div">
-        {haveMessage ? (
+        {message === null ? (
           <>
             <BujeokImgContainer
               onClick={handleChangeSupporterImg}

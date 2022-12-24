@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
-import { axios } from "axios";
+import axios from "axios";
 import {
   ScreenShot,
   onSaveAs,
@@ -12,18 +12,17 @@ import { SiInstagram } from "react-icons/si";
 import { RiKakaoTalkFill } from "react-icons/ri";
 
 import "../components/shared/theme.css";
-// import Button from "../components/features/Button";
-// import { IconName } from "react-icons/ai";
 
 import themeImg from "../assets/img/DefaultBujeokImg.svg";
 const themeText = "응원합니다. 잘 될꺼에요. ( 서버에서 텍스트 받기 )";
 
 const Confirm = () => {
   const [userData, setUserData] = useState();
+  const [haveMessage, setHaveMessage] = useState(null);
 
   // useEffect(() => {
-  //   axios.get("/bujeok-management/reply").then((data) => console.log(data));
-  // }, []),;
+  //   axios.get("/bujeok-management/reply").then((data) => setHaveMessage(data));
+  // }, []);
 
   const user = useSelector((state) => state.user.value);
 
@@ -39,36 +38,91 @@ const Confirm = () => {
   // {user.어쩌구로} 사용할 수 있음!
   return (
     <div className="Create">
-      <TitleLarge>{user.accessToken}의 부적이 도착했어요!</TitleLarge>
-      {/* 임시로 해놓았습니다. */}
-      {/* <LoadingImg src={bujeok} alt="새해 부적" /> */}
-      <ScreenShot HopeImg={themeImg} text={themeText} />
-      <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
-      <Wish>
-        <TitleSmall>ㅇㅇㅇ님이 빌었던 소원이에요.</TitleSmall>
-        <Content>
-          정말 간절해요 어쩌구 저쩌구 삐용삐용
-          <br />
-          이거 참 재밌다~! 혹시 내용이 넘어가면 어떡하지?
-        </Content>
-        <BujeokBtn onClick={handleSaveImg}>
-          {/* <Link to="/loading"> */}
-          부적 저장하기
-          {/* </Link> */}
-        </BujeokBtn>
-        <Share>
-          <ShareBorder>공유하기</ShareBorder>
-          <Social>
-            <IconWrapper>
-              <SiInstagram className="iconSize" />
-            </IconWrapper>
-            <IconWrapper>
-              <RiKakaoTalkFill className="iconSize" />
-            </IconWrapper>
-          </Social>
-          {/* <button onClick={handleShareInstar}>인스타그램</button> */}
-        </Share>
-      </Wish>
+      {haveMessage === null ? (
+        <>
+          <TitleLarge>{user.accessToken}의 부적이 도착했어요!</TitleLarge>
+          {/* 임시로 해놓았습니다. */}
+          {/* <LoadingImg src={bujeok} alt="새해 부적" /> */}
+          <ScreenShot
+            HopeImg={themeImg}
+            text={themeText}
+            message={haveMessage}
+          />
+          <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
+          <Wish>
+            <TitleSmall>ㅇㅇㅇ님이 빌었던 소원이에요.</TitleSmall>
+            <Content>
+              정말 간절해요 어쩌구 저쩌구 삐용삐용
+              <br />
+              이거 참 재밌다~! 혹시 내용이 넘어가면 어떡하지?
+            </Content>
+            <BujeokBtn bgc={"#DA234F"} width={"100%"} onClick={handleSaveImg}>
+              부적 저장하기
+            </BujeokBtn>
+            <Share>
+              <ShareBorder>공유하기</ShareBorder>
+              <Social>
+                <IconWrapper>
+                  <SiInstagram className="iconSize" />
+                </IconWrapper>
+                <IconWrapper>
+                  <RiKakaoTalkFill className="iconSize" />
+                </IconWrapper>
+              </Social>
+              {/* <button onClick={handleShareInstar}>인스타그램</button> */}
+            </Share>
+          </Wish>
+        </>
+      ) : (
+        <>
+          <TitleLarge>응원 메세지가 도착했어요!</TitleLarge>
+          {/* 임시로 해놓았습니다. */}
+          {/* <LoadingImg src={bujeok} alt="새해 부적" /> */}
+          <ScreenShot HopeImg={themeImg} text={themeText} />
+          <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
+          <Wish>
+            <TitleSmall>ㅇㅇㅇ님이 빌었던 소원이에요.</TitleSmall>
+            <Content>
+              정말 간절해요 어쩌구 저쩌구 삐용삐용
+              <br />
+              이거 참 재밌다~! 혹시 내용이 넘어가면 어떡하지?
+            </Content>
+            <HaveMessageButtonContainer>
+              <BujeokBtn
+                haveMessage={haveMessage}
+                border={"red"}
+                bgc={"black"}
+                color={"#DA234F"}
+                width={"183px"}
+                onClick={handleSaveImg}
+              >
+                응원 메세지 다시받기
+              </BujeokBtn>
+              <BujeokBtn
+                haveMessage={haveMessage}
+                bgc={"#DA234F"}
+                color={"white"}
+                width={"136px"}
+                onClick={handleSaveImg}
+              >
+                부적 저장하기
+              </BujeokBtn>
+            </HaveMessageButtonContainer>
+            <Share>
+              <ShareBorder>공유하기</ShareBorder>
+              <Social>
+                <IconWrapper>
+                  <SiInstagram className="iconSize" />
+                </IconWrapper>
+                <IconWrapper>
+                  <RiKakaoTalkFill className="iconSize" />
+                </IconWrapper>
+              </Social>
+              {/* <button onClick={handleShareInstar}>인스타그램</button> */}
+            </Share>
+          </Wish>
+        </>
+      )}
     </div>
   );
 };
@@ -124,13 +178,15 @@ const Content = styled.div`
 `;
 
 const BujeokBtn = styled.button`
-  background-color: #da234f;
+  box-sizing: border-box;
+  background-color: ${({ bgc }) => (bgc === "black" ? "black" : bgc)};
   color: white;
-  width: 327px;
+  width: ${(width) => (width ? width : "100%")};
   height: 56px;
   border-radius: 10px;
-  border: none;
+  border: ${({ border }) => (border === "red" ? "1px solid red" : "none")};
   margin-top: 8vh;
+  margin-right: ${({ haveMessage }) => (haveMessage !== null ? "8px" : "0px")};
 
   font-family: "Hahmlet";
   font-style: normal;
@@ -202,4 +258,12 @@ const IconWrapper = styled.div`
     width: 40px;
     height: 40px;
   }
+`;
+
+const HaveMessageButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 100%;
 `;
