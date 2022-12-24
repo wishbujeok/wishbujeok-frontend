@@ -10,7 +10,7 @@ const Create = () => {
   // redux .. 왜 해줬을까? 이거?
   const user = useSelector((state) => state.user.value);
 
-  if (axios.defaults.headers.common["Authorization"] === undefined) {
+  if (client.defaults.headers.common["Authorization"] === undefined) {
     setAuthorization(sessionStorage.getItem("accessToken"));
   }
 
