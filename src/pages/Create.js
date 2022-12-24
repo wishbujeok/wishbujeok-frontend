@@ -29,9 +29,10 @@ const Create = () => {
       .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/bujeok`)
       // 토큰값을 안보내서 get 요청이 안오는듯.
       .then((res) => {
-        // axios.defaults.headers.common[
-        //   "Authorization"
-        // ] = `Bearer ${user.accessToken}`;
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${user.accessToken}`;
+        console.log(axios.defaults.headers.common.Authorization);
         console.log(res.data);
         setGetData(res.data.response);
       })
