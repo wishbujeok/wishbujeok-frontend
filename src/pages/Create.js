@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import styled from "styled-components";
 import "../components/shared/theme.css";
-import { setAuthorization } from "../stores/Token";
+import { client, setAuthorization } from "../stores/Token";
 
 const Create = () => {
   // redux .. 왜 해줬을까? 이거?
@@ -14,7 +14,7 @@ const Create = () => {
     setAuthorization(sessionStorage.getItem("accessToken"));
   }
 
-  console.log(axios.defaults.headers.common.Authorization);
+  console.log(client.defaults.headers.common.Authorization);
 
   console.log("redux " + user);
   // 근데 null로 나옴..
