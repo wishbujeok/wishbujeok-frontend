@@ -66,7 +66,7 @@ client.interceptors.request.use(function (config) {
   if (!user) {
     config.headers["accessToken"] = null;
     config.headers["refreshToken"] = null;
-    config.headers.common["Authorization"] = undefined;
+    // config.headers.common["Authorization"] = undefined;
     return config;
   }
   const { accessToken, refreshToken } = JSON.parse(user);
