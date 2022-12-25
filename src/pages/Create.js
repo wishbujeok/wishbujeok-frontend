@@ -30,19 +30,10 @@ const Create = () => {
   });
   // 서버에서 받아온 값을 담은 변수
 
-  useEffect(() => {
-    axios
+  const fetchData = async () => {
+    const { data } = await axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/bujeok`)
-      // 토큰값을 안보내서 get 요청이 안오는듯.
-      .then((res) => {
-        // axios.defaults.headers.common[
-        //   "Authorization"
-        // ] = `Bearer ${user.accessToken}`;
-        // console.log(axios.defaults.headers.common.Authorization);
-        console.log(res.data);
-        setGetData(res.data.response);
-      })
-      .catch((err) => {
+      .catch(function (err) {
         if (err.response) {
           console.log(err.response.data);
           console.log(err.response.status);
@@ -54,6 +45,37 @@ const Create = () => {
         }
         console.log(err.config);
       });
+    console.log(data);
+    setGetData(data);
+  };
+
+  useEffect(() => {
+    // axios
+    //   .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/bujeok`)
+    //   // 토큰값을 안보내서 get 요청이 안오는듯.
+    //   .then((res) => {
+    //     // axios.defaults.headers.common[
+    //     //   "Authorization"
+    //     // ] = `Bearer ${user.accessToken}`;
+    //     // console.log(axios.defaults.headers.common.Authorization);
+    //     console.log(res.data);
+    //     setGetData(res.data.response);
+    //   })
+    //   .catch((err) => {
+    //     if (err.response) {
+    //       console.log(err.response.data);
+    //       console.log(err.response.status);
+    //       console.log(err.response.headers);
+    //     } else if (err.request) {
+    //       console.log(err.request);
+    //     } else {
+    //       console.log("Error", err.message);
+    //     }
+    //     console.log(err.config);
+    //   });
+
+    fetchData();
+    console.log(getData.memberName);
   }, []);
 
   // 지금 undefined 가 뜸.
