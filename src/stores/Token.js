@@ -2,34 +2,6 @@ import axios from "axios";
 // import { useDispatch } from "react-redux";
 // import { loginAccount } from "../reducer/Reducer";
 
-// 에러를 보내주면 token
-// export const setAuthorization = (token) => {
-//   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-// };
-
-// export const refreshAccessToken = async (refreshToken) => {
-//   return await axios
-//     .post(`${process.env.BACKEND_URL}/api/user/token/refresh/`, {
-//       refresh: refreshToken,
-//     })
-//     .then((res) => {
-//       sessionStorage.setItem("accessToken", res.data.access);
-//       setAuthorization(res.data.access);
-//       return res.data.access;
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// };
-
-// export const checkAccessToken = async (refreshToken) => {
-//   await refreshAccessToken(refreshToken);
-// };
-
-// if (axios.defaults.headers.common["Authorization"] === undefined) {
-//   setAuthorization(sessionStorage.getItem("access_token"));
-// }
-
 export const setUseAccessToken = (token) => {
   console.log("setuseAccessToken " + token);
   // console.log(`${token}`);
@@ -43,10 +15,10 @@ export const setUseAccessToken = (token) => {
 export const client = axios.create({
   // 수정해야할듯! 이거는 그냥 정말 baseUrl
   baseURL: `${process.env.BACKEND_URL}`,
-  // headers: {
-  //   "Content-Type": "application/json",
-  //   Authorization: `Bearer ${setUseAccessToken}`,
-  // },
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${setUseAccessToken}`,
+  },
 });
 
 // 모든 요청에 대해서 헤더에 담아서 보내야해 알겠어?
@@ -57,7 +29,7 @@ export const setAuthorization = (token) => {
   console.log(client.defaults.headers.common.Authorization);
 };
 
-// client.defaults.headers.common["Authorization"] = `Bearer accessTok`;
+client.defaults.headers.common["Authorization"] = `Bearer ${setUseAccessToken}`;
 
 // request를 보낼 때 localStorage에 token 정보가 있다면
 // 헤더에 토큰 정보를 저장하고 없다면 Null로 처리함.
@@ -92,8 +64,8 @@ client.interceptors.response.use(
         error.response.JWT_ERROR === "expired" &&
         error.response.status === 403
       ) {
-        console.log("실행됏나?");
         try {
+          console.log("실행됏나?");
           const originalRequest = error.config;
           const data = await client.get(`/auth/token`);
           if (data) {

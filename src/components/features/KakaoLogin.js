@@ -33,11 +33,12 @@ const KakaoLogin = () => {
         sessionStorage.setItem("refreshToken", res.response.refreshToken);
         console.log("kakaologin AccessToken " + res.response.accessToken);
         console.log("kakaoLogin RefreshToken " + res.response.refreshToken);
+        console.log("kakaoLogin HasBujeok " + res.response.hasBujeok);
         // sessionStorage.setItem("hasBujeok", res.response.hasBujeok);
-        if (res.response.status === 200) {
-          console.log("200성공");
-          setAuthorization(res.response.accessToken);
-        }
+        // if (res.response.status === 200) {
+        //   console.log("200성공");
+        //   setAuthorization(res.response.accessToken);
+        // }
 
         // console.log(setAuthorization.accessToken);
         console.log("setAuthorization " + setAuthorization);
