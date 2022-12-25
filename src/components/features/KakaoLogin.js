@@ -76,17 +76,17 @@ const KakaoLogin = () => {
           //원래 redux dispatch 있던 자리..
           // redux store 에 저장해줌.
           // 지금 여기서 계속 undefined 가 뜨고 있음.
-          dispatch(() => {
-            loginAccount({
-              // accessToken: setUseAccessToken,
-              accessToken: setUseAccessToken(res.response.accessToken),
-              hasBujeok: sessionStorage.hasBujeok,
-            });
-          });
-          console.log("밖dispatch " + loginAccount);
-          console.log("밖dispatchAccessToken " + loginAccount.accessToken);
-          console.log(`밖dispatchAccessToken  + ${loginAccount.accessToken}`);
-          console.log("밖dispatchHasBujeok " + loginAccount.hasBujeok);
+          // dispatch(() => {
+          //   loginAccount({
+          //     // accessToken: setUseAccessToken,
+          //     accessToken: setUseAccessToken(res.response.accessToken),
+          //     hasBujeok: sessionStorage.hasBujeok,
+          //   });
+          // });
+          // console.log("밖dispatch " + loginAccount);
+          // console.log("밖dispatchAccessToken " + loginAccount.accessToken);
+          // console.log(`밖dispatchAccessToken  + ${loginAccount.accessToken}`);
+          // console.log("밖dispatchHasBujeok " + loginAccount.hasBujeok);
 
           navigate("/create");
         } else {
