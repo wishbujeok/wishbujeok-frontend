@@ -14,22 +14,9 @@ const KakaoLogin = () => {
   const navigate = useNavigate();
   const KAKAO_CODE = location.search.split("=")[1];
 
-  // const [useAccessToken, setUseAccessToken] = useState();
-  // console.log("밖useAccessToken " + useAccessToken.getUseAccessToken);
-  // console.log(`밖useAccessToken  ${useAccessToken.getUseAccessToken}`);
-  // console.log("밖setUseAccessToken " + setUseAccessToken.getUseAccessToken);
-  // console.log("밖useAccessToken " + setUseAccessToken);
-  // console.log(`밖useAccessToken  ${useAccessToken}`);
-  console.log("밖setUseAccessToken " + setUseAccessToken);
-  console.log(`setUseAccessToken$$  + ${setUseAccessToken}`);
-  console.log("밖setAuthorization " + setAuthorization);
-  console.log(
-    `setAuthorization$$  + ${setAuthorization} or ${setAuthorization.token}`
-  );
-
   const dispatch = useDispatch();
 
-  const JWT_EXPIRE_TIME = 2 * 3600 * 1000;
+  // const JWT_EXPIRE_TIME = 2 * 3600 * 1000;
 
   useEffect(() => {
     // ${KAKAO_CODE} 가 인가코드래
@@ -43,21 +30,12 @@ const KakaoLogin = () => {
       .then((res) => {
         // 서버 전용 access refresh token
         sessionStorage.setItem("accessToken", res.response.accessToken);
-        // accessToken 확인됨. 아래와 같이 백엔드에서 넘어옴.
-        //   {
-        //     "success": true,
-        //     "response": {
-        //         "tokenType": "Bearer",
-        //         "accessToken": "eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImRvb2x5c21pbGUxQG5hdmVyLmNvbSIsInN1YiI6ImFjY2Vzc190b2tlbiIsImlhdCI6MTY3MDg1OTMwMSwiZXhwIjoxNjcwODk1MzAxfQ.VpmBME8IeUXvOOuXPfQ9ZMasxVirmDsFaqV9-oguESY",
-        //         "refreshToken": null
-        //     },
-        //     "error": null
-        // }
-        console.log("kakaologin " + res.response.accessToken);
         sessionStorage.setItem("refreshToken", res.response.refreshToken);
-        sessionStorage.setItem("hasBujeok", res.response.hasBujeok);
+        console.log("kakaologin AccessToken " + res.response.accessToken);
+        console.log("kakaoLogin RefreshToken " + res.response.refreshToken);
+        // sessionStorage.setItem("hasBujeok", res.response.hasBujeok);
         if (res.response.status === 200) {
-          // console.log("200");
+          console.log("200성공");
           setAuthorization(res.response.accessToken);
         }
 
