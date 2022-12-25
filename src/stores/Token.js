@@ -57,6 +57,8 @@ export const setAuthorization = (token) => {
   console.log(client.defaults.headers.common.Authorization);
 };
 
+// client.defaults.headers.common["Authorization"] = `Bearer accessTok`;
+
 // request를 보낼 때 localStorage에 token 정보가 있다면
 // 헤더에 토큰 정보를 저장하고 없다면 Null로 처리함.
 client.interceptors.request.use(function (config) {
@@ -64,6 +66,7 @@ client.interceptors.request.use(function (config) {
   if (!user) {
     config.headers["accessToken"] = null;
     config.headers["refreshToken"] = null;
+    config.headers.common["Authorization"] = undefined;
     return config;
   }
   const { accessToken, refreshToken } = JSON.parse(user);
@@ -89,6 +92,7 @@ client.interceptors.response.use(
         error.response.JWT_ERROR === "expired" &&
         error.response.status === 403
       ) {
+        console.log("실행됏나?");
         try {
           const originalRequest = error.config;
           const data = await client.get(`/auth/token`);
