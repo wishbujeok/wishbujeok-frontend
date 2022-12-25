@@ -31,20 +31,19 @@ const Create = () => {
   // 서버에서 받아온 값을 담은 변수
 
   const fetchData = async () => {
-    const { data } = await axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/bujeok`)
-      .catch(function (err) {
-        if (err.response) {
-          console.log(err.response.data);
-          console.log(err.response.status);
-          console.log(err.response.headers);
-        } else if (err.request) {
-          console.log(err.request);
-        } else {
-          console.log("Error", err.message);
-        }
-        console.log(err.config);
-      });
+    const { data } = await axios;
+    client.get(`/bujeok-management/bujeok`).catch(function (err) {
+      if (err.response) {
+        console.log(err.response.data);
+        console.log(err.response.status);
+        console.log(err.response.headers);
+      } else if (err.request) {
+        console.log(err.request);
+      } else {
+        console.log("Error", err.message);
+      }
+      console.log(err.config);
+    });
     console.log(data);
     setGetData(data);
   };
