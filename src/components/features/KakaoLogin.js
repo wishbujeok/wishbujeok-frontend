@@ -29,6 +29,8 @@ const KakaoLogin = () => {
 
   const dispatch = useDispatch();
 
+  const JWT_EXPIRE_TIME = 2 * 3600 * 1000;
+
   useEffect(() => {
     // ${KAKAO_CODE} 가 인가코드래
     fetch(
@@ -66,11 +68,11 @@ const KakaoLogin = () => {
         // console.log(`${useAccessToken}`);
         // console.log(useAccessToken);
         // 굳이 필요없어 보이긴 함.
-        // setTimeout(
-        //   checkAccessToken,
-        //   JWT_EXPIRE_TIME - 60000,
-        //   res.response.refresh_token
-        // ); // 1 minute before expiration
+        setTimeout(
+          setAuthorization(res.response.accessToken),
+          JWT_EXPIRE_TIME - 60000,
+          res.response.refresh_token
+        ); // 1 minute before expiration
 
         if (res.response.hasBujeok === false) {
           //원래 redux dispatch 있던 자리..
