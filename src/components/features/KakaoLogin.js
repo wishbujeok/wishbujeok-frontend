@@ -5,7 +5,7 @@ import { setAuthorization, setUseAccessToken } from "../../stores/Token";
 import { useDispatch } from "react-redux";
 import { loginAccount } from "../reducer/Reducer";
 // import storage from "redux-persist/lib/storage";
-import storageSession from "redux-persist/lib/storage/session";
+// import storageSession from "redux-persist/lib/storage/session";
 
 // const JWT_EXPIRE_TIME = 2 * 3600 * 1000; // expiration time(2 hours in milliseconds)
 
@@ -57,7 +57,7 @@ const KakaoLogin = () => {
         sessionStorage.setItem("refreshToken", res.response.refreshToken);
         // sessionStorage.setItem("hasBujeok", res.response.hasBujeok);
         if (res.response.status === 200) {
-          console.log("200");
+          // console.log("200");
           setAuthorization(res.response.accessToken);
         }
 
@@ -81,17 +81,17 @@ const KakaoLogin = () => {
           //원래 redux dispatch 있던 자리..
           // redux store 에 저장해줌.
           // 지금 여기서 계속 undefined 가 뜨고 있음.
-          // dispatch(() => {
-          //   loginAccount({
-          //     // accessToken: setUseAccessToken,
-          //     accessToken: setUseAccessToken(res.response.accessToken),
-          //     hasBujeok: sessionStorage.hasBujeok,
-          //   });
-          // });
-          // console.log("밖dispatch " + loginAccount);
-          // console.log("밖dispatchAccessToken " + loginAccount.accessToken);
-          // console.log(`밖dispatchAccessToken  + ${loginAccount.accessToken}`);
-          // console.log("밖dispatchHasBujeok " + loginAccount.hasBujeok);
+          dispatch(() => {
+            loginAccount({
+              // accessToken: setUseAccessToken,
+              accessToken: setUseAccessToken(res.response.accessToken),
+              hasBujeok: sessionStorage.hasBujeok,
+            });
+          });
+          console.log("밖dispatch " + loginAccount);
+          console.log("밖dispatchAccessToken " + loginAccount.accessToken);
+          console.log(`밖dispatchAccessToken  + ${loginAccount.accessToken}`);
+          console.log("밖dispatchHasBujeok " + loginAccount.hasBujeok);
 
           navigate("/create");
         } else {
