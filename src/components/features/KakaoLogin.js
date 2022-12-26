@@ -20,9 +20,7 @@ const KakaoLogin = () => {
   // console.log("밖setUseAccessToken " + setUseAccessToken.getUseAccessToken);
   // console.log("밖useAccessToken " + setUseAccessToken);
   // console.log(`밖useAccessToken  ${useAccessToken}`);
-  console.log("밖setUseAccessToken " + setUseAccessToken);
   console.log(`setUseAccessToken$$  + ${setUseAccessToken}`);
-  console.log("밖setAuthorization " + setAuthorization);
   console.log(
     `setAuthorization$$  + ${setAuthorization} or ${setAuthorization.token}`
   );
