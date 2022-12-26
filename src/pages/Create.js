@@ -4,24 +4,17 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 import "../components/shared/theme.css";
-import { client, setAuthorization } from "../stores/Token";
+import { setAuthorization } from "../stores/Token";
 
 const Create = () => {
   // redux .. 왜 해줬을까? 이거?
   // const user = useSelector((state) => state.user.value);
 
-  if (client.defaults.headers.common["Authorization"] === undefined) {
+  if (axios.defaults.headers.common["Authorization"] === undefined) {
     setAuthorization(sessionStorage.getItem("accessToken"));
   }
   console.log("setAuthorization " + sessionStorage.getItem("accessToken"));
-  console.log(client.defaults.headers.common.Authorization);
-
-  // console.log("redux " + user);
-  // console.log("redux " + user.accessToken);
-  // console.log("redux " + user.hasBujeok);
-
-  // console.log("reduxstate " + user.state.accessToken);
-  // console.log("reduxstate " + user.state.hasBujeok);
+  console.log("Authorization " + axios.defaults.headers.common.Authorization);
 
   const myWish = useRef(); // 내 소원 textarea
   const otherWish = useRef(); // 다른 소원 textarea
@@ -35,10 +28,10 @@ const Create = () => {
       .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/bujeok`)
       // 토큰값을 안보내서 get 요청이 안오는듯.
       .then((res) => {
-        // axios.defaults.headers.common[
-        //   "Authorization"
-        // ] = `Bearer ${user.accessToken}`;
-        // console.log(axios.defaults.headers.common.Authorization);
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${sessionStorage.getItem("accessToken")}`;
+        console.log(axios.defaults.headers.common.Authorization);
         console.log(res.data);
         setGetData(res.data.response);
       })
@@ -54,8 +47,6 @@ const Create = () => {
         }
         console.log(err.config);
       });
-
-    console.log(getData.memberName);
   }, []);
 
   // 지금 undefined 가 뜸.
