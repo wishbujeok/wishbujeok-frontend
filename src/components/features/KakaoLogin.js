@@ -66,6 +66,9 @@ const KakaoLogin = () => {
       )
       // .then((res) => res.json())
       .then((res) => {
+        setAccessToken(res.response.accessToken);
+        setRefreshToken(res.response.refreshToken);
+        setHasBujeok(res.response.hasBujeok);
         sessionStorage.setItem(setAccessToken, res.response.accessToken);
         sessionStorage.setItem(setRefreshToken, res.response.refreshToken);
         sessionStorage.setItem(setHasBujeok, res.response.hasBujeok);
