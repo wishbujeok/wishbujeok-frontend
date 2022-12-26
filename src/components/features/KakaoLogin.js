@@ -18,6 +18,7 @@ const KakaoLogin = () => {
   // const JWT_EXPIRE_TIME = 2 * 3600 * 1000;
 
   useEffect(() => {
+    /*
     fetch(
       `${process.env.REACT_APP_BACKEND_URL}/auth/kakao/login/?code=${KAKAO_CODE}`,
       {
@@ -48,10 +49,16 @@ const KakaoLogin = () => {
           navigate("/confirm");
         }
       });
-    /*
+      */
+
     axios
       .get(
-        `${process.env.REACT_APP_BACKEND_URL}/auth/kakao/login?code=${KAKAO_CODE}`
+        `${process.env.REACT_APP_BACKEND_URL}/auth/kakao/login?code=${KAKAO_CODE}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       )
       // .then((res) => res.json())
       .then((res) => {
@@ -60,11 +67,9 @@ const KakaoLogin = () => {
         console.log("kakaologin AccessToken " + res.response.accessToken);
         console.log("kakaoLogin RefreshToken " + res.response.refreshToken);
         console.log("kakaoLogin HasBujeok " + res.response.hasBujeok);
-        if (res.response.status === 200) {
-          console.log("200성공");
-          setAuthorization(res.response.accessToken);
-        }
+
         setUseAccessToken(res.response.accessToken);
+        setAuthorization(res.response.accessToken);
         if (res.response.hasBujeok === false) {
           navigate("/create");
         } else {
@@ -83,7 +88,6 @@ const KakaoLogin = () => {
         }
         console.log(err.config);
       });
-      */
   }, []);
 
   return <></>;
