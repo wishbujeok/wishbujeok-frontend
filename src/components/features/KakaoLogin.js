@@ -2,8 +2,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 // import { checkAccessToken } from "../../stores/Token";
 import { useEffect, useState } from "react";
 import { setAuthorization, setUseAccessToken } from "../../stores/Token";
-import { useDispatch } from "react-redux";
-import { loginAccount } from "../reducer/Reducer";
+// import { useDispatch } from "react-redux";
+// import { loginAccount } from "../reducer/Reducer";
 import axios from "axios";
 // import storage from "redux-persist/lib/storage";
 // import storageSession from "redux-persist/lib/storage/session";
@@ -15,11 +15,40 @@ const KakaoLogin = () => {
   const navigate = useNavigate();
   const KAKAO_CODE = location.search.split("=")[1];
 
-  const dispatch = useDispatch();
-
   // const JWT_EXPIRE_TIME = 2 * 3600 * 1000;
 
   useEffect(() => {
+    fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/auth/kakao/login/?code=${KAKAO_CODE}`,
+      {
+        method: "GET",
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        // 서버 전용 access refresh token
+        sessionStorage.setItem("accessToken", res.response.accessToken);
+        sessionStorage.setItem("refreshToken", res.response.refreshToken);
+        console.log("kakaologin AccessToken " + res.response.accessToken);
+        console.log("kakaoLogin RefreshToken " + res.response.refreshToken);
+        console.log("kakaoLogin HasBujeok " + res.response.hasBujeok);
+        // if (res.response.status === 200) {
+        //   console.log("200성공");
+        //   setAuthorization(res.response.accessToken);
+        // }
+        console.log("setAuthorization " + setAuthorization);
+        console.log(
+          `setAuthorization$$  + ${setAuthorization} or ${setAuthorization.token}`
+        );
+        setUseAccessToken(res.response.accessToken);
+        console.log(setUseAccessToken);
+        if (res.response.hasBujeok === false) {
+          navigate("/create");
+        } else {
+          navigate("/confirm");
+        }
+      });
+    /*
     axios
       .get(
         `${process.env.REACT_APP_BACKEND_URL}/auth/kakao/login?code=${KAKAO_CODE}`
@@ -54,7 +83,9 @@ const KakaoLogin = () => {
         }
         console.log(err.config);
       });
+      */
   }, []);
+
   return <></>;
   //이쪽에 스플래시를 넣어봅시다
 };
