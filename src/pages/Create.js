@@ -42,7 +42,20 @@ const Create = () => {
         console.log(res.data);
         setGetData(res.data.response);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        if (err.response) {
+          console.log(err.response.data);
+          console.log(err.response.status);
+          console.log(err.response.headers);
+        } else if (err.request) {
+          console.log(err.request);
+        } else {
+          console.log("Error", err.message);
+        }
+        console.log(err.config);
+      });
+
+    console.log(getData.memberName);
   }, []);
 
   // 지금 undefined 가 뜸.
