@@ -20,66 +20,11 @@ const KakaoLogin = () => {
   // const JWT_EXPIRE_TIME = 2 * 3600 * 1000;
 
   useEffect(() => {
-    // ${KAKAO_CODE} 가 인가코드래
-    // fetch(
-    //   `${process.env.REACT_APP_BACKEND_URL}/auth/kakao/login/?code=${KAKAO_CODE}`,
-    //   {
-    //     method: "GET",
-    //   }
-    // )
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     // 서버 전용 access refresh token
-    //     sessionStorage.setItem("accessToken", res.response.accessToken);
-    //     sessionStorage.setItem("refreshToken", res.response.refreshToken);
-    //     console.log("kakaologin AccessToken " + res.response.accessToken);
-    //     console.log("kakaoLogin RefreshToken " + res.response.refreshToken);
-    //     console.log("kakaoLogin HasBujeok " + res.response.hasBujeok);
-    //     // sessionStorage.setItem("hasBujeok", res.response.hasBujeok);
-    //     // if (res.response.status === 200) {
-    //     //   console.log("200성공");
-    //     //   setAuthorization(res.response.accessToken);
-    //     // }
-    //     // console.log(setAuthorization.accessToken);
-    //     console.log("setAuthorization " + setAuthorization);
-    //     console.log(
-    //       `setAuthorization$$  + ${setAuthorization} or ${setAuthorization.token}`
-    //     );
-    //     setUseAccessToken(res.response.accessToken);
-    //     console.log(setUseAccessToken);
-    //     // console.log(`${useAccessToken}`);
-    //     // console.log(useAccessToken);
-    //     // 굳이 필요없어 보이긴 함.
-    //     // setTimeout(
-    //     //   setAuthorization(res.response.accessToken),
-    //     //   JWT_EXPIRE_TIME - 60000,
-    //     //   res.response.refresh_token
-    //     // ); // 1 minute before expiration
-    //     if (res.response.hasBujeok === false) {
-    //       //원래 redux dispatch 있던 자리..
-    //       // redux store 에 저장해줌.
-    //       // 지금 여기서 계속 undefined 가 뜨고 있음.
-    //       dispatch(() => {
-    //         loginAccount({
-    //           // accessToken: setUseAccessToken,
-    //           accessToken: setUseAccessToken(res.response.accessToken),
-    //           hasBujeok: sessionStorage.hasBujeok,
-    //         });
-    //       });
-    //       console.log("밖dispatch " + loginAccount);
-    //       console.log("밖dispatchAccessToken " + loginAccount.accessToken);
-    //       console.log(`밖dispatchAccessToken  + ${loginAccount.accessToken}`);
-    //       console.log("밖dispatchHasBujeok " + loginAccount.hasBujeok);
-    //       navigate("/create");
-    //     } else {
-    //       navigate("/confirm");
-    //     }
-    //   });
     axios
       .get(
         `${process.env.REACT_APP_BACKEND_URL}/auth/kakao/login?code=${KAKAO_CODE}`
       )
-      .then((res) => res.json())
+      // .then((res) => res.json())
       .then((res) => {
         sessionStorage.setItem("accessToken", res.response.accessToken);
         sessionStorage.setItem("refreshToken", res.response.refreshToken);
