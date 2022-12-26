@@ -15,6 +15,10 @@ const KakaoLogin = () => {
   const navigate = useNavigate();
   const KAKAO_CODE = location.search.split("=")[1];
 
+  const [accessToken, setAccessToken] = useState(null);
+  const [refreshToken, setRefreshToken] = useState(null);
+  const [hasBujeok, setHasBujeok] = useState(null);
+
   // const JWT_EXPIRE_TIME = 2 * 3600 * 1000;
 
   useEffect(() => {
@@ -62,9 +66,18 @@ const KakaoLogin = () => {
       )
       // .then((res) => res.json())
       .then((res) => {
+        sessionStorage.setItem(setAccessToken, res.response.accessToken);
+        sessionStorage.setItem(setRefreshToken, res.response.refreshToken);
+        sessionStorage.setItem(setHasBujeok, res.response.hasBujeok);
+
+        /*
         sessionStorage.setItem("accessToken", res.response.accessToken);
         sessionStorage.setItem("refreshToken", res.response.refreshToken);
+       */
         console.log("kakaologin AccessToken " + res.response.accessToken);
+        console.log("useStateAccess " + accessToken);
+        console.log("useStateRefresh " + refreshToken);
+        console.log("useStateHasBujeok " + hasBujeok);
         console.log("kakaoLogin RefreshToken " + res.response.refreshToken);
         console.log("kakaoLogin HasBujeok " + res.response.hasBujeok);
 
