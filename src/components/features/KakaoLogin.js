@@ -1,12 +1,8 @@
-
-import { useLocation, useNavigate } from "react-router-dom";
-// import { checkAccessToken } from "../../stores/Token";
-import { useEffect, useState } from "react";
-import { setAuthorization, setUseAccessToken } from "../../stores/Token";
-import { useDispatch } from "react-redux";
-import { loginAccount } from "../reducer/Reducer";
-// import storage from "redux-persist/lib/storage";
-// import storageSession from "redux-persist/lib/storage/session";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreators as userActions } from "../../redux/modules/user";
+// import { userActißons } from "../../redux/modules/user";
+// import Spinner from "" -> 로딩 화면 추가해준 것이라 나중에 추가해도 됨.
 
 const KakaoLogin = (props) => {
   const dispatch = useDispatch();
@@ -14,17 +10,17 @@ const KakaoLogin = (props) => {
 
   let code = new URL(window.location.href).searchParams.get("code");
 
-  // const [useAccessToken, setUseAccessToken] = useState();
-  // console.log("밖useAccessToken " + useAccessToken.getUseAccessToken);
-  // console.log(`밖useAccessToken  ${useAccessToken.getUseAccessToken}`);
-  // console.log("밖setUseAccessToken " + setUseAccessToken.getUseAccessToken);
-  // console.log("밖useAccessToken " + setUseAccessToken);
-  // console.log(`밖useAccessToken  ${useAccessToken}`);
-  console.log(`setUseAccessToken$$  + ${setUseAccessToken}`);
-  console.log(
-    `setAuthorization$$  + ${setAuthorization} or ${setAuthorization.token}`
-  );
-
+  // const fetchData = async () => {
+  //   await dispatch(userActions.KakaoLoginToken(code));
+  // };
+  useEffect(() => {
+    // await dispatch(userActions.KakaoLoginToken(code));
+    // async function fetchData() {
+    //   await dispatch(userActions.KakaoLoginToken(code));
+    // }
+    dispatch(userActions.KakaoLoginToken(code));
+    // fetchData();
+  }, []);
 
   /*
   1;
