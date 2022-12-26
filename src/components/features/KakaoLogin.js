@@ -15,11 +15,7 @@ const KakaoLogin = () => {
   const navigate = useNavigate();
   const KAKAO_CODE = location.search.split("=")[1];
 
-  const [accessToken, setAccessToken] = useState(null);
-  const [refreshToken, setRefreshToken] = useState(null);
-  const [hasBujeok, setHasBujeok] = useState(null);
-
-  // const JWT_EXPIRE_TIME = 2 * 3600 * 1000;
+  const [getData, setGetData] = useState([]);
 
   useEffect(() => {
     /*
@@ -64,29 +60,26 @@ const KakaoLogin = () => {
           },
         }
       )
-      // .then((res) => res.json())
       .then((res) => {
-        setAccessToken(res.response.accessToken);
-        setRefreshToken(res.response.refreshToken);
-        setHasBujeok(res.response.hasBujeok);
-        sessionStorage.setItem(setAccessToken, res.response.accessToken);
-        sessionStorage.setItem(setRefreshToken, res.response.refreshToken);
-        sessionStorage.setItem(setHasBujeok, res.response.hasBujeok);
+        console.log(res.data);
+        setGetData(res.data.response);
 
-        /*
-        sessionStorage.setItem("accessToken", res.response.accessToken);
-        sessionStorage.setItem("refreshToken", res.response.refreshToken);
-       */
-        console.log("kakaologin AccessToken " + res.response.accessToken);
-        console.log("useStateAccess " + accessToken);
-        console.log("useStateRefresh " + refreshToken);
-        console.log("useStateHasBujeok " + hasBujeok);
-        console.log("kakaoLogin RefreshToken " + res.response.refreshToken);
-        console.log("kakaoLogin HasBujeok " + res.response.hasBujeok);
+        // sessionStorage.setItem(setAccessToken, res.data.response.accessToken);
+        // sessionStorage.setItem(setRefreshToken, res.data.response.refreshToken);
+        // sessionStorage.setItem(setHasBujeok, res.data.response.hasBujeok);
 
-        setUseAccessToken(res.response.accessToken);
-        setAuthorization(res.response.accessToken);
-        if (res.response.hasBujeok === false) {
+        sessionStorage.setItem("accessToken", res.data.response.accessToken);
+        sessionStorage.setItem("refreshToken", res.data.response.refreshToken);
+
+        console.log("kakaologin AccessToken " + res.data.response.accessToken);
+        console.log(
+          "kakaoLogin RefreshToken " + res.data.response.refreshToken
+        );
+        console.log("kakaoLogin HasBujeok " + res.data.response.hasBujeok);
+
+        setUseAccessToken(res.data.response.accessToken);
+        setAuthorization(res.data.response.accessToken);
+        if (res.data.response.hasBujeok === false) {
           navigate("/create");
         } else {
           navigate("/confirm");
@@ -104,6 +97,9 @@ const KakaoLogin = () => {
         }
         console.log(err.config);
       });
+    console.log("stateAccess " + getData.accessToken);
+    console.log("stateRefresh " + getData.refreshToken);
+    console.log("stateHasBujeok " + getData.hasBujeok);
   }, []);
 
   return <></>;
