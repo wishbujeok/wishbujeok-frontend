@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import axios from "axios";
 import styled from "styled-components";
 import "../components/shared/theme.css";
@@ -8,7 +8,7 @@ import { client, setAuthorization } from "../stores/Token";
 
 const Create = () => {
   // redux .. 왜 해줬을까? 이거?
-  const user = useSelector((state) => state.user.value);
+  // const user = useSelector((state) => state.user.value);
 
   if (client.defaults.headers.common["Authorization"] === undefined) {
     setAuthorization(sessionStorage.getItem("accessToken"));
