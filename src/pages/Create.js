@@ -62,7 +62,7 @@ const Create = () => {
 
   const checkPost = () => {
     const result = {
-      otherWishId: 1,
+      otherWishId: 0,
       content: myWish.current.value,
       cheerUp: otherWish.current.value,
     };
