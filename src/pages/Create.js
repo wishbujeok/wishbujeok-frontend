@@ -9,6 +9,7 @@ import { client, setAuthorization } from "../stores/Token";
 const Create = () => {
   // redux .. 왜 해줬을까? 이거?
   const user = useSelector((state) => state.user.value);
+  console.log(client.defaults.headers.common);
 
   if (client.defaults.headers.common["Authorization"] === undefined) {
     setAuthorization(sessionStorage.getItem("accessToken"));
