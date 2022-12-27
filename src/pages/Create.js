@@ -7,7 +7,6 @@ import "../components/shared/theme.css";
 import { setAuthorization } from "../stores/Token";
 
 const Create = () => {
-  // redux .. 왜 해줬을까? 이거?
   // const user = useSelector((state) => state.user.value);
 
   if (axios.defaults.headers.common["Authorization"] === undefined) {
