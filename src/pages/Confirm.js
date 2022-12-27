@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import axios from "axios";
 import {
   ScreenShot,
@@ -17,14 +17,17 @@ import themeImg from "../assets/img/DefaultBujeokImg.svg";
 const themeText = "응원합니다. 잘 될꺼에요. ";
 
 const Confirm = () => {
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState("");
   const [haveMessage, setHaveMessage] = useState("null");
 
   useEffect(() => {
-    axios.get("/bujeok-management/reply").then((data) => setHaveMessage(data));
+    // axios
+    //   .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/reply`)
+    //   .then((data) => {
+    // setUserData(data)
+    // setHaveData(data.boolean)
+    // });
   }, []);
-
-  const user = useSelector((state) => state.user.value);
 
   const handleSaveImg = () => {
     handleScreenShot();
@@ -34,15 +37,15 @@ const Confirm = () => {
     window.open("http://www.facebook.com/sharer/sharer.php?u=");
   };
 
-  // {user.user_nickName}
-  // {user.어쩌구로} 사용할 수 있음!
+  const handlerequest = () => {
+    axios.get("").then((data) => setUserData(data));
+  };
+
   return (
     <div className="Create">
       {haveMessage === null ? (
         <>
-          <TitleLarge>{user.accessToken}의 부적이 도착했어요!</TitleLarge>
-          {/* 임시로 해놓았습니다. */}
-          {/* <LoadingImg src={bujeok} alt="새해 부적" /> */}
+          <TitleLarge>부적이 도착했어요!</TitleLarge>
           <ScreenShot
             HopeImg={themeImg}
             text={themeText}
@@ -68,7 +71,6 @@ const Confirm = () => {
                   <RiKakaoTalkFill className="iconSize" />
                 </IconWrapper>
               </Social>
-              {/* <button onClick={handleShareInstar}>인스타그램</button> */}
             </Share>
           </Wish>
         </>
@@ -76,11 +78,12 @@ const Confirm = () => {
         <>
           <TitleLarge>응원 메세지가 도착했어요!</TitleLarge>
           {/* 임시로 해놓았습니다. */}
-          {/* <LoadingImg src={bujeok} alt="새해 부적" /> */}
           <ScreenShot HopeImg={themeImg} text={themeText} />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
-            <TitleSmall>ㅇㅇㅇ님이 빌었던 소원이에요.</TitleSmall>
+            <TitleSmall>
+              {/* {userData.data.memberName}님이 빌었던 소원이에요. */}
+            </TitleSmall>
             <Content>
               정말 간절해요 꼭 합격해서 제주도 교육이 지금보다 더 좋은 환경이
               되었으면 좋겠어요 !
@@ -92,7 +95,7 @@ const Confirm = () => {
                 bgc={"black"}
                 color={"#DA234F"}
                 width={"183px"}
-                onClick={handleSaveImg}
+                onClick={handlerequest}
               >
                 응원 메세지 다시받기
               </BujeokBtn>
@@ -110,7 +113,10 @@ const Confirm = () => {
               <ShareBorder>공유하기</ShareBorder>
               <Social>
                 <IconWrapper>
-                  <SiInstagram className="iconSize" />
+                  <SiInstagram
+                    onClick={handleShareInstar}
+                    className="iconSize"
+                  />
                 </IconWrapper>
                 <IconWrapper>
                   <RiKakaoTalkFill className="iconSize" />

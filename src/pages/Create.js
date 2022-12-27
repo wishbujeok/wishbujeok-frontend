@@ -7,6 +7,7 @@ import { setAuthorization } from "../stores/Token";
 
 const Create = () => {
   const navigate = useNavigate();
+
   if (axios.defaults.headers.common["Authorization"] === undefined) {
     setAuthorization(sessionStorage.getItem("accessToken"));
   }
