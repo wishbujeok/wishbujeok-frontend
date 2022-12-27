@@ -30,7 +30,8 @@ const KakaoLogin = () => {
         setAuthorization(res.data.response.accessToken);
 
         if (res.data.response.hasBujeok === false) {
-          navigate("/create");
+          // navigate("/create");
+          navigate("/confirm");
         } else {
           navigate("/confirm");
         }

@@ -41,15 +41,13 @@ const Confirm = () => {
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
           <ScreenShot
-            // HopeImg={themeImg}
-            // text={themeText}
-            // message={userData.reply}
-            imgUrl={userData.backUrl}
+          // message={userData.reply}
+          // imgUrl={userData.backUrl}
           />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>님이 빌었던 소원이에요.</TitleSmall>
-            <Content>{userData.reply}</Content>
+            {/* <Content>{userData.reply}</Content> */}
             <BujeokBtn bgc={"#DA234F"} width={"100%"} onClick={handleSaveImg}>
               부적 저장하기
             </BujeokBtn>
@@ -70,7 +68,7 @@ const Confirm = () => {
         <>
           <TitleLarge>응원 메세지가 도착했어요!</TitleLarge>
           {/* 임시로 해놓았습니다. */}
-          <ScreenShot imgUrl={userData.backUrl} message={userData.reply} />
+          {/* <ScreenShot imgUrl={userData.backUrl} message={userData.reply} /> */}
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>
@@ -82,7 +80,7 @@ const Confirm = () => {
             </Content>
             <HaveMessageButtonContainer>
               <BujeokBtn
-                haveMessage={userData.reply}
+                // haveMessage={userData.reply}
                 border={"red"}
                 bgc={"black"}
                 color={"#DA234F"}
@@ -92,7 +90,7 @@ const Confirm = () => {
                 응원 메세지 다시받기
               </BujeokBtn>
               <BujeokBtn
-                haveMessage={userData.reply}
+                // haveMessage={userData.reply}
                 bgc={"#DA234F"}
                 color={"white"}
                 width={"136px"}
