@@ -1,62 +1,54 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import "../components/shared/theme.css";
-import { client, setAuthorization } from "../stores/Token";
+import { setAuthorization } from "../stores/Token";
 
 const Create = () => {
-  // redux .. 왜 해줬을까? 이거?
-  const user = useSelector((state) => state.user.value);
-  console.log(client.defaults.headers.common);
-
-  if (client.defaults.headers.common["Authorization"] === undefined) {
+  const navigate = useNavigate();
+  if (axios.defaults.headers.common["Authorization"] === undefined) {
     setAuthorization(sessionStorage.getItem("accessToken"));
   }
-  console.log("setAuthorization " + sessionStorage.getItem("accessToken"));
-  console.log(client.defaults.headers.common.Authorization);
 
-  // console.log("redux " + user);
-  // console.log("redux " + user.accessToken);
-  // console.log("redux " + user.hasBujeok);
-
-  // console.log("reduxstate " + user.state.accessToken);
-  // console.log("reduxstate " + user.state.hasBujeok);
-
-  const myWish = useRef(); // 내 소원 textarea
-  const otherWish = useRef(); // 다른 소원 textarea
+  const myWish = useRef();
+  const otherWish = useRef();
   const [getData, setGetData] = useState({
-    memberName: "async",
+    userName: "async",
   });
-  // 서버에서 받아온 값을 담은 변수
 
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/bujeok`)
       // 토큰값을 안보내서 get 요청이 안오는듯.
       .then((res) => {
-        // axios.defaults.headers.common[
-        //   "Authorization"
-        // ] = `Bearer ${user.accessToken}`;
-        // console.log(axios.defaults.headers.common.Authorization);
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${sessionStorage.getItem("accessToken")}`;
+        console.log(axios.defaults.headers.common.Authorization);
         console.log(res.data);
         setGetData(res.data.response);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        if (err.response) {
+          console.log(err.response.data);
+          console.log(err.response.status);
+          console.log(err.response.headers);
+        } else if (err.request) {
+          console.log(err.request);
+        } else {
+          console.log("Error", err.message);
+        }
+        console.log(err.config);
+      });
   }, []);
 
-  // 지금 undefined 가 뜸.
-  console.log(getData.memberName);
-
   const [myTypingNum, setMyTypingNum] = useState("");
-  // 내 소원 textarea의 변경 이벤트를 감지하는 변수
   const [otherTypingNum, setOtherTypingNum] = useState("");
-  // 다른 사람 소원 textarea의 변경 이벤트를 감지하는 변수
 
   const myWishHolder = `이루고 싶은 것이라면 무엇이든 털어놓아 주세요.`;
 
-  const otherWishHolder = `응원 메시지를 남기면 ${getData.memberName}소원도
+  const otherWishHolder = `응원 메시지를 남기면 ${getData.userName}소원도
 익명으로 전달되어 응원 메시지를 받게 돼요.`;
 
   const handleMyWishText = (e) => {
@@ -80,7 +72,7 @@ const Create = () => {
         `${process.env.REACT_APP_BACKEND_URL}/bujeok-management/bujeok`,
         result
       )
-      .then((res) => console.log(res))
+      .then((res) => navigate("/confirm"))
       .catch((err) => console.log(err));
   };
 
@@ -91,7 +83,7 @@ const Create = () => {
   return (
     <div className="Create">
       <TitleLarge>
-        {getData.memberName}님이 2023년에 이루고 싶은
+        {getData.userName}님이 2023년에 이루고 싶은
         <br />
         소원을 말해주세요.
       </TitleLarge>
@@ -119,15 +111,8 @@ const Create = () => {
           onChange={(e) => handleTextOtherWish(e)}
         ></TextBox>
         <TextLength>{otherTypingNum.length}/160</TextLength>
-        {/* <Link to="/create">
-          <Button onClick={checkGET} title="소원아 이루어져라!" page="loading" />
-        </Link> */}
       </CheerUpText>
-      <BujeokBtn onClick={checkPost}>
-        {/* <Link to="/loading"> */}
-        소원아 이루어져라!
-        {/* </Link> */}
-      </BujeokBtn>
+      <BujeokBtn onClick={checkPost}>소원아 이루어져라!</BujeokBtn>
     </div>
   );
 };
@@ -203,8 +188,6 @@ const BujeokBtn = styled.button`
   }
 `;
 
-// 세 줄 이상 넘어가면 스크롤 되게끔 구현.
-// pre 태그 사용하면 되긴 함.
 const OtherWishText = styled.div`
   box-sizing: border-box;
   width: 100%;

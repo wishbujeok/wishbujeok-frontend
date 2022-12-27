@@ -20,9 +20,9 @@ const Confirm = () => {
   const [userData, setUserData] = useState();
   const [haveMessage, setHaveMessage] = useState("null");
 
-  // useEffect(() => {
-  //   axios.get("/bujeok-management/reply").then((data) => setHaveMessage(data));
-  // }, []);
+  useEffect(() => {
+    axios.get("/bujeok-management/reply").then((data) => setHaveMessage(data));
+  }, []);
 
   const user = useSelector((state) => state.user.value);
 
