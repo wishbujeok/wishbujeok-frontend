@@ -13,6 +13,7 @@ import "../components/shared/theme.css";
 
 const Confirm = () => {
   const [userData, setUserData] = useState(null);
+  let [img, setImg] = useState("");
 
   useEffect(() => {
     axios
@@ -20,6 +21,7 @@ const Confirm = () => {
       .then((data) => {
         console.log(data.response);
         setUserData(data.response);
+        // setImg(toString(data.response.category, "utf-8"));
       });
   }, []);
 
