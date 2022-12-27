@@ -17,16 +17,15 @@ import themeImg from "../assets/img/DefaultBujeokImg.svg";
 const themeText = "응원합니다. 잘 될꺼에요. ";
 
 const Confirm = () => {
-  const [userData, setUserData] = useState("");
-  const [haveMessage, setHaveMessage] = useState("null");
+  const [userData, setUserData] = useState(null);
+  // const [haveMessage, setHaveMessage] = useState("null");
 
   useEffect(() => {
-    // axios
-    //   .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/reply`)
-    //   .then((data) => {
-    // setUserData(data)
-    // setHaveData(data.boolean)
-    // });
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/reply`)
+      .then((data) => {
+        setUserData(data);
+      });
   }, []);
 
   const handleSaveImg = () => {
@@ -43,13 +42,14 @@ const Confirm = () => {
 
   return (
     <div className="Create">
-      {haveMessage === null ? (
+      {userData === null ? (
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
           <ScreenShot
-            HopeImg={themeImg}
-            text={themeText}
-            message={haveMessage}
+            // HopeImg={themeImg}
+            // text={themeText}
+            // message={userData.reply}
+            imgUrl={userData.backUrl}
           />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
@@ -78,7 +78,7 @@ const Confirm = () => {
         <>
           <TitleLarge>응원 메세지가 도착했어요!</TitleLarge>
           {/* 임시로 해놓았습니다. */}
-          <ScreenShot HopeImg={themeImg} text={themeText} />
+          <ScreenShot imgUrl={userData.backUrl} message={userData.reply} />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>
@@ -90,7 +90,7 @@ const Confirm = () => {
             </Content>
             <HaveMessageButtonContainer>
               <BujeokBtn
-                haveMessage={haveMessage}
+                haveMessage={userData.reply}
                 border={"red"}
                 bgc={"black"}
                 color={"#DA234F"}
@@ -100,7 +100,7 @@ const Confirm = () => {
                 응원 메세지 다시받기
               </BujeokBtn>
               <BujeokBtn
-                haveMessage={haveMessage}
+                haveMessage={userData.reply}
                 bgc={"#DA234F"}
                 color={"white"}
                 width={"136px"}
