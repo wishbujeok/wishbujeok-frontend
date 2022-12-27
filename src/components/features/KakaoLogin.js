@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { setAuthorization, setUseAccessToken } from "../../stores/Token";
+import { setAuthorization } from "../../stores/Token";
 import axios from "axios";
 
 const KakaoLogin = () => {
@@ -33,7 +33,6 @@ const KakaoLogin = () => {
         );
         console.log("kakaoLogin HasBujeok " + res.data.response.hasBujeok);
 
-        setUseAccessToken(res.data.response.accessToken);
         setAuthorization(res.data.response.accessToken);
 
         if (res.data.response.hasBujeok === false) {

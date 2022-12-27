@@ -1,11 +1,11 @@
 import axios from "axios";
 
 // accessToken을 저장해주기 만 한 것!
-export const setUseAccessToken = (token) => {
-  console.log("setuseAccessToken " + token);
-  const setToken = token;
-  return setToken;
-};
+// export const setUseAccessToken = (token) => {
+//   console.log("setuseAccessToken " + token);
+//   const setToken = token;
+//   return setToken;
+// };
 
 // 요청을 보내는 baseURL을 설정.
 // export const client = axios.create({
@@ -25,7 +25,9 @@ export const setAuthorization = (token) => {
   console.log(axios.defaults.headers.common.Authorization);
 };
 
-axios.defaults.headers.common["Authorization"] = `Bearer ${setUseAccessToken}`;
+axios.defaults.headers.common[
+  "Authorization"
+] = `Bearer ${sessionStorage.getItem("accessToken")}`;
 
 // request를 보낼 때 localStorage에 token 정보가 있다면
 // 헤더에 토큰 정보를 저장하고 없다면 Null로 처리함.
