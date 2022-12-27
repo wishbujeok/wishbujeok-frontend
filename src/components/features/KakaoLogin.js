@@ -27,12 +27,6 @@ const KakaoLogin = () => {
         sessionStorage.setItem("accessToken", res.data.response.accessToken);
         sessionStorage.setItem("refreshToken", res.data.response.refreshToken);
 
-        console.log("kakaologin AccessToken " + res.data.response.accessToken);
-        console.log(
-          "kakaoLogin RefreshToken " + res.data.response.refreshToken
-        );
-        console.log("kakaoLogin HasBujeok " + res.data.response.hasBujeok);
-
         setAuthorization(res.data.response.accessToken);
 
         if (res.data.response.hasBujeok === false) {
@@ -54,40 +48,8 @@ const KakaoLogin = () => {
         console.log(err.config);
       });
   }, []);
-  // 안됨..
-  console.log("stateAccess " + getData.accessToken);
-  console.log("stateRefresh " + getData.refreshToken);
-  console.log("stateHasBujeok " + getData.hasBujeok);
 
   return <></>;
-  //이쪽에 스플래시를 넣어봅시다
 };
 
-// const action = { KakaoLogin };
-
-// export { action };
 export default KakaoLogin;
-
-// 에러를 보내주면 token
-// export const setAuthorization = (token) => {
-//   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-// };
-
-// export const refreshAccessToken = async (refreshToken) => {
-//   return await axios
-//     .post(`${process.env.BACKEND_URL}/api/user/token/refresh/`, {
-//       refresh: refreshToken,
-//     })
-//     .then((res) => {
-//       sessionStorage.setItem("accessToken", res.data.access);
-//       setAuthorization(res.data.access);
-//       return res.data.access;
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// };
-
-// export const checkAccessToken = async (refreshToken) => {
-//   await refreshAccessToken(refreshToken);
-// };

@@ -1,28 +1,8 @@
 import axios from "axios";
 
-// accessToken을 저장해주기 만 한 것!
-// export const setUseAccessToken = (token) => {
-//   console.log("setuseAccessToken " + token);
-//   const setToken = token;
-//   return setToken;
-// };
-
-// 요청을 보내는 baseURL을 설정.
-// export const client = axios.create({
-//   // 수정해야할듯! 이거는 그냥 정말 baseUrl
-//   baseURL: `${process.env.BACKEND_URL}`,
-//   headers: {
-//     "Content-Type": "application/json",
-//     Authorization: `Bearer ${setUseAccessToken}`,
-//   },
-// });
-
 // 모든 요청에 대해서 헤더에 담아서 보내야해 알겠어?
 export const setAuthorization = (token) => {
-  // const dispatch = useDispatch();
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-  console.log("Token " + token);
-  console.log(axios.defaults.headers.common.Authorization);
 };
 
 axios.defaults.headers.common[
