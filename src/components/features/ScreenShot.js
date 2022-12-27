@@ -39,9 +39,9 @@ export const ScreenShot = ({ message, imgUrl }) => {
               src={supporter ? DefaultImage : DefaultImageNoneMessage}
               alt="noneMessage"
             />
+            {/* 응원 메세지가 없을때 */}
           </>
-        ) : // 응원 메세지가 없을때
-        supporter ? ( // 응원메세지가 있을 때,
+        ) : supporter ? ( // 응원메세지가 있을 때,
           <BujeokImgContainer
             onClick={handleChangeSupporterImg}
             src={imgUrl}

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-// import { useSelector } from "react-redux";
 import axios from "axios";
 import {
   ScreenShot,
-  onSaveAs,
   handleScreenShot,
 } from "../components/features/ScreenShot";
 
@@ -13,17 +11,14 @@ import { RiKakaoTalkFill } from "react-icons/ri";
 
 import "../components/shared/theme.css";
 
-import themeImg from "../assets/img/DefaultBujeokImg.svg";
-const themeText = "응원합니다. 잘 될꺼에요. ";
-
 const Confirm = () => {
   const [userData, setUserData] = useState(null);
-  // const [haveMessage, setHaveMessage] = useState("null");
 
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/reply`)
       .then((data) => {
+        console.log(data);
         setUserData(data);
       });
   }, []);
@@ -54,10 +49,7 @@ const Confirm = () => {
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>님이 빌었던 소원이에요.</TitleSmall>
-            <Content>
-              정말 간절해요 꼭 합격해서 제주도 교육이 지금보다
-              <br />더 좋은 환경이 되었으면 좋겠어요 !
-            </Content>
+            <Content>{userData.reply}</Content>
             <BujeokBtn bgc={"#DA234F"} width={"100%"} onClick={handleSaveImg}>
               부적 저장하기
             </BujeokBtn>
@@ -82,7 +74,7 @@ const Confirm = () => {
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>
-              {/* {userData.data.memberName}님이 빌었던 소원이에요. */}
+              {/* {userData.memberName}님이 빌었던 소원이에요. */}
             </TitleSmall>
             <Content>
               정말 간절해요 꼭 합격해서 제주도 교육이 지금보다 더 좋은 환경이
