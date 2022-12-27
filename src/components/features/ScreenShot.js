@@ -22,9 +22,6 @@ export const handleScreenShot = () => {
 
 export const ScreenShot = ({ message, imgUrl }) => {
   const [supporter, setSupporter] = useState(true);
-  // const [haveMessage, setHaveMessage] = useState(false);
-  // boolean 값은 메세지 유무를 보내줘야함.
-  // 메세지가 있으면 HopeImg 가 나오고, 없으면 defaultImg 가 나옴
 
   const handleChangeSupporterImg = () => {
     setSupporter(!supporter);
