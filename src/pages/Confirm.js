@@ -63,7 +63,7 @@ const Confirm = () => {
           },
         },
         {
-          title: "나의 오름찾기",
+          title: "나의 부적만들기",
           link: {
             mobileWebUrl: "https://wishbujeok.site",
             webUrl: "https://wishbujeok.site",
@@ -78,15 +78,17 @@ const Confirm = () => {
   };
 
   return (
-    <div className="Create">
+    <div className="Confirm">
       {userData === null ? (
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
           {/* <ScreenShot message={userData.reply} imgUrl={userData.backUrl} /> */}
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
-            <TitleSmall>님이 빌었던 소원이에요.</TitleSmall>
+            {/* <TitleSmall>${userData.userName님이 빌었던 소원이에요.</TitleSmall> */}
+            <TitleSmall>테스트님이 빌었던 소원이에요.</TitleSmall>
             {/* <Content>{userData.reply}</Content> */}
+            <Content>테스트</Content>
             <BujeokBtn bgc={"#DA234F"} width={"100%"} onClick={handleSaveImg}>
               부적 저장하기
             </BujeokBtn>
@@ -169,6 +171,7 @@ export default Confirm;
 
 const TitleLarge = styled.div`
   color: white;
+  font-family: "Hahmlet-Regular";
   font-size: 24px;
   font-weight: 500;
   line-height: 145%;
@@ -181,7 +184,8 @@ const LoadingImg = styled.img`
 `;
 
 const BodyLarge = styled.div`
-  color: white;
+  color: #ffffff;
+  font-family: "Hahmlet-Regular";
   font-size: 16px;
   font-weight: 300;
   line-height: 150%;
@@ -189,12 +193,18 @@ const BodyLarge = styled.div`
   margin-top: 2vh;
 `;
 
-const Wish = styled.div``;
+const Wish = styled.div`
+  width: 327px;
+  flex-direction: column;
+`;
 
 const TitleSmall = styled.div`
-  color: white;
+  width: 100%;
+
+  color: #f7f7f7;
+  font-family: "Hahmlet-Regular";
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 150%;
   letter-spacing: -0.07em;
   margin-top: 6vh;
@@ -203,15 +213,34 @@ const TitleSmall = styled.div`
 `;
 
 const Content = styled.div`
-  color: white;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 150%;
-  letter-spacing: -0.07em;
+  color: #f7f7f7;
   margin-top: 2vh;
   padding: 12px 16px 16px;
-  background: rgba(255, 255, 255, 0.1);
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 76px;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: #f7f7f7;
+  padding: 12px 16px;
+  border-radius: 4px;
   text-align: left;
+  margin-bottom: 8px;
+  display: inline-block;
+
+  font-family: "Hahmlet-Regular";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.07em;
+
+  overflow: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const BujeokBtn = styled.button`
@@ -225,7 +254,7 @@ const BujeokBtn = styled.button`
   margin-top: 8vh;
   margin-right: ${({ haveMessage }) => (haveMessage !== null ? "8px" : "0px")};
 
-  font-family: "Hahmlet";
+  font-family: "Hahmlet-Regular";
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -241,6 +270,8 @@ const BujeokBtn = styled.button`
 `;
 
 const Share = styled.div`
+  width: 100%;
+  font-family: "Hahmlet-Regular";
   font-weight: 400;
   font-size: 18px;
   line-height: 150%;
@@ -258,7 +289,7 @@ const ShareBorder = styled.div`
     width: 36%;
     height: auto;
     margin-right: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1.5px solid rgba(247, 247, 247, 0.2);
     transform: translateY(-6px);
   }
 
@@ -268,12 +299,13 @@ const ShareBorder = styled.div`
     width: 36%;
     height: auto;
     margin-left: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1.5px solid rgba(247, 247, 247, 0.2);
     transform: translateY(-6px);
   }
 `;
 
 const Social = styled.div`
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -288,7 +320,7 @@ const IconWrapper = styled.div`
   align-items: center;
   margin: 0 8px;
 
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
 
   .iconSize {
