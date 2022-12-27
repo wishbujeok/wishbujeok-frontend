@@ -18,8 +18,8 @@ const Confirm = () => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/reply`)
       .then((data) => {
-        console.log(data);
-        setUserData(data);
+        console.log(data.response);
+        setUserData(data.response);
       });
   }, []);
 
@@ -40,14 +40,11 @@ const Confirm = () => {
       {userData === null ? (
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
-          <ScreenShot
-          // message={userData.reply}
-          // imgUrl={userData.backUrl}
-          />
+          <ScreenShot message={userData.reply} imgUrl={userData.backUrl} />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>님이 빌었던 소원이에요.</TitleSmall>
-            {/* <Content>{userData.reply}</Content> */}
+            <Content>{userData.reply}</Content>
             <BujeokBtn bgc={"#DA234F"} width={"100%"} onClick={handleSaveImg}>
               부적 저장하기
             </BujeokBtn>
@@ -68,11 +65,11 @@ const Confirm = () => {
         <>
           <TitleLarge>응원 메세지가 도착했어요!</TitleLarge>
           {/* 임시로 해놓았습니다. */}
-          {/* <ScreenShot imgUrl={userData.backUrl} message={userData.reply} /> */}
+          <ScreenShot imgUrl={userData.backUrl} message={userData.reply} />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>
-              {/* {userData.memberName}님이 빌었던 소원이에요. */}
+              {userData.memberName}님이 빌었던 소원이에요.
             </TitleSmall>
             <Content>
               정말 간절해요 꼭 합격해서 제주도 교육이 지금보다 더 좋은 환경이
@@ -124,7 +121,6 @@ const Confirm = () => {
 export default Confirm;
 
 const TitleLarge = styled.div`
-  // border: 1px solid;
   color: white;
   font-size: 24px;
   font-weight: 500;
