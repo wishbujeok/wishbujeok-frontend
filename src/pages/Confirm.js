@@ -19,8 +19,8 @@ const Confirm = () => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/reply`)
       .then((data) => {
-        console.log(data.response);
-        setUserData(data.response);
+        console.log(data.data);
+        setUserData(data.data.response);
         // setImg(toString(data.response.category, "utf-8"));
       });
   }, []);
