@@ -24,6 +24,7 @@ const Confirm = () => {
         // setImg(toString(data.response.category, "utf-8"));
       });
   }, []);
+  console.log(userData);
 
   const handleSaveImg = () => {
     handleScreenShot();
