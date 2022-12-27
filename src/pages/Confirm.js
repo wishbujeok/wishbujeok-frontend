@@ -36,7 +36,7 @@ const Confirm = () => {
   const handleShareInstar = () => {
     window.open("http://www.facebook.com/sharer/sharer.php?u=");
   };
-
+  /*
   const handleShareKakao = () => {
     if (!window.Kakao.isInitialized()) {
       window.Kakao.init(process.env.REACT_APP_JAVASCRIPT_KEY);
@@ -72,6 +72,7 @@ const Confirm = () => {
       ],
     });
   };
+  */
 
   const handlerequest = () => {
     axios.get("").then((data) => setUserData(data));
@@ -151,9 +152,7 @@ const Confirm = () => {
                 </IconWrapper>
                 <IconWrapper>
                   <RiKakaoTalkFill
-                    onClick={handleShareKakao(
-                      sessionStorage.getItem("accessToken")
-                    )}
+                    // onClick={handleShareKakao()}
                     className="iconSize"
                   />
                 </IconWrapper>
