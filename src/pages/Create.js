@@ -73,7 +73,12 @@ const Create = () => {
         `${process.env.REACT_APP_BACKEND_URL}/bujeok-management/bujeok`,
         result
       )
-      .then((res) => navigate("/confirm"))
+      .then((res) => {
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${sessionStorage.getItem("accessToken")}`;
+        navigate("/confirm");
+      })
       .catch((err) => console.log(err));
   };
 
