@@ -20,9 +20,9 @@ const Confirm = () => {
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/reply`)
-      .then((data) => {
-        console.log(data.data);
-        setUserData(data.data.response);
+      .then((res) => {
+        console.log(res.data);
+        setUserData(res.data.response);
         // setImg(toString(data.response.category, "utf-8"));
       });
   }, []);
