@@ -40,43 +40,45 @@ const Confirm = () => {
   const handleShareInstar = () => {
     window.open("http://www.facebook.com/sharer/sharer.php?u=");
   };
-  /*
+
   const handleShareKakao = () => {
-    if (!window.Kakao.isInitialized()) {
-      window.Kakao.init(process.env.REACT_APP_JAVASCRIPT_KEY);
-      // SDK 초기화 여부를 확인.
-      console.log(window.Kakao.isInitialized());
-    }
-    window.Kakao.Share.sendDefault({
-      objectType: "feed",
-      content: {
-        title: "새해부적",
-        description: "부적을 만들어 보아요!",
-        imageUrl: "mainPageImg",
-        link: {
-          mobileWebUrl: "https://wishbujeok.site",
-          webUrl: "https://wishbujeok.site",
-        },
-      },
-      buttons: [
-        {
-          title: "친구 부적 확인",
-          link: {
-            mobileWebUrl: "https://wishbujeok.site/confirm",
-            webUrl: "https://wishbujeok.site/confirm",
-          },
-        },
-        {
-          title: "나의 부적만들기",
+    if (window.Kakao) {
+      const kakao = window.Kakao;
+      if (!window.Kakao.isInitialized()) {
+        window.Kakao.init(process.env.REACT_APP_JAVASCRIPT_KEY);
+        // SDK 초기화 여부를 확인.
+        console.log(window.Kakao.isInitialized());
+      }
+      window.Kakao.Share.sendDefault({
+        objectType: "feed",
+        content: {
+          title: "새해부적",
+          description: "부적을 만들어 보아요!",
+          imageUrl: "mainPageImg",
           link: {
             mobileWebUrl: "https://wishbujeok.site",
             webUrl: "https://wishbujeok.site",
           },
         },
-      ],
-    });
+        buttons: [
+          {
+            title: "친구 부적 확인",
+            link: {
+              mobileWebUrl: "https://wishbujeok.site/confirm",
+              webUrl: "https://wishbujeok.site/confirm",
+            },
+          },
+          {
+            title: "나의 부적만들기",
+            link: {
+              mobileWebUrl: "https://wishbujeok.site",
+              webUrl: "https://wishbujeok.site",
+            },
+          },
+        ],
+      });
+    }
   };
-  */
 
   // 응원다시받기 onclick 후 일어나는 일.
   const handlerequest = () => {
@@ -103,7 +105,10 @@ const Confirm = () => {
                   <SiInstagram className="iconSize" />
                 </IconWrapper>
                 <IconWrapper>
-                  <RiKakaoTalkFill className="iconSize" />
+                  <RiKakaoTalkFill
+                    onClick={handleShareKakao}
+                    className="iconSize"
+                  />
                 </IconWrapper>
               </Social>
             </Share>
@@ -150,7 +155,7 @@ const Confirm = () => {
                 </IconWrapper>
                 <IconWrapper>
                   <RiKakaoTalkFill
-                    // onClick={handleShareKakao()}
+                    onClick={handleShareKakao}
                     className="iconSize"
                   />
                 </IconWrapper>
