@@ -85,7 +85,7 @@ const Confirm = () => {
 
   return (
     <div className="Confirm">
-      {userData === null ? (
+      {userData.reply === null ? (
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
           {/* <ScreenShot message={userData.reply} imgUrl={userData.backUrl} /> */}
