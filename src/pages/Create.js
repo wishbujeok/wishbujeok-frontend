@@ -163,6 +163,7 @@ const TextBox = styled.textarea`
 `;
 
 const CheerUpText = styled.div`
+  width: 327px;
   flex-direction: column;
 `;
 
