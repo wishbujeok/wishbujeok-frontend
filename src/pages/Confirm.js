@@ -14,13 +14,17 @@ import "../components/shared/theme.css";
 import KakaoLogin from "../components/features/KakaoLogin";
 
 const Confirm = () => {
-  const [userData, setUserData] = useState(null);
+  // const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState([]);
   let [img, setImg] = useState("");
 
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/reply`)
       .then((res) => {
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${sessionStorage.getItem("accessToken")}`;
         console.log(res.data);
         setUserData(res.data.response);
         // setImg(toString(data.response.category, "utf-8"));
@@ -74,6 +78,7 @@ const Confirm = () => {
   };
   */
 
+  // 응원다시받기 onclick 후 일어나는 일.
   const handlerequest = () => {
     axios.get("").then((data) => setUserData(data));
   };
@@ -86,7 +91,7 @@ const Confirm = () => {
           {/* <ScreenShot message={userData.reply} imgUrl={userData.backUrl} /> */}
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
-            {/* <TitleSmall>${userData.userName님이 빌었던 소원이에요.</TitleSmall> */}
+            <TitleSmall>${userData.userName}님이 빌었던 소원이에요.</TitleSmall>
             <TitleSmall>테스트님이 빌었던 소원이에요.</TitleSmall>
             {/* <Content>{userData.reply}</Content> */}
             <Content>테스트</Content>
@@ -114,12 +119,9 @@ const Confirm = () => {
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>
-              {/* {userData.memberName}님이 빌었던 소원이에요. */}
+              {userData.memberName}님이 빌었던 소원이에요.
             </TitleSmall>
-            <Content>
-              정말 간절해요 꼭 합격해서 제주도 교육이 지금보다 더 좋은 환경이
-              되었으면 좋겠어요 !
-            </Content>
+            <Content>{userData.reply}</Content>
             <HaveMessageButtonContainer>
               <BujeokBtn
                 // haveMessage={userData.reply}
