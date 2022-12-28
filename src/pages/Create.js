@@ -102,7 +102,8 @@ const Create = () => {
         진심 어린 응원의 메시지를 남겨주세요.
       </TitleLarge>
       <CheerUpText>
-        {/* <OtherWishText>{getData.otherWish}</OtherWishText> */}
+        <OtherWishText>{getData.otherWish}</OtherWishText>
+        {/* <OtherWishText>테스트입니다</OtherWishText> */}
         <TextBox
           col="25"
           row="3"
