@@ -30,7 +30,6 @@ const Confirm = () => {
         // setImg(toString(data.response.category, "utf-8"));
       });
   }, []);
-  console.log("hello world");
   console.log(userData);
 
   const handleSaveImg = () => {
@@ -92,9 +91,7 @@ const Confirm = () => {
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>${userData.userName}님이 빌었던 소원이에요.</TitleSmall>
-            <TitleSmall>테스트님이 빌었던 소원이에요.</TitleSmall>
-            {/* <Content>{userData.reply}</Content> */}
-            <Content>테스트</Content>
+            <Content>{userData.reply}</Content>
             <BujeokBtn bgc={"#DA234F"} width={"100%"} onClick={handleSaveImg}>
               부적 저장하기
             </BujeokBtn>
@@ -118,9 +115,7 @@ const Confirm = () => {
           {/* <ScreenShot imgUrl={userData.backUrl} message={userData.reply} /> */}
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
-            <TitleSmall>
-              {userData.memberName}님이 빌었던 소원이에요.
-            </TitleSmall>
+            <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
             <Content>{userData.reply}</Content>
             <HaveMessageButtonContainer>
               <BujeokBtn
