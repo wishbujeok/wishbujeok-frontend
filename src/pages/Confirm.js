@@ -91,7 +91,7 @@ const Confirm = () => {
           {/* <ScreenShot message={userData.reply} imgUrl={userData.backUrl} /> */}
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
-            <TitleSmall>${userData.userName}님이 빌었던 소원이에요.</TitleSmall>
+            <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
             <Content>{userData.content}</Content>
             <BujeokBtn bgc={"#DA234F"} width={"100%"} onClick={handleSaveImg}>
               부적 저장하기
