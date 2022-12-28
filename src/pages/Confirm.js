@@ -8,13 +8,14 @@ import {
 
 import { SiInstagram } from "react-icons/si";
 import { RiKakaoTalkFill } from "react-icons/ri";
-import { mainPageImg } from "../assets/img/mainPageImg.svg";
+
+// 카카오톡 공유할 때 이미지 넣어놓은 것.
+// import { mainPageImg } from "../assets/img/mainPageImg.svg";
 
 import "../components/shared/theme.css";
 import KakaoLogin from "../components/features/KakaoLogin";
 
 const Confirm = () => {
-  // const [userData, setUserData] = useState(null);
   const [userData, setUserData] = useState([]);
   let [img, setImg] = useState("");
 
@@ -84,14 +85,14 @@ const Confirm = () => {
 
   return (
     <div className="Confirm">
-      {userData === null ? (
+      {userData.reply === null ? (
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
           {/* <ScreenShot message={userData.reply} imgUrl={userData.backUrl} /> */}
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>${userData.userName}님이 빌었던 소원이에요.</TitleSmall>
-            <Content>{userData.reply}</Content>
+            <Content>{userData.content}</Content>
             <BujeokBtn bgc={"#DA234F"} width={"100%"} onClick={handleSaveImg}>
               부적 저장하기
             </BujeokBtn>
@@ -116,7 +117,7 @@ const Confirm = () => {
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
-            <Content>{userData.reply}</Content>
+            <Content>{userData.content}</Content>
             <HaveMessageButtonContainer>
               <BujeokBtn
                 // haveMessage={userData.reply}
