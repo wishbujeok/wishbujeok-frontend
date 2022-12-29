@@ -17,7 +17,8 @@ import KakaoLogin from "../components/features/KakaoLogin";
 
 const Confirm = () => {
   const [userData, setUserData] = useState([]);
-  let [img, setImg] = useState("");
+  let [img, setImg] = useState(null);
+  const [reply, setReply] = useState(null);
 
   useEffect(() => {
     axios
@@ -28,6 +29,7 @@ const Confirm = () => {
         ] = `Bearer ${sessionStorage.getItem("accessToken")}`;
         console.log(res.data);
         setUserData(res.data.response);
+        setReply(res.data.response.reply);
         // setImg(toString(data.response.category, "utf-8"));
       });
   }, []);
@@ -38,7 +40,7 @@ const Confirm = () => {
   };
 
   const handleShareInstar = () => {
-    window.open("http://www.facebook.com/sharer/sharer.php?u=");
+    window.open("https://www.instagram.com/");
   };
 
   const handleShareKakao = () => {
@@ -81,16 +83,17 @@ const Confirm = () => {
   };
 
   // 응원다시받기 onclick 후 일어나는 일.
-  const handlerequest = () => {
+  const handleRequest = () => {
     axios.get("").then((data) => setUserData(data));
   };
 
+  const themeText = `새해부적 대박 ! \n 새해부적 대박 ! \n 새해부적 대박 ! \n 새해부적 대박 ! \n `;
   return (
     <div className="Confirm">
-      {userData.reply === null ? (
+      {userData.length !== 0 ? (
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
-          {/* <ScreenShot message={userData.reply} imgUrl={userData.backUrl} /> */}
+          <ScreenShot message={userData.reply} imgUrl={userData.backUrl} />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
@@ -101,7 +104,7 @@ const Confirm = () => {
             <Share>
               <ShareBorder>공유하기</ShareBorder>
               <Social>
-                <IconWrapper>
+                <IconWrapper onClick={handleShareInstar}>
                   <SiInstagram className="iconSize" />
                 </IconWrapper>
                 <IconWrapper>
@@ -118,7 +121,7 @@ const Confirm = () => {
         <>
           <TitleLarge>응원 메세지가 도착했어요!</TitleLarge>
           {/* 임시로 해놓았습니다. */}
-          {/* <ScreenShot imgUrl={userData.backUrl} message={userData.reply} /> */}
+          <ScreenShot imgUrl={userData.backUrl} message={userData.reply} />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
@@ -130,7 +133,7 @@ const Confirm = () => {
                 bgc={"black"}
                 color={"#DA234F"}
                 width={"183px"}
-                onClick={handlerequest}
+                onClick={handleRequest}
               >
                 응원 메세지 다시받기
               </BujeokBtn>
@@ -160,7 +163,6 @@ const Confirm = () => {
                   />
                 </IconWrapper>
               </Social>
-              {/* <button onClick={handleShareInstar}>인스타그램</button> */}
             </Share>
           </Wish>
         </>

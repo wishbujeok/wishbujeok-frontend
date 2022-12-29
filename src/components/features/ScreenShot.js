@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import html2canvas from "html2canvas";
 
@@ -20,33 +20,51 @@ export const handleScreenShot = () => {
   });
 };
 
-export const ScreenShot = ({ message, imgUrl }) => {
+export const ScreenShot = ({ message, imgUrl, color }) => {
   const [supporter, setSupporter] = useState(true);
+  const [defaultMessage, setDefaultMessage] = useState(
+    "응원 메세지가 아직 도착하지 않았어요"
+  );
 
   const handleChangeSupporterImg = () => {
     setSupporter(!supporter);
   };
+
+  useEffect(() => {
+    const newMessage = message;
+    const result = newMessage.replace(/\n/g, <br />);
+    setDefaultMessage(result);
+  }, []);
+
   return (
     <Container>
       <Div id="div">
-        {message === null ? (
-          <>
-            <BujeokImgContainer
-              onClick={handleChangeSupporterImg}
-              src={supporter ? DefaultImage : DefaultImageNoneMessage}
-              alt="noneMessage"
-            />
-            {/* 응원 메세지가 없을때 */}
-          </>
+        {message === undefined ? (
+          supporter ? (
+            <>
+              <BujeokImgContainer
+                onClick={handleChangeSupporterImg}
+                src={DefaultImage}
+                alt="noneMessage"
+              />
+            </>
+          ) : (
+            <TextWrapper onClick={handleChangeSupporterImg}>
+              <BujeokText>응원 메세지가 아직 도착하지 않았어요</BujeokText>
+            </TextWrapper>
+          )
         ) : supporter ? ( // 응원메세지가 있을 때,
           <BujeokImgContainer
             onClick={handleChangeSupporterImg}
-            src={imgUrl}
+            src={
+              DefaultImage
+              // imgUrl
+            }
             alt="haveMessage"
           /> // 응원메세지가 있고, 기본이미지
         ) : (
-          <TextWrapper onClick={handleChangeSupporterImg}>
-            <BujeokText>{message}</BujeokText>
+          <TextWrapper bgc={color} onClick={handleChangeSupporterImg}>
+            <BujeokText>{defaultMessage}</BujeokText>
           </TextWrapper>
         )}
       </Div>
@@ -73,7 +91,7 @@ const BujeokImgContainer = styled.img`
 `;
 
 const TextWrapper = styled.div`
-  background-color: #6fa4f2;
+  background-color: ${({ bgc }) => (bgc !== undefined ? bgc : "#6FA4F2")};
   text-align: center;
   display: flex;
   justify-content: center;
@@ -83,7 +101,7 @@ const TextWrapper = styled.div`
   box-sizing: border-box;
 `;
 
-const BujeokText = styled.pre`
+const BujeokText = styled.div`
   line-height: 120%;
   font-weight: 400;
   font-size: 18px;
