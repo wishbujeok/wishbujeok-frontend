@@ -42,7 +42,6 @@ const Confirm = () => {
 
   const handleShareKakao = () => {
     if (window.Kakao) {
-      const kakao = window.Kakao;
       if (!window.Kakao.isInitialized()) {
         window.Kakao.init(process.env.REACT_APP_JAVASCRIPT_KEY);
         // SDK 초기화 여부를 확인.
