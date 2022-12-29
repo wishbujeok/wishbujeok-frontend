@@ -34,7 +34,9 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
     const newMessage = message;
     const result = newMessage.replace(/\n/g, <br />);
     setDefaultMessage(result);
+    console.log(defaultMessage);
   }, []);
+  console.log(defaultMessage);
 
   return (
     <Container>
