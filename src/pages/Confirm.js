@@ -27,7 +27,6 @@ const Confirm = () => {
         axios.defaults.headers.common[
           "Authorization"
         ] = `Bearer ${sessionStorage.getItem("accessToken")}`;
-        console.log(res.data);
         setUserData(res.data.response);
         setReply(res.data.response.reply);
         // setImg(toString(data.response.category, "utf-8"));
@@ -87,13 +86,13 @@ const Confirm = () => {
     axios.get("").then((data) => setUserData(data));
   };
 
-  const themeText = `새해부적 대박 ! \n 새해부적 대박 ! \n 새해부적 대박 ! \n 새해부적 대박 ! \n `;
+  console.log(userData);
   return (
     <div className="Confirm">
       {userData.length !== 0 ? (
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
-          <ScreenShot message={userData.reply} imgUrl={userData.backUrl} />
+          {/* <ScreenShot message={userData.reply} imgUrl={userData.backUrl} /> */}
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
@@ -121,7 +120,7 @@ const Confirm = () => {
         <>
           <TitleLarge>응원 메세지가 도착했어요!</TitleLarge>
           {/* 임시로 해놓았습니다. */}
-          <ScreenShot imgUrl={userData.backUrl} message={userData.reply} />
+          {/* <ScreenShot imgUrl={userData.backUrl} message={userData.reply} /> */}
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>

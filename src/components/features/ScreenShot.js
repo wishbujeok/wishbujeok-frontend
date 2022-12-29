@@ -30,13 +30,13 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
     setSupporter(!supporter);
   };
 
-  useEffect(() => {
-    const newMessage = message;
-    const result = newMessage.replace(/\n/g, <br />);
-    setDefaultMessage(result);
-    console.log(defaultMessage);
-  }, []);
-  console.log(defaultMessage);
+  // useEffect(() => {
+  //   const newMessage = message;
+  //   const result = newMessage.replaceAll(/\n/gi, <br />);
+  //   setDefaultMessage(result);
+  //   console.log(defaultMessage);
+  // }, []);
+  // console.log(defaultMessage);
 
   return (
     <Container>
