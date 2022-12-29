@@ -21,7 +21,6 @@ const KakaoLogin = () => {
         }
       )
       .then((res) => {
-        console.log(res.data);
         setGetData(res.data.response);
 
         sessionStorage.setItem("accessToken", res.data.response.accessToken);
