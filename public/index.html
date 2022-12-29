@@ -7,16 +7,17 @@
     <meta name="theme-color" content="#000000" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    <script>
-      Kakao.init(process.env.REACT_APP_JAVASCRIPT_KEY);
-      console.log(Kakao.isInitialized());
-    </script>
-    <title>새해부적</title>
     <script
       src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
       integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx"
       crossorigin="anonymous"
     ></script>
+    <script>
+      // const { Kakao } = window;
+      Kakao.init(process.env.REACT_APP_JAVASCRIPT_KEY);
+      console.log(Kakao.isInitialized());
+    </script>
+    <title>새해부적</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
