@@ -17,7 +17,6 @@ import KakaoLogin from "../components/features/KakaoLogin";
 
 const Confirm = () => {
   const [userData, setUserData] = useState([]);
-  let [img, setImg] = useState(null);
   const [reply, setReply] = useState(null);
 
   useEffect(() => {
@@ -29,7 +28,6 @@ const Confirm = () => {
         ] = `Bearer ${sessionStorage.getItem("accessToken")}`;
         setUserData(res.data.response);
         setReply(res.data.response.reply);
-        // setImg(toString(data.response.category, "utf-8"));
       });
   }, []);
   console.log(userData);
@@ -119,7 +117,6 @@ const Confirm = () => {
       ) : (
         <>
           <TitleLarge>응원 메세지가 도착했어요!</TitleLarge>
-          {/* 임시로 해놓았습니다. */}
           {/* <ScreenShot imgUrl={userData.backUrl} message={userData.reply} /> */}
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
