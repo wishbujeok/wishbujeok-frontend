@@ -60,7 +60,7 @@ const Create = () => {
 
   const checkPost = () => {
     const result = {
-      otherWishId: 0,
+      otherWishId: otherWish.otherWishId,
       content: myWish.current.value,
       cheerUp: otherWish.current.value,
     };
