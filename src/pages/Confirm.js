@@ -216,11 +216,10 @@ const TitleSmall = styled.div`
 `;
 
 const Content = styled.pre`
-  & {
-    ::-webkit-scrollbar {
-      display: none;
-    }
+  ::-webkit-scrollbar {
+    display: none;
   }
+
   overflow: auto;
   white-space: pre-wrap;
 
