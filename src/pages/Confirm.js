@@ -182,10 +182,6 @@ const TitleLarge = styled.div`
   margin-top: 10vh;
 `;
 
-const LoadingImg = styled.img`
-  margin-top: 4vh;
-`;
-
 const BodyLarge = styled.div`
   color: #ffffff;
   font-family: "Hahmlet-Regular";
@@ -219,7 +215,6 @@ const Content = styled.pre`
   ::-webkit-scrollbar {
     display: none;
   }
-
   overflow: auto;
   white-space: pre-wrap;
 
