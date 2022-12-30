@@ -37,7 +37,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
             <>
               <BujeokImgContainer
                 onClick={handleChangeSupporterImg}
-                src={DefaultImage}
+                src={imgUrl}
                 alt="noneMessage"
               />
             </>
@@ -52,10 +52,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
         ) : supporter ? ( // 응원메세지가 있을 때,
           <BujeokImgContainer
             onClick={handleChangeSupporterImg}
-            src={
-              DefaultImage
-              // imgUrl
-            }
+            src={imgUrl}
             alt="haveMessage"
           /> // 응원메세지가 있고, 기본이미지
         ) : (

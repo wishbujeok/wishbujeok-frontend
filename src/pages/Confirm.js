@@ -13,11 +13,12 @@ import { RiKakaoTalkFill } from "react-icons/ri";
 // import { mainPageImg } from "../assets/img/mainPageImg.svg";
 
 import "../components/shared/theme.css";
-import KakaoLogin from "../components/features/KakaoLogin";
 
 const Confirm = () => {
   const [userData, setUserData] = useState([]);
   const [reply, setReply] = useState(null);
+
+  //imgURL, backColor
 
   useEffect(() => {
     axios
@@ -44,7 +45,6 @@ const Confirm = () => {
     if (window.Kakao) {
       if (!window.Kakao.isInitialized()) {
         window.Kakao.init(process.env.REACT_APP_JAVASCRIPT_KEY);
-        // SDK 초기화 여부를 확인.
         console.log(window.Kakao.isInitialized());
       }
       window.Kakao.Share.sendDefault({
@@ -59,13 +59,6 @@ const Confirm = () => {
           },
         },
         buttons: [
-          {
-            title: "친구 부적 확인",
-            link: {
-              mobileWebUrl: "https://wishbujeok.site/confirm",
-              webUrl: "https://wishbujeok.site/confirm",
-            },
-          },
           {
             title: "나의 부적만들기",
             link: {
@@ -96,7 +89,11 @@ const Confirm = () => {
       {userData.reply !== null || userData.reply !== undefined ? (
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
-          <ScreenShot message={userData.reply} imgUrl={userData.backUrl} />
+          <ScreenShot
+            message={userData.reply}
+            imgUrl={userData.backUrl}
+            backColor={userData.backColor}
+          />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
@@ -123,7 +120,11 @@ const Confirm = () => {
       ) : (
         <>
           <TitleLarge>응원 메세지가 도착했어요!</TitleLarge>
-          <ScreenShot imgUrl={userData.backUrl} message={userData.reply} />
+          <ScreenShot
+            imgUrl={userData.imgURL}
+            message={userData.reply}
+            backColor={userData.backColor}
+          />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
