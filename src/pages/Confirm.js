@@ -124,7 +124,7 @@ const Confirm = () => {
       ) : (
         <>
           <TitleLarge>응원 메세지가 도착했어요!</TitleLarge>
-          <ScreenShot imgUrl={userData.backUrl} message={message} />
+          <ScreenShot imgUrl={userData.backUrl} message={userData.reply} />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
