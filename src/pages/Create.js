@@ -59,8 +59,9 @@ const Create = () => {
   };
 
   const checkPost = () => {
+    //otherWishId
     const result = {
-      otherWishId: otherWish.otherWishId,
+      otherWishId: getData.otherWishId,
       content: myWish.current.value,
       cheerUp: otherWish.current.value,
     };
