@@ -86,6 +86,7 @@ const Create = () => {
   }
 
   return (
+    // <Wrapper className="Create">
     <div className="Create">
       <TitleLarge>
         {getData.userName}님이 2023년에 이루고 싶은
@@ -120,10 +121,21 @@ const Create = () => {
       </CheerUpText>
       <BujeokBtn onClick={checkPost}>소원아 이루어져라!</BujeokBtn>
     </div>
+    // {/* </Wrapper> */}
   );
 };
 
 export default Create;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  height: 100vh;
+`;
 
 const TitleLarge = styled.div`
   width: 100%;
@@ -169,17 +181,23 @@ const TextBox = styled.textarea`
 
 const CheerUpText = styled.div`
   width: 327px;
+  height: auto;
   flex-direction: column;
 `;
 
 const BujeokBtn = styled.button`
   background-color: #da234f;
   color: white;
-  width: 100%;
+  /* width: 100%; */
   height: 52px;
   border-radius: 8px;
   border: none;
-  margin-top: 81px;
+  /* margin-top: 81px; */
+  /* margin-bottom: 10px; */
+  position: fixed;
+  left: 24px;
+  right: 24px;
+  bottom: 10px;
 
   font-family: "Hahmlet-Regular";
   font-style: normal;
