@@ -94,7 +94,7 @@ const Confirm = () => {
   지금까지 3번띄어쓰기를 했습니다.`;
   return (
     <div className="Confirm">
-      {userData.reply === null ? (
+      {userData.reply !== null || userData.reply !== undefined ? (
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
           <ScreenShot message={userData.reply} imgUrl={userData.backUrl} />
@@ -220,6 +220,11 @@ const TitleSmall = styled.div`
 `;
 
 const Content = styled.pre`
+  & {
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
   overflow: auto;
   white-space: pre-wrap;
 
