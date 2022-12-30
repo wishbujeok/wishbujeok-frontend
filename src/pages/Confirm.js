@@ -220,6 +220,9 @@ const TitleSmall = styled.div`
 `;
 
 const Content = styled.pre`
+  overflow: auto;
+  white-space: pre-wrap;
+
   color: #f7f7f7;
   margin-top: 2vh;
   padding: 12px 16px 16px;
