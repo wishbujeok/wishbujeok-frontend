@@ -88,7 +88,7 @@ const Confirm = () => {
           <ScreenShot
             message={userData.reply}
             imgUrl={userData.imgURL}
-            backColor={userData.backColor}
+            color={userData.backColor}
           />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
@@ -119,7 +119,7 @@ const Confirm = () => {
           <ScreenShot
             imgUrl={userData.imgURL}
             message={userData.reply}
-            backColor={userData.backColor}
+            color={userData.backColor}
           />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>

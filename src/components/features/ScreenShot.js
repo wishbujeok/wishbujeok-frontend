@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import html2canvas from "html2canvas";
 
-import DefaultImage from "../../assets/img/DefaultBujeokImg.svg";
-import DefaultImageNoneMessage from "../../assets/img/DefaultImgNoneMessage.svg";
-
 export const onSaveAs = (url, fillName) => {
   let link = document.createElement("a");
   document.body.appendChild(link);
