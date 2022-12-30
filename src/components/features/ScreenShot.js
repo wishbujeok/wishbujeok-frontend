@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import html2canvas from "html2canvas";
 
-import DefaultImage from "../../assets/img/DefaultBujeokImg.svg";
-import DefaultImageNoneMessage from "../../assets/img/DefaultImgNoneMessage.svg";
-
 export const onSaveAs = (url, fillName) => {
   let link = document.createElement("a");
   document.body.appendChild(link);
@@ -84,7 +81,7 @@ const BujeokImgContainer = styled.img`
 `;
 
 const TextWrapper = styled.div`
-  background-color: ${({ bgc }) => (bgc === undefined ? bgc : "#6FA4F2")};
+  background-color: ${({ bgc }) => (bgc !== undefined ? bgc : "#6FA4F2")};
   // background-color: #6fa4f2;
   text-align: center;
   display: flex;
