@@ -284,6 +284,7 @@ const Share = styled.div`
   text-align: center;
   color: white;
   margin-top: 6vh;
+  margin-bottom: 6vh;
 `;
 
 const ShareBorder = styled.div`
@@ -292,20 +293,22 @@ const ShareBorder = styled.div`
     content: "";
     display: inline-block;
     width: 36%;
-    height: auto;
+    height: 1.5px;
     margin-right: 10px;
-    border: 1.5px solid rgba(247, 247, 247, 0.2);
+    /* border: 1.5px solid rgba(247, 247, 247, 0.2); */
     transform: translateY(-6px);
+    background-color: rgba(247, 247, 247, 0.2);
   }
 
   &:after {
     content: "";
     display: inline-block;
     width: 36%;
-    height: auto;
+    height: 1.5px;
     margin-left: 10px;
-    border: 1.5px solid rgba(247, 247, 247, 0.2);
+    /* border: 0.5px solid rgba(247, 247, 247, 0.2); */
     transform: translateY(-6px);
+    background-color: rgba(247, 247, 247, 0.2);
   }
 `;
 
