@@ -22,21 +22,10 @@ export const handleScreenShot = () => {
 
 export const ScreenShot = ({ message, imgUrl, color }) => {
   const [supporter, setSupporter] = useState(true);
-  const [defaultMessage, setDefaultMessage] = useState(
-    `응원 메세지가 ${(<br />)}아직 도착하지 않았어요`
-  );
 
   const handleChangeSupporterImg = () => {
     setSupporter(!supporter);
   };
-
-  // useEffect(() => {
-  //   const newMessage = message;
-  //   const result = newMessage.replaceAll(/\n/gi, <br />);
-  //   setDefaultMessage(result);
-  //   console.log(defaultMessage);
-  // }, []);
-  // console.log(defaultMessage);
 
   console.log(message);
 
