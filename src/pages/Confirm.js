@@ -321,6 +321,7 @@ const Social = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 16px;
+  margin-bottom: 50px;
 `;
 
 const IconWrapper = styled.div`
