@@ -86,7 +86,8 @@ const Confirm = () => {
 
   return (
     <div className="Confirm">
-      {userData.reply === null || userData.reply === undefined ? (
+      {/* {userData.reply === null || userData.reply === undefined ? */}
+      {userData.length === 1 ? (
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
           <ScreenShot
@@ -98,10 +99,15 @@ const Confirm = () => {
           <Wish>
             <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
             <Content>{userData.content}</Content>
-            <BujeokBtn bgc={"#DA234F"} width={"100%"} onClick={handleSaveImg}>
+            <BujeokButton
+              bgc={"#DA234F"}
+              width={"100%"}
+              color={"white"}
+              onClick={handleSaveImg}
+            >
               부적 저장하기
               <FiDownload className="downloadIcon" />
-            </BujeokBtn>
+            </BujeokButton>
             <Share>
               <ShareBorder>공유하기</ShareBorder>
               <Social>
@@ -131,7 +137,7 @@ const Confirm = () => {
             <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
             <Content>{userData.content}</Content>
             <HaveMessageButtonContainer>
-              <BujeokBtn
+              <BujeokButton
                 haveMessage={userData.reply}
                 border={"red"}
                 bgc={"black"}
@@ -141,8 +147,8 @@ const Confirm = () => {
               >
                 응원 메세지 다시받기
                 <RxReload className="reLender" />
-              </BujeokBtn>
-              <BujeokBtn
+              </BujeokButton>
+              <BujeokButton
                 haveMessage={userData.reply}
                 bgc={"#DA234F"}
                 color={"white"}
@@ -151,7 +157,7 @@ const Confirm = () => {
               >
                 부적 저장하기
                 <FiDownload className="downloadIcon" />
-              </BujeokBtn>
+              </BujeokButton>
             </HaveMessageButtonContainer>
             <Share>
               <ShareBorder>공유하기</ShareBorder>
@@ -179,6 +185,59 @@ const Confirm = () => {
 
 export default Confirm;
 
+const BujeokButton = styled.button`
+  background-color: ${({ bgc }) => (bgc === "black" ? "black" : bgc)};
+  width: ${(width) => (width ? width : "100%")};
+  border: ${({ border }) => (border === "red" ? "1px solid red" : "none")};
+  margin-right: ${({ haveMessage }) =>
+    haveMessage !== null || haveMessage !== undefined ? "8px" : "0px"};
+
+  box-sizing: border-box;
+  color: white;
+  height: 52px;
+  border-radius: 10px;
+  margin-top: 8vh;
+
+  font-family: "Hahmlet-Regular";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  text-align: center;
+  letter-spacing: -0.07em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .downloadIcon {
+    font-size: 16px;
+    color: #ffffff;
+    margin-left: 5px;
+    transform: translateY(1px);
+  }
+
+  .reLender {
+    font-size: 16px;
+    color: #da234f;
+    margin-left: 5px;
+    transform: translateY(1px);
+  }
+`;
+
+const HaveMessageButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 100%;
+`;
+
 const TitleLarge = styled.div`
   color: white;
   font-family: "Hahmlet-Regular";
@@ -187,6 +246,8 @@ const TitleLarge = styled.div`
   line-height: 145%;
   letter-spacing: -0.07em;
   margin-top: 10vh;
+
+  text-align: center;
 `;
 
 const BodyLarge = styled.div`
@@ -197,6 +258,8 @@ const BodyLarge = styled.div`
   line-height: 150%;
   letter-spacing: -0.07em;
   margin-top: 2vh;
+
+  text-align: center;
 `;
 
 const Wish = styled.div`
@@ -252,49 +315,6 @@ const Content = styled.pre`
 
   &::-webkit-scrollbar {
     display: none;
-  }
-`;
-
-const BujeokBtn = styled.button`
-  box-sizing: border-box;
-  background-color: ${({ bgc }) => (bgc === "black" ? "black" : bgc)};
-  color: white;
-  width: ${(width) => (width ? width : "100%")};
-  height: 56px;
-  border-radius: 10px;
-  border: ${({ border }) => (border === "red" ? "1px solid red" : "none")};
-  margin-top: 8vh;
-  margin-right: ${({ haveMessage }) => (haveMessage !== null ? "8px" : "0px")};
-
-  font-family: "Hahmlet-Regular";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  /* line-height: 150%; */
-  text-align: center;
-  letter-spacing: -0.07em;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  a {
-    text-decoration: none;
-    color: white;
-  }
-
-  .downloadIcon {
-    font-size: 16px;
-    color: #ffffff;
-    margin-left: 5px;
-    transform: translateY(1px);
-  }
-
-  .reLender {
-    font-size: 16px;
-    color: #da234f;
-    margin-left: 5px;
-    transform: translateY(1px);
   }
 `;
 
@@ -358,12 +378,4 @@ const IconWrapper = styled.div`
     width: 40px;
     height: 40px;
   }
-`;
-
-const HaveMessageButtonContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-
-  width: 100%;
 `;
