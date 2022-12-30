@@ -107,6 +107,17 @@ const TextWrapper = styled.div`
 `;
 
 const BujeokText = styled.pre`
+  & {
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  box-sizing: border-box;
+  height: 270px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   overflow: auto;
   white-space: pre-wrap;
 
