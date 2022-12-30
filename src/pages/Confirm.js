@@ -80,16 +80,23 @@ const Confirm = () => {
 
   // 응원다시받기 onclick 후 일어나는 일.
   const handleRequest = () => {
-    axios.get("").then((data) => setUserData(data));
+    axios
+      .delete(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/reply`)
+      .then((data) => setUserData(data));
   };
 
   console.log(userData);
+
+  const message = `안녕하세요(줄바꿈)
+  저는 양현준입니다.(줄바꿈)
+  띄어쓰기가 제대로 작동하는지 궁금해요.(줄바꿈)
+  지금까지 3번띄어쓰기를 했습니다.`;
   return (
     <div className="Confirm">
-      {userData.length !== 0 ? (
+      {userData.reply !== undefined ? (
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
-          {/* <ScreenShot message={userData.reply} imgUrl={userData.backUrl} /> */}
+          <ScreenShot message={userData.reply} imgUrl={userData.backUrl} />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
@@ -116,14 +123,14 @@ const Confirm = () => {
       ) : (
         <>
           <TitleLarge>응원 메세지가 도착했어요!</TitleLarge>
-          {/* <ScreenShot imgUrl={userData.backUrl} message={userData.reply} /> */}
+          <ScreenShot imgUrl={userData.backUrl} message={message} />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
             <Content>{userData.content}</Content>
             <HaveMessageButtonContainer>
               <BujeokBtn
-                // haveMessage={userData.reply}
+                haveMessage={userData.reply}
                 border={"red"}
                 bgc={"black"}
                 color={"#DA234F"}
@@ -133,7 +140,7 @@ const Confirm = () => {
                 응원 메세지 다시받기
               </BujeokBtn>
               <BujeokBtn
-                // haveMessage={userData.reply}
+                haveMessage={userData.reply}
                 bgc={"#DA234F"}
                 color={"white"}
                 width={"136px"}
@@ -211,7 +218,7 @@ const TitleSmall = styled.div`
   text-align: left;
 `;
 
-const Content = styled.div`
+const Content = styled.pre`
   color: #f7f7f7;
   margin-top: 2vh;
   padding: 12px 16px 16px;
