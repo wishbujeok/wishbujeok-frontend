@@ -86,7 +86,7 @@ const Confirm = () => {
 
   return (
     <div className="Confirm">
-      {userData.reply !== null || userData.reply !== undefined ? (
+      {userData.reply === null || userData.reply === undefined ? (
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
           <ScreenShot
