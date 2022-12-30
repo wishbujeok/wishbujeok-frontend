@@ -13,7 +13,6 @@ import { RiKakaoTalkFill } from "react-icons/ri";
 // import { mainPageImg } from "../assets/img/mainPageImg.svg";
 
 import "../components/shared/theme.css";
-import KakaoLogin from "../components/features/KakaoLogin";
 
 const Confirm = () => {
   const [userData, setUserData] = useState([]);
@@ -44,7 +43,6 @@ const Confirm = () => {
     if (window.Kakao) {
       if (!window.Kakao.isInitialized()) {
         window.Kakao.init(process.env.REACT_APP_JAVASCRIPT_KEY);
-        // SDK 초기화 여부를 확인.
         console.log(window.Kakao.isInitialized());
       }
       window.Kakao.Share.sendDefault({
@@ -59,13 +57,6 @@ const Confirm = () => {
           },
         },
         buttons: [
-          {
-            title: "친구 부적 확인",
-            link: {
-              mobileWebUrl: "https://wishbujeok.site/confirm",
-              webUrl: "https://wishbujeok.site/confirm",
-            },
-          },
           {
             title: "나의 부적만들기",
             link: {
