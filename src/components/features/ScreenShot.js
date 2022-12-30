@@ -107,6 +107,9 @@ const TextWrapper = styled.div`
 `;
 
 const BujeokText = styled.pre`
+  overflow: auto;
+  white-space: pre-wrap;
+
   line-height: 120%;
   font-weight: 400;
   font-size: 18px;
