@@ -42,7 +42,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
               />
             </>
           ) : (
-            <TextWrapper onClick={handleChangeSupporterImg}>
+            <TextWrapper onClick={handleChangeSupporterImg} bgc={color}>
               <BujeokText>
                 응원 메세지가
                 <br /> 아직 도착하지 않았어요
