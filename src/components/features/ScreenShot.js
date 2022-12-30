@@ -37,7 +37,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
   //   console.log(defaultMessage);
   // }, []);
   // console.log(defaultMessage);
-
+  console.log(message);
   return (
     <Container>
       <Div id="div">
@@ -66,7 +66,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
           /> // 응원메세지가 있고, 기본이미지
         ) : (
           <TextWrapper bgc={color} onClick={handleChangeSupporterImg}>
-            <BujeokText>{defaultMessage}</BujeokText>
+            <BujeokText>{message}</BujeokText>
           </TextWrapper>
         )}
       </Div>
@@ -93,7 +93,8 @@ const BujeokImgContainer = styled.img`
 `;
 
 const TextWrapper = styled.div`
-  background-color: ${({ bgc }) => (bgc !== undefined ? bgc : "#6FA4F2")};
+  /* background-color: ${({ bgc }) => (bgc !== undefined ? bgc : "#6FA4F2")}; */
+  background-color: #6fa4f2;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -103,7 +104,7 @@ const TextWrapper = styled.div`
   box-sizing: border-box;
 `;
 
-const BujeokText = styled.div`
+const BujeokText = styled.pre`
   line-height: 120%;
   font-weight: 400;
   font-size: 18px;
