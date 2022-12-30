@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import "../components/shared/theme.css";
 import { setAuthorization } from "../stores/Token";
+import axios from "axios";
+import styled from "styled-components";
+
+import "../components/shared/theme.css";
 
 const Create = () => {
   const navigate = useNavigate();
@@ -25,7 +26,6 @@ const Create = () => {
         axios.defaults.headers.common[
           "Authorization"
         ] = `Bearer ${sessionStorage.getItem("accessToken")}`;
-        // console.log(res.data);
         setGetData(res.data.response);
       })
       .catch((err) => {
@@ -59,7 +59,6 @@ const Create = () => {
   };
 
   const checkPost = () => {
-    //otherWishId
     const result = {
       otherWishId: getData.otherWishId,
       content: myWish.current.value,
@@ -86,7 +85,6 @@ const Create = () => {
   }
 
   return (
-    // <Wrapper className="Create">
     <div className="Create">
       <TitleLarge>
         {getData.userName}님이 2023년에 이루고 싶은
@@ -108,7 +106,6 @@ const Create = () => {
       </TitleLarge>
       <CheerUpText>
         <OtherWishText>{getData.otherWish}</OtherWishText>
-        {/* <OtherWishText>테스트입니다</OtherWishText> */}
         <TextBox
           col="25"
           row="3"
@@ -121,21 +118,10 @@ const Create = () => {
       </CheerUpText>
       <BujeokBtn onClick={checkPost}>소원아 이루어져라!</BujeokBtn>
     </div>
-    // {/* </Wrapper> */}
   );
 };
 
 export default Create;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-
-  width: 100%;
-  height: 100vh;
-`;
 
 const TitleLarge = styled.div`
   width: 100%;
@@ -188,16 +174,12 @@ const CheerUpText = styled.div`
 const BujeokBtn = styled.button`
   background-color: #da234f;
   color: white;
-  /* width: 100%; */
+  width: 100%;
   height: 52px;
   border-radius: 8px;
   border: none;
-  /* margin-top: 81px; */
-  /* margin-bottom: 10px; */
-  position: fixed;
-  left: 24px;
-  right: 24px;
-  bottom: 10px;
+  margin-top: 50px;
+  margin-bottom: 10px;
 
   font-family: "Hahmlet-Regular";
   font-style: normal;
