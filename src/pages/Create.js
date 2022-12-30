@@ -26,7 +26,6 @@ const Create = () => {
         axios.defaults.headers.common[
           "Authorization"
         ] = `Bearer ${sessionStorage.getItem("accessToken")}`;
-        console.log(axios.defaults.headers.common.Authorization);
         console.log(res.data);
         setGetData(res.data.response);
       })

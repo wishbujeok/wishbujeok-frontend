@@ -80,10 +80,6 @@ const Confirm = () => {
 
   console.log(userData);
 
-  const message = `안녕하세요(줄바꿈)
-  저는 양현준입니다.(줄바꿈)
-  띄어쓰기가 제대로 작동하는지 궁금해요.(줄바꿈)
-  지금까지 3번띄어쓰기를 했습니다.`;
   return (
     <div className="Confirm">
       {userData.reply !== null || userData.reply !== undefined ? (
@@ -91,7 +87,7 @@ const Confirm = () => {
           <TitleLarge>부적이 도착했어요!</TitleLarge>
           <ScreenShot
             message={userData.reply}
-            imgUrl={userData.backUrl}
+            imgUrl={userData.imgURL}
             backColor={userData.backColor}
           />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
