@@ -21,13 +21,11 @@ const Create = () => {
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/bujeok`)
-      // 토큰값을 안보내서 get 요청이 안오는듯.
       .then((res) => {
         axios.defaults.headers.common[
           "Authorization"
         ] = `Bearer ${sessionStorage.getItem("accessToken")}`;
-        console.log(axios.defaults.headers.common.Authorization);
-        console.log(res.data);
+        // console.log(res.data);
         setGetData(res.data.response);
       })
       .catch((err) => {
@@ -61,8 +59,9 @@ const Create = () => {
   };
 
   const checkPost = () => {
+    //otherWishId
     const result = {
-      otherWishId: 0,
+      otherWishId: getData.otherWishId,
       content: myWish.current.value,
       cheerUp: otherWish.current.value,
     };

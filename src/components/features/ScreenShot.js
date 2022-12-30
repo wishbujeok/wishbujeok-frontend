@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import html2canvas from "html2canvas";
 
-import DefaultImage from "../../assets/img/DefaultBujeokImg.svg";
-import DefaultImageNoneMessage from "../../assets/img/DefaultImgNoneMessage.svg";
-
 export const onSaveAs = (url, fillName) => {
   let link = document.createElement("a");
   document.body.appendChild(link);
@@ -37,12 +34,12 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
             <>
               <BujeokImgContainer
                 onClick={handleChangeSupporterImg}
-                src={DefaultImage}
+                src={imgUrl}
                 alt="noneMessage"
               />
             </>
           ) : (
-            <TextWrapper onClick={handleChangeSupporterImg}>
+            <TextWrapper onClick={handleChangeSupporterImg} bgc={color}>
               <BujeokText>
                 응원 메세지가
                 <br />
@@ -53,10 +50,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
         ) : supporter ? ( // 응원메세지가 있을 때,
           <BujeokImgContainer
             onClick={handleChangeSupporterImg}
-            src={
-              DefaultImage
-              // imgUrl
-            }
+            src={imgUrl}
             alt="haveMessage"
           /> // 응원메세지가 있고, 기본이미지
         ) : (
@@ -88,8 +82,7 @@ const BujeokImgContainer = styled.img`
 `;
 
 const TextWrapper = styled.div`
-  /* background-color: ${({ bgc }) => (bgc !== undefined ? bgc : "#6FA4F2")}; */
-  background-color: #6fa4f2;
+  background-color: ${({ bgc }) => (bgc !== undefined ? bgc : "#6FA4F2")};
   text-align: center;
   display: flex;
   justify-content: center;
