@@ -23,7 +23,7 @@ export const handleScreenShot = () => {
 export const ScreenShot = ({ message, imgUrl, color }) => {
   const [supporter, setSupporter] = useState(true);
   const [defaultMessage, setDefaultMessage] = useState(
-    "응원 메세지가 아직 도착하지 않았어요"
+    `응원 메세지가 ${(<br />)}아직 도착하지 않았어요`
   );
 
   const handleChangeSupporterImg = () => {
@@ -43,7 +43,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
   return (
     <Container>
       <Div id="div">
-        {message === null ? (
+        {message === null || message !== undefined ? (
           supporter ? (
             <>
               <BujeokImgContainer
@@ -54,7 +54,10 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
             </>
           ) : (
             <TextWrapper onClick={handleChangeSupporterImg}>
-              <BujeokText>응원 메세지가 아직 도착하지 않았어요</BujeokText>
+              <BujeokText>
+                응원 메세지가
+                {/\n/} 아직 도착하지 않았어요
+              </BujeokText>
             </TextWrapper>
           )
         ) : supporter ? ( // 응원메세지가 있을 때,
