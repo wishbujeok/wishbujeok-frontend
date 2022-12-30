@@ -84,8 +84,8 @@ const BujeokImgContainer = styled.img`
 `;
 
 const TextWrapper = styled.div`
-  /* background-color: ${({ bgc }) => (bgc !== undefined ? bgc : "#6FA4F2")}; */
-  background-color: #6fa4f2;
+  background-color: ${({ bgc }) => (bgc !== undefined ? bgc : "#6FA4F2")};
+  // background-color: #6fa4f2;
   text-align: center;
   display: flex;
   justify-content: center;
