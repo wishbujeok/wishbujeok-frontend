@@ -18,6 +18,8 @@ const Confirm = () => {
   const [userData, setUserData] = useState([]);
   const [reply, setReply] = useState(null);
 
+  //imgURL, backColor
+
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/reply`)
@@ -87,7 +89,11 @@ const Confirm = () => {
       {userData.reply !== null || userData.reply !== undefined ? (
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
-          <ScreenShot message={userData.reply} imgUrl={userData.backUrl} />
+          <ScreenShot
+            message={userData.reply}
+            imgUrl={userData.backUrl}
+            backColor={userData.backColor}
+          />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
@@ -114,7 +120,11 @@ const Confirm = () => {
       ) : (
         <>
           <TitleLarge>응원 메세지가 도착했어요!</TitleLarge>
-          <ScreenShot imgUrl={userData.backUrl} message={userData.reply} />
+          <ScreenShot
+            imgUrl={userData.imgURL}
+            message={userData.reply}
+            backColor={userData.backColor}
+          />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
