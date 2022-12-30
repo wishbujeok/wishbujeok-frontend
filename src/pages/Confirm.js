@@ -8,6 +8,8 @@ import {
 
 import { SiInstagram } from "react-icons/si";
 import { RiKakaoTalkFill } from "react-icons/ri";
+import { FiDownload } from "react-icons/fi";
+import { RxReload } from "react-icons/rx";
 
 // 카카오톡 공유할 때 이미지 넣어놓은 것.
 // import { mainPageImg } from "../assets/img/mainPageImg.svg";
@@ -17,8 +19,6 @@ import "../components/shared/theme.css";
 const Confirm = () => {
   const [userData, setUserData] = useState([]);
   const [reply, setReply] = useState(null);
-
-  //imgURL, backColor
 
   useEffect(() => {
     axios
@@ -72,10 +72,14 @@ const Confirm = () => {
   };
 
   // 응원다시받기 onclick 후 일어나는 일.
+  // delete 요청 후 데이터를 어떻게 주는지 확인해볼 필요가 있음.
   const handleRequest = () => {
     axios
       .delete(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/reply`)
-      .then((data) => setUserData(data));
+      .then((data) => {
+        console.log(data);
+        setUserData(data);
+      });
   };
 
   console.log(userData);
@@ -96,6 +100,7 @@ const Confirm = () => {
             <Content>{userData.content}</Content>
             <BujeokBtn bgc={"#DA234F"} width={"100%"} onClick={handleSaveImg}>
               부적 저장하기
+              <FiDownload className="downloadIcon" />
             </BujeokBtn>
             <Share>
               <ShareBorder>공유하기</ShareBorder>
@@ -135,6 +140,7 @@ const Confirm = () => {
                 onClick={handleRequest}
               >
                 응원 메세지 다시받기
+                <RxReload className="reLender" />
               </BujeokBtn>
               <BujeokBtn
                 haveMessage={userData.reply}
@@ -144,6 +150,7 @@ const Confirm = () => {
                 onClick={handleSaveImg}
               >
                 부적 저장하기
+                <FiDownload className="downloadIcon" />
               </BujeokBtn>
             </HaveMessageButtonContainer>
             <Share>
@@ -183,7 +190,7 @@ const TitleLarge = styled.div`
 `;
 
 const BodyLarge = styled.div`
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.5);
   font-family: "Hahmlet-Regular";
   font-size: 16px;
   font-weight: 300;
@@ -263,14 +270,31 @@ const BujeokBtn = styled.button`
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
-  line-height: 150%;
-  /* or 24px */
+  /* line-height: 150%; */
   text-align: center;
   letter-spacing: -0.07em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   a {
     text-decoration: none;
     color: white;
+  }
+
+  .downloadIcon {
+    font-size: 16px;
+    color: #ffffff;
+    margin-left: 5px;
+    transform: translateY(1px);
+  }
+
+  .reLender {
+    font-size: 16px;
+    color: #da234f;
+    margin-left: 5px;
+    transform: translateY(1px);
   }
 `;
 
@@ -295,7 +319,6 @@ const ShareBorder = styled.div`
     width: 36%;
     height: 1.5px;
     margin-right: 10px;
-    /* border: 1.5px solid rgba(247, 247, 247, 0.2); */
     transform: translateY(-6px);
     background-color: rgba(247, 247, 247, 0.2);
   }
@@ -306,7 +329,6 @@ const ShareBorder = styled.div`
     width: 36%;
     height: 1.5px;
     margin-left: 10px;
-    /* border: 0.5px solid rgba(247, 247, 247, 0.2); */
     transform: translateY(-6px);
     background-color: rgba(247, 247, 247, 0.2);
   }
