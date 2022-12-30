@@ -93,7 +93,7 @@ const Confirm = () => {
   지금까지 3번띄어쓰기를 했습니다.`;
   return (
     <div className="Confirm">
-      {userData.reply !== undefined ? (
+      {userData.reply === null ? (
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
           <ScreenShot message={userData.reply} imgUrl={userData.backUrl} />
