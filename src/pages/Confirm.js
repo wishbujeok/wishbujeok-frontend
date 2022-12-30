@@ -31,7 +31,6 @@ const Confirm = () => {
         setReply(res.data.response.reply);
       });
   }, []);
-  console.log(userData);
 
   const handleSaveImg = () => {
     handleScreenShot();
