@@ -32,7 +32,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
   return (
     <Container>
       <Div id="div">
-        {message === null || message !== undefined ? (
+        {message === null || message === undefined ? (
           supporter ? (
             <>
               <BujeokImgContainer
@@ -45,7 +45,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
             <TextWrapper onClick={handleChangeSupporterImg}>
               <BujeokText>
                 응원 메세지가
-                {/\n/} 아직 도착하지 않았어요
+                <br /> 아직 도착하지 않았어요
               </BujeokText>
             </TextWrapper>
           )
