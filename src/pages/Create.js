@@ -21,7 +21,6 @@ const Create = () => {
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/bujeok`)
-      // 토큰값을 안보내서 get 요청이 안오는듯.
       .then((res) => {
         axios.defaults.headers.common[
           "Authorization"
