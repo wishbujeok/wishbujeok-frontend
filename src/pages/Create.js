@@ -195,7 +195,13 @@ const BujeokBtn = styled.button`
   }
 `;
 
-const OtherWishText = styled.div`
+const OtherWishText = styled.pre`
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  overflow: auto;
+  white-space: pre-wrap;
+
   box-sizing: border-box;
   width: 100%;
   height: 100px;
