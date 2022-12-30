@@ -37,11 +37,13 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
   //   console.log(defaultMessage);
   // }, []);
   // console.log(defaultMessage);
+
   console.log(message);
+
   return (
     <Container>
       <Div id="div">
-        {message === undefined ? (
+        {message === null ? (
           supporter ? (
             <>
               <BujeokImgContainer
