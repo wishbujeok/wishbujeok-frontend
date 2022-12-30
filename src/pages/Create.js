@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import "../components/shared/theme.css";
 import { setAuthorization } from "../stores/Token";
+import axios from "axios";
+import styled from "styled-components";
+
+import "../components/shared/theme.css";
 
 const Create = () => {
   const navigate = useNavigate();
@@ -105,7 +106,6 @@ const Create = () => {
       </TitleLarge>
       <CheerUpText>
         <OtherWishText>{getData.otherWish}</OtherWishText>
-        {/* <OtherWishText>테스트입니다</OtherWishText> */}
         <TextBox
           col="25"
           row="3"
@@ -167,6 +167,7 @@ const TextBox = styled.textarea`
 
 const CheerUpText = styled.div`
   width: 327px;
+  height: auto;
   flex-direction: column;
 `;
 
@@ -177,7 +178,8 @@ const BujeokBtn = styled.button`
   height: 52px;
   border-radius: 8px;
   border: none;
-  margin-top: 81px;
+  margin-top: 50px;
+  margin-bottom: 10px;
 
   font-family: "Hahmlet-Regular";
   font-style: normal;
@@ -193,7 +195,13 @@ const BujeokBtn = styled.button`
   }
 `;
 
-const OtherWishText = styled.div`
+const OtherWishText = styled.pre`
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  overflow: auto;
+  white-space: pre-wrap;
+
   box-sizing: border-box;
   width: 100%;
   height: 100px;
