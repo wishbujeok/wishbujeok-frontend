@@ -11,9 +11,6 @@ import { RiKakaoTalkFill } from "react-icons/ri";
 import { FiDownload } from "react-icons/fi";
 import { RxReload } from "react-icons/rx";
 
-// 카카오톡 공유할 때 이미지 넣어놓은 것.
-// import { mainPageImg } from "../assets/img/mainPageImg.svg";
-
 import "../components/shared/theme.css";
 
 const Confirm = () => {
