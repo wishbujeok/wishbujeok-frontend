@@ -2,23 +2,25 @@ import React from "react";
 import styled from "styled-components";
 
 import "../components/shared/theme.css";
-import kLogin from "../assets/img/kakaoLogin.svg";
-import son from "../assets/img/mainPageImg.svg";
+import { ReactComponent as MainPageImg } from "../assets/img/mainPageImg.svg";
+import { ReactComponent as KakaoLogin } from "../assets/img/kakaoLogin.svg";
 
 const Login = () => {
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code&scope=profile_nickname,account_email`;
   const handleLogin = () => {
+    console.log("클릭됏다");
     window.location.href = KAKAO_AUTH_URL;
   };
 
   return (
     <div className="Home">
       <Title>
-        <Logo src={son} alt="손"></Logo>
+        <MainPageImg />
       </Title>
       <Content>2023년, 당신의 소원을 이루어 줄 부적!</Content>
+
       <KakaoLoginBtn>
-        <img src={kLogin} onClick={handleLogin} alt="kakaoLogin" />
+        <KakaoLogin onClick={handleLogin} />
       </KakaoLoginBtn>
     </div>
   );

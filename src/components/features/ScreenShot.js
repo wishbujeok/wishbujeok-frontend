@@ -3,8 +3,6 @@ import styled from "styled-components";
 import html2canvas from "html2canvas";
 
 export const onSaveAs = (url, fillName) => {
-  console.log("onSaveAs img Url : ", url);
-  console.log("onSaveAs fillName : ", fillName);
   let link = document.createElement("a");
   document.body.appendChild(link);
   link.href = url;
@@ -17,32 +15,27 @@ export const handleScreenShot = (url, item) => {
   if (item === true) {
     html2canvas(document.getElementById("div")).then((canvas) => {
       console.log(canvas);
-      let result = canvas.toDataURL(url);
-      onSaveAs(result, "image-download.png");
-      // 이쪽이 문제인듯, 백엔드에서 이미지를 받아오는데, 랜더링 하지 않은 상태에서 base64로 변환 후 toDataURL의 인자로 넘겨주게되면 빈값이 나오는게 당연.
-      // 해결책? 비동기?
+      onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
     });
   } else {
-    let result = document.getElementById("div");
-    onSaveAs(result.toDataURL(url), "image-download.png");
+    let result = document.getElementById("backImg");
+    console.log(result);
+    // onSaveAs(result.toDataURL("image/png"), "image-download.png");
   }
-};
-
-export const handleScreenShotImg = (res) => {
-  // 1. base64로 인코딩
-  // 2.
 };
 
 export const ScreenShot = ({
   message,
   imgUrl,
   color,
-  setSupporter,
   supporter,
+  setSupporter,
 }) => {
   const handleChangeSupporterImg = () => {
     setSupporter(!supporter);
   };
+
+  console.log(message);
 
   return (
     <Container>
@@ -59,7 +52,7 @@ export const ScreenShot = ({
               <ImgBackground
                 img={imgUrl}
                 onClick={handleChangeSupporterImg}
-                // id={supporter ? "div" : ""}
+                id="backImg"
               ></ImgBackground>
             </>
           ) : (
@@ -80,8 +73,8 @@ export const ScreenShot = ({
           // />
           <ImgBackground
             onClick={handleChangeSupporterImg}
-            // id={supporter ? "div" : ""}
             img={imgUrl}
+            id="backImg"
           ></ImgBackground>
         ) : (
           <TextWrapper bgc={color} onClick={handleChangeSupporterImg}>
@@ -100,7 +93,7 @@ const ImgBackground = styled.div`
   width: 272px;
   height: 272px;
 
-  /* border: 1px solid white; */
+  border: 1px solid white;
   box-sizing: border-box;
 `;
 
@@ -114,8 +107,9 @@ const Container = styled.div`
 `;
 
 const Div = styled.div`
-  width: 272px;
-  box-sizing: border-box;
+  width: 275px;
+  /* height: 275px; */
+
   display: flex;
   justify-content: center;
   align-items: center;

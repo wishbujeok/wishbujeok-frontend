@@ -4,7 +4,6 @@ import axios from "axios";
 import {
   ScreenShot,
   handleScreenShot,
-  handleScreenShotImg,
 } from "../components/features/ScreenShot";
 
 import { SiInstagram } from "react-icons/si";
@@ -29,10 +28,6 @@ const Confirm = () => {
       });
   }, []);
   console.log(userData);
-
-  // const handleSaveImg = () => {
-  //   handleScreenShot();
-  // };
 
   const handleShareInstar = () => {
     window.open("https://www.instagram.com/");
@@ -107,7 +102,15 @@ const Confirm = () => {
             <BujeokBtn
               bgc={"#DA234F"}
               width={"100%"}
-              onClick={() => handleScreenShot(userData.backUrl)}
+              onClick={() =>
+                handleScreenShot(userData.backUrl, function () {
+                  if (supporter === true) {
+                    return true;
+                  } else {
+                    return false;
+                  }
+                })
+              }
             >
               부적 저장하기
               <FiDownload className="downloadIcon" />
@@ -138,8 +141,6 @@ const Confirm = () => {
             imgUrl={userData.imgURL}
             message={userData.reply}
             color={userData.backColor}
-            supporter={supporter}
-            setSupporter={setSupporter}
           />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
@@ -155,7 +156,15 @@ const Confirm = () => {
                 bgc={"#DA234F"}
                 color={"white"}
                 width={"136px"}
-                onClick={() => handleScreenShot(userData.backUrl)}
+                onClick={() =>
+                  handleScreenShot(userData.backUrl, function () {
+                    if (supporter === true) {
+                      return true;
+                    } else {
+                      return false;
+                    }
+                  })
+                }
               >
                 부적 저장하기
                 <FiDownload className="downloadIcon" />
