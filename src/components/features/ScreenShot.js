@@ -3,6 +3,7 @@ import styled from "styled-components";
 import html2canvas from "html2canvas";
 
 export const onSaveAs = (url, fillName) => {
+  console.log("onSaveAs img Url : ", url);
   let link = document.createElement("a");
   document.body.appendChild(link);
   link.href = url;
@@ -24,7 +25,7 @@ export const handleScreenShotImg = (url) => {
 
   html2canvas(document.getElementById("div")).then((canvas) => {
     console.log(canvas.toDataURL("image/png"));
-    onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
+    onSaveAs(url, "image-download.png");
   });
 };
 
