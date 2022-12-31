@@ -4,6 +4,7 @@ import html2canvas from "html2canvas";
 
 export const onSaveAs = (url, fillName) => {
   console.log("onSaveAs img Url : ", url);
+  console.log("onSaveAs fillName : ", fillName);
   let link = document.createElement("a");
   document.body.appendChild(link);
   link.href = url;
