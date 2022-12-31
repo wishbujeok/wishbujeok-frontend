@@ -97,6 +97,8 @@ const Confirm = () => {
             message={userData.reply}
             imgUrl={userData.imgURL}
             color={userData.backColor}
+            supporter={supporter}
+            setSupporter={setSupporter}
           />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
