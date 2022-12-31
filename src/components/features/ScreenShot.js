@@ -25,6 +25,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
   };
 
   console.log(message);
+  console.log(supporter);
 
   return (
     <Container>
