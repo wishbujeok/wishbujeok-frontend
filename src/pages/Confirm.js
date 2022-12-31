@@ -78,7 +78,10 @@ const Confirm = () => {
   const handleRequest = () => {
     axios
       .delete(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/reply`)
-      .then((data) => setUserData(data));
+      .then((data) => {
+        console.log(data);
+        setUserData(data);
+      });
   };
 
   console.log(userData);
@@ -272,14 +275,13 @@ const BujeokBtn = styled.button`
   font-weight: 600;
   font-size: 16px;
   line-height: 150%;
-  /* or 24px */
   text-align: center;
   letter-spacing: -0.07em;
 
-  /* a {
-    text-decoration: none;
-    color: white;
-  } */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 
   .downloadIcon {
     font-size: 16px;

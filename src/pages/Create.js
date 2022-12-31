@@ -47,7 +47,7 @@ const Create = () => {
 
   const myWishHolder = `이루고 싶은 것이라면 무엇이든 털어놓아 주세요.`;
 
-  const otherWishHolder = `응원 메시지를 남기면 ${getData.userName}소원도
+  const otherWishHolder = `응원 메시지를 남기면 ${getData.userName}님의 소원도
 익명으로 전달되어 응원 메시지를 받게 돼요.`;
 
   const handleMyWishText = (e) => {
@@ -168,6 +168,8 @@ const TextBox = styled.textarea`
 const CheerUpText = styled.div`
   width: 327px;
   height: auto;
+
+  display: flex;
   flex-direction: column;
 `;
 
@@ -238,4 +240,5 @@ const TextLength = styled.p`
   line-height: 150%;
   text-align: right;
   letter-spacing: -0.07em;
+  margin: 0;
 `;
