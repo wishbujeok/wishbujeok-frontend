@@ -61,7 +61,7 @@ const Confirm = () => {
         },
         buttons: [
           {
-            title: "부적 받으럭 가기",
+            title: "부적 받으러 가기",
             link: {
               mobileWebUrl: "https://wishbujeok.site",
               webUrl: "https://wishbujeok.site",
