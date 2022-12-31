@@ -8,6 +8,8 @@ import {
 
 import { SiInstagram } from "react-icons/si";
 import { RiKakaoTalkFill } from "react-icons/ri";
+import { FiDownload } from "react-icons/fi";
+import { RxReload } from "react-icons/rx";
 
 // 카카오톡 공유할 때 이미지 넣어놓은 것.
 // import { mainPageImg } from "../assets/img/mainPageImg.svg";
@@ -83,7 +85,7 @@ const Confirm = () => {
 
   return (
     <div className="Confirm">
-      {userData.reply !== null || userData.reply !== undefined ? (
+      {userData.reply === null || userData.reply === undefined ? (
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
           <ScreenShot
@@ -97,6 +99,7 @@ const Confirm = () => {
             <Content>{userData.content}</Content>
             <BujeokBtn bgc={"#DA234F"} width={"100%"} onClick={handleSaveImg}>
               부적 저장하기
+              <FiDownload className="downloadIcon" />
             </BujeokBtn>
             <Share>
               <ShareBorder>공유하기</ShareBorder>
@@ -136,6 +139,7 @@ const Confirm = () => {
                 onClick={handleRequest}
               >
                 응원 메세지 다시받기
+                <RxReload className="reLender" />
               </BujeokBtn>
               <BujeokBtn
                 haveMessage={userData.reply}
@@ -145,6 +149,7 @@ const Confirm = () => {
                 onClick={handleSaveImg}
               >
                 부적 저장하기
+                <FiDownload className="downloadIcon" />
               </BujeokBtn>
             </HaveMessageButtonContainer>
             <Share>
@@ -181,10 +186,6 @@ const TitleLarge = styled.div`
   line-height: 145%;
   letter-spacing: -0.07em;
   margin-top: 10vh;
-`;
-
-const LoadingImg = styled.img`
-  margin-top: 4vh;
 `;
 
 const BodyLarge = styled.div`
@@ -275,9 +276,23 @@ const BujeokBtn = styled.button`
   text-align: center;
   letter-spacing: -0.07em;
 
-  a {
+  /* a {
     text-decoration: none;
     color: white;
+  } */
+
+  .downloadIcon {
+    font-size: 16px;
+    color: #ffffff;
+    margin-left: 5px;
+    transform: translateY(3px);
+  }
+
+  .reLender {
+    font-size: 16px;
+    color: #da234f;
+    margin-left: 5px;
+    transform: translateY(1px);
   }
 `;
 
