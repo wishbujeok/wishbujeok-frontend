@@ -13,13 +13,19 @@ export const onSaveAs = (url, fillName) => {
   document.body.removeChild(link);
 };
 
-export const handleScreenShot = (url) => {
-  html2canvas(document.getElementById("div")).then((canvas) => {
-    let result = canvas.toDataURL(url);
-    onSaveAs(result, "image-download.png");
-    // 이쪽이 문제인듯, 백엔드에서 이미지를 받아오는데, 랜더링 하지 않은 상태에서 base64로 변환 후 toDataURL의 인자로 넘겨주게되면 빈값이 나오는게 당연.
-    // 해결책? 비동기?
-  });
+export const handleScreenShot = (url, item) => {
+  if (item === true) {
+    html2canvas(document.getElementById("div")).then((canvas) => {
+      console.log(canvas);
+      let result = canvas.toDataURL(url);
+      onSaveAs(result, "image-download.png");
+      // 이쪽이 문제인듯, 백엔드에서 이미지를 받아오는데, 랜더링 하지 않은 상태에서 base64로 변환 후 toDataURL의 인자로 넘겨주게되면 빈값이 나오는게 당연.
+      // 해결책? 비동기?
+    });
+  } else {
+    let result = document.getElementById("div");
+    onSaveAs(result.toDataURL(url), "image-download.png");
+  }
 };
 
 export const handleScreenShotImg = (res) => {
