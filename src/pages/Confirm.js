@@ -189,7 +189,7 @@ const TitleLarge = styled.div`
 `;
 
 const BodyLarge = styled.div`
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.5);
   font-family: "Hahmlet-Regular";
   font-size: 16px;
   font-weight: 300;
@@ -292,7 +292,7 @@ const BujeokBtn = styled.button`
     font-size: 16px;
     color: #da234f;
     margin-left: 5px;
-    transform: translateY(1px);
+    transform: translateY(3px);
   }
 `;
 
@@ -314,20 +314,22 @@ const ShareBorder = styled.div`
     content: "";
     display: inline-block;
     width: 36%;
-    height: auto;
+    height: 1.5px;
     margin-right: 10px;
-    border: 1.5px solid rgba(247, 247, 247, 0.2);
+    /* border: 1.5px solid rgba(247, 247, 247, 0.2); */
     transform: translateY(-6px);
+    background-color: rgba(247, 247, 247, 0.2);
   }
 
   &:after {
     content: "";
     display: inline-block;
     width: 36%;
-    height: auto;
+    height: 1.5px;
     margin-left: 10px;
-    border: 1.5px solid rgba(247, 247, 247, 0.2);
+    /* border: 1.5px solid rgba(247, 247, 247, 0.2); */
     transform: translateY(-6px);
+    background-color: rgba(247, 247, 247, 0.2);
   }
 `;
 
