@@ -3,12 +3,16 @@ import styled from "styled-components";
 import html2canvas from "html2canvas";
 
 export const onSaveAs = (url, fillName) => {
+  console.log(url);
+  console.log(fillName);
   let link = document.createElement("a");
   document.body.appendChild(link);
   link.href = url;
   link.download = fillName;
   link.click();
-  document.body.removeChild(link);
+  setTimeout(() => {
+    document.body.removeChild(link);
+  }, 1000);
 };
 
 export const handleScreenShot = (url, item) => {
