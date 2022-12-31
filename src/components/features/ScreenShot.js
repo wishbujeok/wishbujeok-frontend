@@ -25,7 +25,7 @@ export const handleScreenShotImg = (url) => {
 
   html2canvas(document.getElementById("div")).then((canvas) => {
     console.log(canvas.toDataURL("image/png"));
-    onSaveAs(url, "image-download.png");
+    onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
   });
 };
 
@@ -46,8 +46,8 @@ export const ScreenShot = ({
   return (
     <Container>
       <Div
-        // id={supporter === false ? "div" : ""}
-        id="div"
+        id={supporter === false ? "div" : ""}
+        // id="div"
       >
         {message === null || message === undefined ? (
           supporter ? (
@@ -61,7 +61,7 @@ export const ScreenShot = ({
               <ImgBackground
                 img={imgUrl}
                 onClick={handleChangeSupporterImg}
-                // id={supporter ? "div" : ""}
+                id={supporter ? "div" : ""}
               ></ImgBackground>
             </>
           ) : (
@@ -82,7 +82,7 @@ export const ScreenShot = ({
           // />
           <ImgBackground
             onClick={handleChangeSupporterImg}
-            // id={supporter ? "div" : ""}
+            id={supporter ? "div" : ""}
             img={imgUrl}
           ></ImgBackground>
         ) : (
