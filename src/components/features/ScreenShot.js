@@ -21,6 +21,7 @@ export const handleScreenShot = (url, item) => {
   console.log(url);
   if (item === true) {
     const a = document.createElement("a");
+    console.log(a);
     a.href = url;
     a.download = "소원부적";
     document.body.appendChild(a);
