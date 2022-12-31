@@ -12,9 +12,11 @@ export const onSaveAs = (url, fillName) => {
 };
 
 export const handleScreenShot = () => {
-  html2canvas(document.getElementById("div")).then((canvas) => {
-    onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
-  });
+  html2canvas(document.getElementById("div"), { backgroundColor: null }).then(
+    (canvas) => {
+      onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
+    }
+  );
 };
 
 export const handleScreenShotImg = (url) => {
