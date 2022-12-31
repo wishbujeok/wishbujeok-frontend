@@ -71,7 +71,7 @@ const Create = () => {
         `${process.env.REACT_APP_BACKEND_URL}/bujeok-management/bujeok`,
         result
       )
-      .then((res) => {
+      .then(() => {
         axios.defaults.headers.common[
           "Authorization"
         ] = `Bearer ${sessionStorage.getItem("accessToken")}`;
