@@ -8,8 +8,6 @@ const KakaoLogin = () => {
   const navigate = useNavigate();
   const KAKAO_CODE = location.search.split("=")[1];
 
-  const [getData, setGetData] = useState([]);
-
   useEffect(() => {
     axios
       .get(
@@ -21,8 +19,6 @@ const KakaoLogin = () => {
         }
       )
       .then((res) => {
-        setGetData(res.data.response);
-
         sessionStorage.setItem("accessToken", res.data.response.accessToken);
         sessionStorage.setItem("refreshToken", res.data.response.refreshToken);
 
