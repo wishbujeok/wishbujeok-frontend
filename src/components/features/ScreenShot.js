@@ -32,6 +32,7 @@ export const handleScreenShot = (url, item) => {
 };
 
 export const imgData = (url) => {
+  console.log(url);
   axios
     .get(url)
     .then((res) => {
