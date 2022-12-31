@@ -44,7 +44,7 @@ const Confirm = () => {
       }
       window.Kakao.Share.sendDefault({
         objectType: "feed",
-        item_content: {
+        itemContent: {
           profile_text: "새해부적",
           profile_image_url:
             "https://cdn.discordapp.com/attachments/1044794430068101133/1058334042027737198/wishbujeok_kakao_profile.png",
