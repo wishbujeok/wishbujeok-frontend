@@ -16,7 +16,7 @@ const Login = () => {
       <Title>
         <Logo src={son} alt="손"></Logo>
       </Title>
-      <Content>2023년, 당신의 소원을 이루어 줄 부적</Content>
+      <Content>2023년, 당신의 소원을 이루어 줄 부적!</Content>
       <KakaoLoginBtn>
         <img src={kLogin} onClick={handleLogin} alt="kakaoLogin" />
       </KakaoLoginBtn>
