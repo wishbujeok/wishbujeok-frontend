@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import {
   ScreenShot,
   handleScreenShot,
 } from "../components/features/ScreenShot";
-import { useNavigate } from "react-router-dom";
 
 import { SiInstagram } from "react-icons/si";
 import { RiKakaoTalkFill } from "react-icons/ri";
@@ -20,8 +20,9 @@ import Lendering from "./HaveMessage";
 
 const Confirm = () => {
   const [userData, setUserData] = useState([]);
-  const navigate = useNavigate();
   // const [reply, setReply] = useState(null);
+
+  const navigate = useNavigate();
 
   //imgURL, backColor
 
@@ -42,6 +43,8 @@ const Confirm = () => {
           navigate("/support");
         }
       });
+
+    const hasReply = false;
   }, []);
   console.log(userData);
 
