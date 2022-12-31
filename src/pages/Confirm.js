@@ -15,6 +15,7 @@ import "../components/shared/theme.css";
 
 const Confirm = () => {
   const [userData, setUserData] = useState([]);
+  const [supporter, setSupporter] = useState(true);
 
   useEffect(() => {
     axios
@@ -27,10 +28,6 @@ const Confirm = () => {
       });
   }, []);
   console.log(userData);
-
-  const handleSaveImg = () => {
-    handleScreenShot();
-  };
 
   const handleShareInstar = () => {
     window.open("https://www.instagram.com/");
@@ -95,12 +92,18 @@ const Confirm = () => {
             message={userData.reply}
             imgUrl={userData.imgURL}
             color={userData.backColor}
+            supporter={supporter}
+            setSupporter={setSupporter}
           />
           <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
           <Wish>
             <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
             <Content>{userData.content}</Content>
-            <BujeokBtn bgc={"#DA234F"} width={"100%"} onClick={handleSaveImg}>
+            <BujeokBtn
+              bgc={"#DA234F"}
+              width={"100%"}
+              onClick={() => handleScreenShot(userData.backUrl, supporter)}
+            >
               부적 저장하기
               <FiDownload className="downloadIcon" />
             </BujeokBtn>
@@ -145,7 +148,16 @@ const Confirm = () => {
                 bgc={"#DA234F"}
                 color={"white"}
                 width={"136px"}
-                onClick={handleSaveImg}
+                onClick={() =>
+                  handleScreenShot(userData.backUrl, function () {
+                    console.log(supporter);
+                    if (supporter === true) {
+                      return true;
+                    } else {
+                      return false;
+                    }
+                  })
+                }
               >
                 부적 저장하기
                 <FiDownload className="downloadIcon" />

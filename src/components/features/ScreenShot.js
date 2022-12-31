@@ -11,42 +11,49 @@ export const onSaveAs = (url, fillName) => {
   document.body.removeChild(link);
 };
 
-export const handleScreenShot = () => {
-  html2canvas(document.getElementById("div")).then((canvas) => {
-    console.log(canvas);
-    onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
-  });
+export const handleScreenShot = (url, item) => {
+  console.log(item);
+  console.log(url);
+  if (item === true) {
+    html2canvas(document.getElementById("div")).then((canvas) => {
+      console.log(canvas);
+      onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
+    });
+  } else {
+    let result = document.getElementById("backImg");
+    console.log(result);
+    // onSaveAs(result.toDataURL("image/png"), "image-download.png");
+  }
 };
 
-export const ScreenShot = ({ message, imgUrl, color }) => {
-  const [supporter, setSupporter] = useState(true);
-
+export const ScreenShot = ({
+  message,
+  imgUrl,
+  color,
+  supporter,
+  setSupporter,
+}) => {
   const handleChangeSupporterImg = () => {
     setSupporter(!supporter);
   };
 
-  console.log(message);
-
   return (
     <Container>
-      <Div
-        // id={supporter === false ? "div" : ""}
-        id="div"
-      >
+      <Div id="div">
         {message === null || message === undefined ? (
           supporter ? (
             <>
-              {/* <BujeokImgContainer
+              <BujeokImgContainer
                 onClick={handleChangeSupporterImg}
                 src={imgUrl}
                 alt="noneMessage"
-                id={supporter ? "div" : ""}
-              /> */}
-              <ImgBackground
+                id="backImg"
+              />
+              {/* <ImgBackground
                 img={imgUrl}
                 onClick={handleChangeSupporterImg}
-                // id={supporter ? "div" : ""}
-              ></ImgBackground>
+                id="backImg"
+              ></ImgBackground> */}
             </>
           ) : (
             <TextWrapper onClick={handleChangeSupporterImg} bgc={color}>
@@ -58,18 +65,20 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
             </TextWrapper>
           )
         ) : supporter ? (
-          // <BujeokImgContainer
-          //   onClick={handleChangeSupporterImg}
-          //   src={imgUrl}
-          //   alt="haveMessage"
-          //   id={supporter ? "div" : ""}
-          // />
-          <ImgBackground
-            onClick={handleChangeSupporterImg}
-            // id={supporter ? "div" : ""}
-            img={imgUrl}
-          ></ImgBackground>
+          <>
+            <BujeokImgContainer
+              onClick={handleChangeSupporterImg}
+              src={imgUrl}
+              alt="haveMessage"
+              id="backImg"
+            />
+          </>
         ) : (
+          // <ImgBackground
+          //   onClick={handleChangeSupporterImg}
+          //   img={imgUrl}
+          //   id="backImg"
+          // ></ImgBackground>
           <TextWrapper bgc={color} onClick={handleChangeSupporterImg}>
             <BujeokText>{message}</BujeokText>
           </TextWrapper>
