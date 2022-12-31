@@ -110,8 +110,11 @@ const Confirm = () => {
             <Share>
               <ShareBorder>공유하기</ShareBorder>
               <Social>
-                <IconWrapper onClick={handleShareInstar}>
-                  <SiInstagram className="iconSize" />
+                <IconWrapper>
+                  <SiInstagram
+                    onClick={handleShareInstar}
+                    className="iconSize"
+                  />
                 </IconWrapper>
                 <IconWrapper>
                   <RiKakaoTalkFill
