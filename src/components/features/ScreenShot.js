@@ -40,7 +40,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
             </>
           ) : (
             <TextWrapper onClick={handleChangeSupporterImg} bgc={color}>
-              <BujeokText>
+              <BujeokText color={"none"}>
                 응원 메세지가
                 <br />
                 아직 도착하지 않았어요
@@ -70,7 +70,6 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   margin: 20px 0px;
-  /* padding-bottom: 10px; */
 `;
 
 const Div = styled.div`
@@ -118,6 +117,7 @@ const BujeokText = styled.pre`
   box-sizing: border-box;
 
   white-space: pre-wrap;
-  color: white;
+  color: ${({ color }) =>
+    color === "none" ? "rgba(247,247,247,0.5)" : "#f7f7f7f7"};
   margin: 0 23px;
 `;
