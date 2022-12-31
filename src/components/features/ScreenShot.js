@@ -40,6 +40,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
                 id={supporter ? "div" : ""}
               /> */}
               <ImgBackground
+                img={imgUrl}
                 onClick={handleChangeSupporterImg}
                 id={supporter ? "div" : ""}
               ></ImgBackground>
@@ -63,6 +64,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
           <ImgBackground
             onClick={handleChangeSupporterImg}
             id={supporter ? "div" : ""}
+            img={imgUrl}
           ></ImgBackground>
         ) : (
           <TextWrapper bgc={color} onClick={handleChangeSupporterImg}>
