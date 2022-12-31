@@ -19,16 +19,21 @@ export const onSaveAs = (url, fillName) => {
 export const handleScreenShot = (url, item) => {
   console.log(item);
   console.log(url);
-  // if (item === true) {
-  html2canvas(document.getElementById("div")).then((canvas) => {
-    console.log(canvas);
-    onSaveAs(canvas.toDataURL(), "image-download.png");
-  });
-  // } else {
-  //   let result = document.getElementById("div");
-  //   console.log(result.toDataURL("image/png"));
-  //   // onSaveAs(result.toDataURL("image/png"), "image-download.png");
-  // }
+  if (item === true) {
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "소원부적";
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+      document.body.removeChild(a);
+    }, 1500);
+  } else {
+    html2canvas(document.getElementById("div")).then((canvas) => {
+      console.log(canvas);
+      onSaveAs(canvas.toDataURL(), "image-download.png");
+    });
+  }
 };
 
 export const imgData = (url) => {
