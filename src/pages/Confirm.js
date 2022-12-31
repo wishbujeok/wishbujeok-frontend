@@ -30,9 +30,9 @@ const Confirm = () => {
   }, []);
   console.log(userData);
 
-  const handleSaveImg = () => {
-    handleScreenShot();
-  };
+  // const handleSaveImg = () => {
+  //   handleScreenShot();
+  // };
 
   const handleShareInstar = () => {
     window.open("https://www.instagram.com/");
