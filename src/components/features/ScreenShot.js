@@ -21,8 +21,10 @@ export const handleScreenShot = () => {
 
 export const handleScreenShotImg = (url) => {
   console.log("이미지 저장함수 url : ", url);
+
   html2canvas(document.getElementById("div")).then((canvas) => {
-    onSaveAs(canvas.toDataURL(url), "image-download.png");
+    console.log(canvas.toDataURL("image/png"));
+    onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
   });
 };
 
