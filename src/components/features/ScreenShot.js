@@ -28,7 +28,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
 
   return (
     <Container>
-      <Div id="div">
+      <Div id={supporter === false ? "div" : ""}>
         {message === null || message === undefined ? (
           supporter ? (
             <>
@@ -36,6 +36,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
                 onClick={handleChangeSupporterImg}
                 src={imgUrl}
                 alt="noneMessage"
+                id={supporter ? "div" : ""}
               />
             </>
           ) : (
@@ -52,6 +53,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
             onClick={handleChangeSupporterImg}
             src={imgUrl}
             alt="haveMessage"
+            id={supporter ? "div" : ""}
           />
         ) : (
           <TextWrapper bgc={color} onClick={handleChangeSupporterImg}>
@@ -74,7 +76,7 @@ const Container = styled.div`
 
 const Div = styled.div`
   width: 275px;
-  height: 275px;
+  /* height: 275px; */
 
   display: flex;
   justify-content: center;
