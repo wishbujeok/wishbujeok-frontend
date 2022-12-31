@@ -29,7 +29,10 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
 
   return (
     <Container>
-      <Div id={supporter === false ? "div" : ""}>
+      <Div
+        // id={supporter === false ? "div" : ""}
+        id="div"
+      >
         {message === null || message === undefined ? (
           supporter ? (
             <>
@@ -42,7 +45,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
               <ImgBackground
                 img={imgUrl}
                 onClick={handleChangeSupporterImg}
-                id={supporter ? "div" : ""}
+                // id={supporter ? "div" : ""}
               ></ImgBackground>
             </>
           ) : (
@@ -63,7 +66,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
           // />
           <ImgBackground
             onClick={handleChangeSupporterImg}
-            id={supporter ? "div" : ""}
+            // id={supporter ? "div" : ""}
             img={imgUrl}
           ></ImgBackground>
         ) : (
