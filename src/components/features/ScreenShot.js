@@ -17,14 +17,25 @@ export const handleScreenShot = () => {
   });
 };
 
-export const ScreenShot = ({ message, imgUrl, color }) => {
-  const [supporter, setSupporter] = useState(true);
+export const handleScreenShotImg = (url) => {
+  html2canvas(document.getElementById("div")).then((canvas) => {
+    onSaveAs(canvas.toDataURL(url), "image-download.png");
+  });
+};
 
+export const ScreenShot = ({
+  message,
+  imgUrl,
+  color,
+  setSupporter,
+  supporter,
+}) => {
   const handleChangeSupporterImg = () => {
     setSupporter(!supporter);
   };
 
   console.log(message);
+  console.log(imgUrl);
 
   return (
     <Container>
@@ -85,7 +96,7 @@ const ImgBackground = styled.div`
   width: 272px;
   height: 272px;
 
-  border: 1px solid white;
+  /* border: 1px solid white; */
   box-sizing: border-box;
 `;
 
@@ -99,9 +110,8 @@ const Container = styled.div`
 `;
 
 const Div = styled.div`
-  width: 275px;
-  /* height: 275px; */
-
+  width: 272px;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
