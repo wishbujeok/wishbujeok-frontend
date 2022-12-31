@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import html2canvas from "html2canvas";
 
-import "../shared/theme.css";
-
 export const onSaveAs = (url, fillName) => {
   let link = document.createElement("a");
   document.body.appendChild(link);
@@ -42,7 +40,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
             </>
           ) : (
             <TextWrapper onClick={handleChangeSupporterImg} bgc={color}>
-              <BujeokText color={"rgba(274,247,247,0.5)"}>
+              <BujeokText>
                 응원 메세지가
                 <br />
                 아직 도착하지 않았어요
@@ -57,7 +55,7 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
           /> // 응원메세지가 있고, 기본이미지
         ) : (
           <TextWrapper bgc={color} onClick={handleChangeSupporterImg}>
-            <BujeokText color={"#f7f7f7"}>{message}</BujeokText>
+            <BujeokText>{message}</BujeokText>
           </TextWrapper>
         )}
       </Div>
@@ -100,21 +98,23 @@ const BujeokText = styled.pre`
       display: none;
     }
   }
-  overflow: auto;
-  white-space: pre-wrap;
-
   box-sizing: border-box;
   height: 270px;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  font-family: "Hahmlet";
-  line-height: 130%;
-  font-weight: 500;
+  overflow: auto;
+  white-space: pre-wrap;
+
+  line-height: 120%;
+  font-weight: 400;
   font-size: 18px;
   letter-spacing: -0.07em;
 
-  color: ${({ color }) => (color === "#f7f7f7" ? color : color)};
+  box-sizing: border-box;
+
+  white-space: pre-wrap;
+  color: white;
   margin: 0 23px;
 `;
