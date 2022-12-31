@@ -3,27 +3,23 @@ import styled from "styled-components";
 import html2canvas from "html2canvas";
 
 export const onSaveAs = (url, fillName) => {
-  console.log("onSaveAs img Url : ", url);
-  console.log("onSaveAs fillName : ", fillName);
+  console.log(url);
   let link = document.createElement("a");
   document.body.appendChild(link);
   link.href = url;
+  // 여기에 넘어오는 url 은 base64 이다.
   link.download = fillName;
   link.click();
   document.body.removeChild(link);
 };
 
 export const handleScreenShot = () => {
-  html2canvas(document.getElementById("div"), { backgroundColor: null }).then(
-    (canvas) => {
-      onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
-    }
-  );
+  html2canvas(document.getElementById("div")).then((canvas) => {
+    onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
+  });
 };
 
-export const handleScreenShotImg = (url) => {
-  console.log("이미지 저장함수 url : ", url);
-
+export const handleScreenShotImg = () => {
   html2canvas(document.getElementById("div")).then((canvas) => {
     console.log(canvas.toDataURL("image/png"));
     onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
@@ -34,36 +30,29 @@ export const ScreenShot = ({
   message,
   imgUrl,
   color,
-  setSupporter,
-  supporter,
+  // setSupporter,
+  // supporter,
 }) => {
+  const [supporter, setSupporter] = useState(true);
+
   const handleChangeSupporterImg = () => {
     setSupporter(!supporter);
+    console.log(supporter);
   };
 
   console.log(message);
-  console.log(imgUrl);
-
+  console.log(supporter);
   return (
     <Container>
-      <Div
-        id={supporter === false ? "div" : ""}
-        // id="div"
-      >
+      <Div id="div">
         {message === null || message === undefined ? (
-          supporter ? (
+          supporter === true ? (
             <>
-              {/* <BujeokImgContainer
+              <BujeokImgContainer
                 onClick={handleChangeSupporterImg}
                 src={imgUrl}
                 alt="noneMessage"
-                id={supporter ? "div" : ""}
-              /> */}
-              <ImgBackground
-                img={imgUrl}
-                onClick={handleChangeSupporterImg}
-                id={supporter ? "div" : ""}
-              ></ImgBackground>
+              />
             </>
           ) : (
             <TextWrapper onClick={handleChangeSupporterImg} bgc={color}>
@@ -74,18 +63,12 @@ export const ScreenShot = ({
               </BujeokText>
             </TextWrapper>
           )
-        ) : supporter ? (
-          // <BujeokImgContainer
-          //   onClick={handleChangeSupporterImg}
-          //   src={imgUrl}
-          //   alt="haveMessage"
-          //   id={supporter ? "div" : ""}
-          // />
-          <ImgBackground
+        ) : supporter === true ? (
+          <BujeokImgContainer
             onClick={handleChangeSupporterImg}
-            id={supporter ? "div" : ""}
-            img={imgUrl}
-          ></ImgBackground>
+            src={imgUrl}
+            alt="haveMessage"
+          />
         ) : (
           <TextWrapper bgc={color} onClick={handleChangeSupporterImg}>
             <BujeokText>{message}</BujeokText>
@@ -122,6 +105,10 @@ const Div = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .aTag {
+    color: white;
+  }
 `;
 
 const BujeokImgContainer = styled.img`
