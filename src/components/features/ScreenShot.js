@@ -17,7 +17,7 @@ export const handleScreenShot = (url, item) => {
   // if (item === true) {
   html2canvas(document.getElementById("div")).then((canvas) => {
     console.log(canvas);
-    onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
+    onSaveAs(canvas.toDataURL(), "image-download.png");
   });
   // } else {
   //   let result = document.getElementById("div");
