@@ -12,6 +12,8 @@ export const onSaveAs = (url, fillName) => {
 };
 
 export const handleScreenShot = (url, item) => {
+  console.log(item);
+  console.log(url);
   if (item === true) {
     html2canvas(document.getElementById("div")).then((canvas) => {
       console.log(canvas);
@@ -35,25 +37,23 @@ export const ScreenShot = ({
     setSupporter(!supporter);
   };
 
-  console.log(message);
-
   return (
     <Container>
       <Div id="div">
         {message === null || message === undefined ? (
           supporter ? (
             <>
-              {/* <BujeokImgContainer
+              <BujeokImgContainer
                 onClick={handleChangeSupporterImg}
                 src={imgUrl}
                 alt="noneMessage"
-                id={supporter ? "div" : ""}
-              /> */}
-              <ImgBackground
+                id="backImg"
+              />
+              {/* <ImgBackground
                 img={imgUrl}
                 onClick={handleChangeSupporterImg}
                 id="backImg"
-              ></ImgBackground>
+              ></ImgBackground> */}
             </>
           ) : (
             <TextWrapper onClick={handleChangeSupporterImg} bgc={color}>
@@ -65,18 +65,20 @@ export const ScreenShot = ({
             </TextWrapper>
           )
         ) : supporter ? (
-          // <BujeokImgContainer
-          //   onClick={handleChangeSupporterImg}
-          //   src={imgUrl}
-          //   alt="haveMessage"
-          //   id={supporter ? "div" : ""}
-          // />
-          <ImgBackground
-            onClick={handleChangeSupporterImg}
-            img={imgUrl}
-            id="backImg"
-          ></ImgBackground>
+          <>
+            <BujeokImgContainer
+              onClick={handleChangeSupporterImg}
+              src={imgUrl}
+              alt="haveMessage"
+              id="backImg"
+            />
+          </>
         ) : (
+          // <ImgBackground
+          //   onClick={handleChangeSupporterImg}
+          //   img={imgUrl}
+          //   id="backImg"
+          // ></ImgBackground>
           <TextWrapper bgc={color} onClick={handleChangeSupporterImg}>
             <BujeokText>{message}</BujeokText>
           </TextWrapper>
