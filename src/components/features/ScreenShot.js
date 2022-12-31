@@ -54,12 +54,16 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
             </TextWrapper>
           )
         ) : supporter ? (
-          <BujeokImgContainer
+          // <BujeokImgContainer
+          //   onClick={handleChangeSupporterImg}
+          //   src={imgUrl}
+          //   alt="haveMessage"
+          //   id={supporter ? "div" : ""}
+          // />
+          <ImgBackground
             onClick={handleChangeSupporterImg}
-            src={imgUrl}
-            alt="haveMessage"
             id={supporter ? "div" : ""}
-          />
+          ></ImgBackground>
         ) : (
           <TextWrapper bgc={color} onClick={handleChangeSupporterImg}>
             <BujeokText>{message}</BujeokText>
