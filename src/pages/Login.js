@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import "../components/shared/theme.css";
-import kLogin from "../assets/img/kakaoLogin.svg";
-import son from "../assets/img/mainPageImg.svg";
 import { ReactComponent as MainPageImg } from "../assets/img/mainPageImg.svg";
 import { ReactComponent as KakaoLogin } from "../assets/img/kakaoLogin.svg";
 
@@ -17,9 +15,7 @@ const Login = () => {
   return (
     <div className="Home">
       <Title>
-        <object type="image/svg+xml" data={son}>
-          <Logo src={son} alt="손"></Logo>
-        </object>
+        <MainPageImg />
       </Title>
       <Content>2023년, 당신의 소원을 이루어 줄 부적!</Content>
 
