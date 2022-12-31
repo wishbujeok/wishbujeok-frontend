@@ -4,6 +4,7 @@ import axios from "axios";
 import {
   ScreenShot,
   handleScreenShot,
+  imgData,
 } from "../components/features/ScreenShot";
 
 import { SiInstagram } from "react-icons/si";
@@ -102,7 +103,11 @@ const Confirm = () => {
             <BujeokBtn
               bgc={"#DA234F"}
               width={"100%"}
-              onClick={() => handleScreenShot(userData.backUrl, supporter)}
+              onClick={() =>
+                supporter
+                  ? imgData(userData.backUrl)
+                  : handleScreenShot(userData.backUrl, supporter)
+              }
             >
               부적 저장하기
               <FiDownload className="downloadIcon" />
@@ -149,14 +154,9 @@ const Confirm = () => {
                 color={"white"}
                 width={"136px"}
                 onClick={() =>
-                  handleScreenShot(userData.backUrl, function () {
-                    console.log(supporter);
-                    if (supporter === true) {
-                      return true;
-                    } else {
-                      return false;
-                    }
-                  })
+                  supporter
+                    ? imgData(userData.backUrl)
+                    : handleScreenShot(userData.backUrl, supporter)
                 }
               >
                 부적 저장하기

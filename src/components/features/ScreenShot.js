@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import html2canvas from "html2canvas";
+import axios from "axios";
 
 export const onSaveAs = (url, fillName) => {
   console.log(url);
@@ -28,6 +29,26 @@ export const handleScreenShot = (url, item) => {
   //   console.log(result.toDataURL("image/png"));
   //   // onSaveAs(result.toDataURL("image/png"), "image-download.png");
   // }
+};
+
+export const imgData = (url) => {
+  axios
+    .get(`url`)
+    .then((res) => {
+      res.blob();
+    })
+    .then((blob) => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "소원부적";
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+        window.URL.revokeObjectURL(url);
+      }, 2000);
+      a.remove();
+    });
 };
 
 export const ScreenShot = ({
