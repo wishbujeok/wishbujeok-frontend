@@ -75,6 +75,7 @@ const Container = styled.div`
 const Div = styled.div`
   width: 275px;
   height: 275px;
+
   display: flex;
   justify-content: center;
   align-items: center;

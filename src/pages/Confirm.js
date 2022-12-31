@@ -188,7 +188,6 @@ const BodyLarge = styled.div`
   font-weight: 300;
   line-height: 150%;
   letter-spacing: -0.07em;
-  /* margin-top: 2vh; */
 `;
 
 const Wish = styled.div`
