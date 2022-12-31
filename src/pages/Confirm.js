@@ -107,7 +107,7 @@ const Confirm = () => {
                 // supporter
                 //   ? imgData(userData.backUrl)
                 // :
-                handleScreenShot(userData.backUrl, supporter)
+                handleScreenShot(userData.imgURL, supporter)
               }
             >
               부적 저장하기
@@ -158,7 +158,7 @@ const Confirm = () => {
                   // supporter
                   // ? imgData(userData.backUrl)
                   // :
-                  handleScreenShot(userData.backUrl, supporter)
+                  handleScreenShot(userData.imgURL, supporter)
                 }
               >
                 부적 저장하기
