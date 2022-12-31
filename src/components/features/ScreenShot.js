@@ -64,6 +64,7 @@ export const ScreenShot = ({
   supporter,
   setSupporter,
 }) => {
+  //
   const handleChangeSupporterImg = () => {
     setSupporter(!supporter);
   };
