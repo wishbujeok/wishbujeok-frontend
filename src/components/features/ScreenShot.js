@@ -13,6 +13,7 @@ export const onSaveAs = (url, fillName) => {
 
 export const handleScreenShot = () => {
   html2canvas(document.getElementById("div")).then((canvas) => {
+    console.log(canvas);
     onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
   });
 };
