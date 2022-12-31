@@ -33,12 +33,16 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
         {message === null || message === undefined ? (
           supporter ? (
             <>
-              <BujeokImgContainer
+              {/* <BujeokImgContainer
                 onClick={handleChangeSupporterImg}
                 src={imgUrl}
                 alt="noneMessage"
                 id={supporter ? "div" : ""}
-              />
+              /> */}
+              <ImgBackground
+                onClick={handleChangeSupporterImg}
+                id={supporter ? "div" : ""}
+              ></ImgBackground>
             </>
           ) : (
             <TextWrapper onClick={handleChangeSupporterImg} bgc={color}>
@@ -65,6 +69,16 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
     </Container>
   );
 };
+
+const ImgBackground = styled.div`
+  background-image: url(imgURL);
+  background-size: cover;
+  width: 272px;
+  height: 272px;
+
+  border: 1px solid white;
+  box-sizing: border-box;
+`;
 
 const Container = styled.div`
   display: flex;
