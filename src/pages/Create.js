@@ -99,7 +99,7 @@ const Create = () => {
         ref={myWish}
         onChange={(e) => handleMyWishText(e)}
       ></TextBox>
-      <TextLength>{myTypingNum.length}/160</TextLength>
+      <TextLength>{myTypingNum.length}/160자</TextLength>
       <TitleLarge>
         다른 분은 이런 소원을 빌었어요! <br />
         진심 어린 응원의 메시지를 남겨주세요.
@@ -114,7 +114,7 @@ const Create = () => {
           ref={otherWish}
           onChange={(e) => handleTextOtherWish(e)}
         ></TextBox>
-        <TextLength>{otherTypingNum.length}/160</TextLength>
+        <TextLength>{otherTypingNum.length}/160자</TextLength>
       </CheerUpText>
       <BujeokBtn onClick={checkPost}>소원아 이루어져라!</BujeokBtn>
     </div>
@@ -140,7 +140,7 @@ const TitleLarge = styled.div`
 
 const TextBox = styled.textarea`
   box-sizing: border-box;
-  border: 0.75px solid #f7f7f7;
+  border: 1.5px solid rgba(247, 247, 247, 0.2);
   border-radius: 4px;
   padding: 12px 12px;
   width: 100%;
@@ -241,4 +241,5 @@ const TextLength = styled.p`
   text-align: right;
   letter-spacing: -0.07em;
   margin: 0;
+  opacity: 0.4;
 `;
