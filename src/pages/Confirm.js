@@ -182,7 +182,7 @@ const TitleLarge = styled.div`
 `;
 
 const BodyLarge = styled.div`
-  color: #ffffff;
+  color: rgba(247, 247, 247, 0.5);
   font-family: "Hahmlet-Regular";
   font-size: 16px;
   font-weight: 300;
