@@ -6,6 +6,8 @@ import styled from "styled-components";
 
 import "../components/shared/theme.css";
 
+//
+
 const Create = () => {
   const navigate = useNavigate();
 
