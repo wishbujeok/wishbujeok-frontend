@@ -104,9 +104,10 @@ const Confirm = () => {
               bgc={"#DA234F"}
               width={"100%"}
               onClick={() =>
-                supporter
-                  ? imgData(userData.backUrl)
-                  : handleScreenShot(userData.backUrl, supporter)
+                // supporter
+                //   ? imgData(userData.backUrl)
+                // :
+                handleScreenShot(userData.backUrl, supporter)
               }
             >
               부적 저장하기
@@ -154,9 +155,10 @@ const Confirm = () => {
                 color={"white"}
                 width={"136px"}
                 onClick={() =>
-                  supporter
-                    ? imgData(userData.backUrl)
-                    : handleScreenShot(userData.backUrl, supporter)
+                  // supporter
+                  // ? imgData(userData.backUrl)
+                  // :
+                  handleScreenShot(userData.backUrl, supporter)
                 }
               >
                 부적 저장하기
