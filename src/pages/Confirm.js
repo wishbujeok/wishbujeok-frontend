@@ -63,11 +63,17 @@ const Confirm = () => {
       }
       window.Kakao.Share.sendDefault({
         objectType: "feed",
+        item_content: {
+          profile_text: "새해부적",
+          profile_image_url:
+            "https://cdn.discordapp.com/attachments/1044794430068101133/1058334042027737198/wishbujeok_kakao_profile.png",
+        },
         content: {
-          title: "새해부적",
+          title: "2023년, 소원아 이루어져라!",
           description:
             "소원을 적으면 다른 사람의 응원 메시지가 담긴 부적을 받을 수 있어요.",
-          imageUrl: "mainPageImg",
+          imageUrl:
+            "https://cdn.discordapp.com/attachments/1044794430068101133/1058334041646051398/wishbujeok_kakao_main.png",
           link: {
             mobileWebUrl: "https://wishbujeok.site",
             webUrl: "https://wishbujeok.site",
