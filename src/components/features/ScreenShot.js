@@ -6,38 +6,22 @@ export const onSaveAs = (url, fillName) => {
   console.log("onSaveAs img Url : ", url);
   console.log("onSaveAs fillName : ", fillName);
   let link = document.createElement("a");
-  document.body.appendChild(link);
   link.href = url;
   link.download = fillName;
+  document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 };
 
 export const handleScreenShot = () => {
-  html2canvas(document.getElementById("div"), { backgroundColor: null }).then(
-    (canvas) => {
-      onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
-    }
-  );
+  html2canvas(document.getElementById("div")).then((canvas) => {
+    onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
+  });
 };
 
 export const handleScreenShotImg = (res) => {
-  const blob = new Blob([res], {
-    type: res.headers["content-type"],
-  });
-  const url = window.URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-
-  const filename = res.headers["content-disposition"]
-    .split("filename=")[1]
-    .split(";")[0];
-
-  link.setAttribute("download", filename);
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  window.URL.revokeObjectURL(url);
+  // 1. base64로 인코딩
+  // 2.
 };
 
 export const ScreenShot = ({
@@ -57,8 +41,8 @@ export const ScreenShot = ({
   return (
     <Container>
       <Div
-        id={supporter === false ? "div" : ""}
-        // id="div"
+        // id={supporter === false ? "div" : ""}
+        id="div"
       >
         {message === null || message === undefined ? (
           supporter ? (
@@ -72,7 +56,7 @@ export const ScreenShot = ({
               <ImgBackground
                 img={imgUrl}
                 onClick={handleChangeSupporterImg}
-                id={supporter ? "div" : ""}
+                // id={supporter ? "div" : ""}
               ></ImgBackground>
             </>
           ) : (
@@ -93,7 +77,7 @@ export const ScreenShot = ({
           // />
           <ImgBackground
             onClick={handleChangeSupporterImg}
-            id={supporter ? "div" : ""}
+            // id={supporter ? "div" : ""}
             img={imgUrl}
           ></ImgBackground>
         ) : (
