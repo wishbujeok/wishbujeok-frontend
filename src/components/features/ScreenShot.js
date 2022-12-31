@@ -35,15 +35,9 @@ export const ScreenShot = ({
     setSupporter(!supporter);
   };
 
-  console.log(message);
-  console.log(imgUrl);
-
   return (
     <Container>
-      <Div
-        // id={supporter === false ? "div" : ""}
-        id="div"
-      >
+      <Div id="div">
         {message === null || message === undefined ? (
           supporter ? (
             <>
