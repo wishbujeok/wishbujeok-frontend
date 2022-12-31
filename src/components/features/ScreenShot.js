@@ -33,7 +33,7 @@ export const handleScreenShot = (url, item) => {
 
 export const imgData = (url) => {
   axios
-    .get(`url`)
+    .get(url)
     .then((res) => {
       res.blob();
     })
