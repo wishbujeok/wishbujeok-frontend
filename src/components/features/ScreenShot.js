@@ -21,13 +21,23 @@ export const handleScreenShot = () => {
   );
 };
 
-export const handleScreenShotImg = (url) => {
-  console.log("이미지 저장함수 url : ", url);
-
-  html2canvas(document.getElementById("div")).then((canvas) => {
-    console.log(canvas.toDataURL("image/png"));
-    onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
+export const handleScreenShotImg = (res) => {
+  const blob = new Blob([res], {
+    type: res.headers["content-type"],
   });
+  const url = window.URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+
+  const filename = res.headers["content-disposition"]
+    .split("filename=")[1]
+    .split(";")[0];
+
+  link.setAttribute("download", filename);
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  window.URL.revokeObjectURL(url);
 };
 
 export const ScreenShot = ({
