@@ -8,7 +8,6 @@ import Loading from "./pages/Loading";
 // import "./components/shared/reset.css";
 import AppLayout from "./components/layout/AppLayout";
 import Admin from "./pages/Admin";
-import Lendering from "./pages/HaveMessage";
 
 function App() {
   return (
@@ -22,7 +21,6 @@ function App() {
             <Route path="/confirm" element={<Confirm />} />
             <Route path="/loading" element={<Loading />} />
             {/* <Route path="/admin" element={<Admin />} /> */}
-            <Route path="/support" element={<Lendering />} />
           </Routes>
         </Router>
       </AppLayout>

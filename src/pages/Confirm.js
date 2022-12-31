@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
 import {
@@ -19,11 +18,6 @@ import "../components/shared/theme.css";
 
 const Confirm = () => {
   const [userData, setUserData] = useState([]);
-  // const [reply, setReply] = useState(null);
-
-  // const navigate = useNavigate();
-
-  //imgURL, backColor
 
   useEffect(() => {
     axios
@@ -33,17 +27,7 @@ const Confirm = () => {
           "Authorization"
         ] = `Bearer ${sessionStorage.getItem("accessToken")}`;
         setUserData(res.data.response);
-        // setReply(res.data.response.reply);
       });
-    // .then((res) => {
-    //   if (userData.reply === null || userData.reply === undefined) {
-    //     navigate("/confirm");
-    //   } else {
-    //     navigate("/support");
-    //   }
-    // });
-
-    // const hasReply = false;
   }, []);
   console.log(userData);
 
@@ -101,7 +85,7 @@ const Confirm = () => {
   return (
     <div className="Confirm">
       {userData.reply === null || userData.reply === undefined ? (
-        // {userData.length !== 0 ? (
+        // {/* {userData.length !== 0 ? ( */}
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
           <ScreenShot
@@ -146,17 +130,10 @@ const Confirm = () => {
             <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
             <Content>{userData.content}</Content>
             <HaveMessageButtonContainer>
-              <BujeokBtn
-                haveMessage={userData.reply}
-                border={"red"}
-                bgc={"black"}
-                color={"#DA234F"}
-                width={"183px"}
-                onClick={handleRequest}
-              >
+              <BujeokBtnReMessage onClick={handleRequest}>
                 응원 메세지 다시받기
                 <RxReload className="reLender" />
-              </BujeokBtn>
+              </BujeokBtnReMessage>
               <BujeokBtn
                 haveMessage={userData.reply}
                 bgc={"#DA234F"}
@@ -273,6 +250,7 @@ const Content = styled.pre`
 `;
 
 const BujeokBtn = styled.button`
+  flex-basis: 50%;
   box-sizing: border-box;
   background-color: ${({ bgc }) => (bgc === "black" ? "black" : bgc)};
   color: white;
@@ -378,4 +356,45 @@ const HaveMessageButtonContainer = styled.div`
   align-items: center;
 
   width: 100%;
+`;
+
+const BujeokBtnReMessage = styled.button`
+  box-sizing: border-box;
+  background-color: black;
+  color: red;
+  width: 100%;
+  height: 56px;
+  border-radius: 10px;
+  border: 1px solid #da234f;
+  margin-top: 8vh;
+  margin-right: 8px;
+
+  font-family: "Hahmlet-Regular";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  text-align: center;
+  letter-spacing: -0.07em;
+
+  flex-basis: 60%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  .downloadIcon {
+    font-size: 16px;
+    color: #ffffff;
+    margin-left: 5px;
+    transform: translateY(3px);
+  }
+
+  .reLender {
+    font-size: 16px;
+    color: #da234f;
+    margin-left: 5px;
+    transform: translateY(1px);
+  }
 `;
