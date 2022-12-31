@@ -20,6 +20,8 @@ const Confirm = () => {
   const [userData, setUserData] = useState([]);
   const [reply, setReply] = useState(null);
 
+  //imgURL, backColor
+
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/reply`)
@@ -31,6 +33,7 @@ const Confirm = () => {
         setReply(res.data.response.reply);
       });
   }, []);
+  console.log(userData);
 
   const handleSaveImg = () => {
     handleScreenShot();
@@ -50,7 +53,8 @@ const Confirm = () => {
         objectType: "feed",
         content: {
           title: "새해부적",
-          description: "부적을 만들어 보아요!",
+          description:
+            "소원을 적으면 다른 사람의 응원 메시지가 담긴 부적을 받을 수 있어요.",
           imageUrl: "mainPageImg",
           link: {
             mobileWebUrl: "https://wishbujeok.site",
@@ -59,7 +63,7 @@ const Confirm = () => {
         },
         buttons: [
           {
-            title: "나의 부적만들기",
+            title: "부적 받으럭 가기",
             link: {
               mobileWebUrl: "https://wishbujeok.site",
               webUrl: "https://wishbujeok.site",
@@ -71,166 +75,108 @@ const Confirm = () => {
   };
 
   // 응원다시받기 onclick 후 일어나는 일.
-  // delete 요청 후 데이터를 어떻게 주는지 확인해볼 필요가 있음.
   const handleRequest = () => {
     axios
       .delete(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/reply`)
-      .then((data) => {
-        console.log(data);
-        setUserData(data);
-      });
+      .then((data) => setUserData(data));
   };
 
   console.log(userData);
 
-  // {/* {userData.reply === null || userData.reply === undefined ? ( */}
-  // <div className="Confirm">
-  return userData.length === 1 ? (
+  return (
     <div className="Confirm">
-      <TitleLarge>부적이 도착했어요!</TitleLarge>
-      <ScreenShot
-        message={userData.reply}
-        imgUrl={userData.imgURL}
-        color={userData.backColor}
-      />
-      <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
-      <Wish>
-        <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
-        <Content>{userData.content}</Content>
-        <BujeokButton
-          bgc={"#DA234F"}
-          width={"100%"}
-          color={"white"}
-          onClick={handleSaveImg}
-        >
-          부적 저장하기
-          <FiDownload className="downloadIcon" />
-        </BujeokButton>
-        <Share>
-          <ShareBorder>공유하기</ShareBorder>
-          <Social>
-            <IconWrapper onClick={handleShareInstar}>
-              <SiInstagram className="iconSize" />
-            </IconWrapper>
-            <IconWrapper>
-              <RiKakaoTalkFill
-                onClick={handleShareKakao}
-                className="iconSize"
-              />
-            </IconWrapper>
-          </Social>
-        </Share>
-      </Wish>
-    </div>
-  ) : (
-    <div className="Confirm">
-      <TitleLarge>응원 메세지가 도착했어요!</TitleLarge>
-      <ScreenShot
-        imgUrl={userData.imgURL}
-        message={userData.reply}
-        color={userData.backColor}
-      />
-      <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
-      <Wish>
-        <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
-        <Content>{userData.content}</Content>
-        <HaveMessageButtonContainer>
-          <BujeokButton
-            haveMessage={userData.reply}
-            border={"red"}
-            bgc={"black"}
-            color={"#DA234F"}
-            width={"183px"}
-            onClick={handleRequest}
-          >
-            응원 메세지 다시받기
-            <RxReload className="reLender" />
-          </BujeokButton>
-          <BujeokButton
-            haveMessage={userData.reply}
-            bgc={"#DA234F"}
-            color={"white"}
-            width={"136px"}
-            onClick={handleSaveImg}
-          >
-            부적 저장하기
-            <FiDownload className="downloadIcon" />
-          </BujeokButton>
-        </HaveMessageButtonContainer>
-        <Share>
-          <ShareBorder>공유하기</ShareBorder>
-          <Social>
-            <IconWrapper>
-              <SiInstagram onClick={handleShareInstar} className="iconSize" />
-            </IconWrapper>
-            <IconWrapper>
-              <RiKakaoTalkFill
-                onClick={handleShareKakao}
-                className="iconSize"
-              />
-            </IconWrapper>
-          </Social>
-        </Share>
-      </Wish>
+      {userData.reply === null || userData.reply === undefined ? (
+        <>
+          <TitleLarge>부적이 도착했어요!</TitleLarge>
+          <ScreenShot
+            message={userData.reply}
+            imgUrl={userData.imgURL}
+            color={userData.backColor}
+          />
+          <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
+          <Wish>
+            <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
+            <Content>{userData.content}</Content>
+            <BujeokBtn bgc={"#DA234F"} width={"100%"} onClick={handleSaveImg}>
+              부적 저장하기
+              <FiDownload className="downloadIcon" />
+            </BujeokBtn>
+            <Share>
+              <ShareBorder>공유하기</ShareBorder>
+              <Social>
+                <IconWrapper onClick={handleShareInstar}>
+                  <SiInstagram className="iconSize" />
+                </IconWrapper>
+                <IconWrapper>
+                  <RiKakaoTalkFill
+                    onClick={handleShareKakao}
+                    className="iconSize"
+                  />
+                </IconWrapper>
+              </Social>
+            </Share>
+          </Wish>
+        </>
+      ) : (
+        <>
+          <TitleLarge>응원 메세지가 도착했어요!</TitleLarge>
+          <ScreenShot
+            imgUrl={userData.imgURL}
+            message={userData.reply}
+            color={userData.backColor}
+          />
+          <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
+          <Wish>
+            <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
+            <Content>{userData.content}</Content>
+            <HaveMessageButtonContainer>
+              <BujeokBtn
+                haveMessage={userData.reply}
+                border={"red"}
+                bgc={"black"}
+                color={"#DA234F"}
+                width={"183px"}
+                onClick={handleRequest}
+              >
+                응원 메세지 다시받기
+                <RxReload className="reLender" />
+              </BujeokBtn>
+              <BujeokBtn
+                haveMessage={userData.reply}
+                bgc={"#DA234F"}
+                color={"white"}
+                width={"136px"}
+                onClick={handleSaveImg}
+              >
+                부적 저장하기
+                <FiDownload className="downloadIcon" />
+              </BujeokBtn>
+            </HaveMessageButtonContainer>
+            <Share>
+              <ShareBorder>공유하기</ShareBorder>
+              <Social>
+                <IconWrapper>
+                  <SiInstagram
+                    onClick={handleShareInstar}
+                    className="iconSize"
+                  />
+                </IconWrapper>
+                <IconWrapper>
+                  <RiKakaoTalkFill
+                    onClick={handleShareKakao}
+                    className="iconSize"
+                  />
+                </IconWrapper>
+              </Social>
+            </Share>
+          </Wish>
+        </>
+      )}
     </div>
   );
 };
-// </div>
 
 export default Confirm;
-
-const BujeokButton = styled.button`
-  background-color: ${({ bgc }) => (bgc === "black" ? "black" : bgc)};
-  width: ${(width) => (width ? width : "100%")};
-  border: ${({ border }) => (border === "red" ? "1px solid red" : "none")};
-  margin-right: ${({ haveMessage }) =>
-    haveMessage !== null || haveMessage !== undefined ? "8px" : "0px"};
-
-  box-sizing: border-box;
-  color: white;
-  height: 52px;
-  border-radius: 10px;
-  margin-top: 8vh;
-
-  font-family: "Hahmlet-Regular";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 150%;
-  text-align: center;
-  letter-spacing: -0.07em;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  a {
-    text-decoration: none;
-    color: white;
-  }
-
-  .downloadIcon {
-    font-size: 16px;
-    color: #ffffff;
-    margin-left: 5px;
-    transform: translateY(1px);
-  }
-
-  .reLender {
-    font-size: 16px;
-    color: #da234f;
-    margin-left: 5px;
-    transform: translateY(1px);
-  }
-`;
-
-const HaveMessageButtonContainer = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-
-  width: 100%;
-`;
 
 const TitleLarge = styled.div`
   color: white;
@@ -240,20 +186,16 @@ const TitleLarge = styled.div`
   line-height: 145%;
   letter-spacing: -0.07em;
   margin-top: 10vh;
-
-  text-align: center;
 `;
 
 const BodyLarge = styled.div`
-  color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
   font-family: "Hahmlet-Regular";
   font-size: 16px;
   font-weight: 300;
   line-height: 150%;
   letter-spacing: -0.07em;
   margin-top: 2vh;
-
-  text-align: center;
 `;
 
 const Wish = styled.div`
@@ -276,8 +218,10 @@ const TitleSmall = styled.div`
 `;
 
 const Content = styled.pre`
-  ::-webkit-scrollbar {
-    display: none;
+  & {
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
   overflow: auto;
   white-space: pre-wrap;
@@ -312,6 +256,46 @@ const Content = styled.pre`
   }
 `;
 
+const BujeokBtn = styled.button`
+  box-sizing: border-box;
+  background-color: ${({ bgc }) => (bgc === "black" ? "black" : bgc)};
+  color: white;
+  width: ${(width) => (width ? width : "100%")};
+  height: 56px;
+  border-radius: 10px;
+  border: ${({ border }) => (border === "red" ? "1px solid red" : "none")};
+  margin-top: 8vh;
+  margin-right: ${({ haveMessage }) => (haveMessage !== null ? "8px" : "0px")};
+
+  font-family: "Hahmlet-Regular";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  /* or 24px */
+  text-align: center;
+  letter-spacing: -0.07em;
+
+  /* a {
+    text-decoration: none;
+    color: white;
+  } */
+
+  .downloadIcon {
+    font-size: 16px;
+    color: #ffffff;
+    margin-left: 5px;
+    transform: translateY(3px);
+  }
+
+  .reLender {
+    font-size: 16px;
+    color: #da234f;
+    margin-left: 5px;
+    transform: translateY(1px);
+  }
+`;
+
 const Share = styled.div`
   width: 100%;
   font-family: "Hahmlet-Regular";
@@ -322,7 +306,6 @@ const Share = styled.div`
   text-align: center;
   color: white;
   margin-top: 6vh;
-  margin-bottom: 6vh;
 `;
 
 const ShareBorder = styled.div`
@@ -331,20 +314,20 @@ const ShareBorder = styled.div`
     content: "";
     display: inline-block;
     width: 36%;
-    height: 1.5px;
+    height: auto;
     margin-right: 10px;
+    border: 1.5px solid rgba(247, 247, 247, 0.2);
     transform: translateY(-6px);
-    background-color: rgba(247, 247, 247, 0.2);
   }
 
   &:after {
     content: "";
     display: inline-block;
     width: 36%;
-    height: 1.5px;
+    height: auto;
     margin-left: 10px;
+    border: 1.5px solid rgba(247, 247, 247, 0.2);
     transform: translateY(-6px);
-    background-color: rgba(247, 247, 247, 0.2);
   }
 `;
 
@@ -372,4 +355,12 @@ const IconWrapper = styled.div`
     width: 40px;
     height: 40px;
   }
+`;
+
+const HaveMessageButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 100%;
 `;
