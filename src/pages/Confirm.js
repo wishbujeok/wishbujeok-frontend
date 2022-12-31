@@ -107,7 +107,7 @@ const Confirm = () => {
             <BujeokBtn
               bgc={"#DA234F"}
               width={"100%"}
-              onClick={handleScreenShot}
+              onClick={() => handleScreenShot(userData.backUrl)}
             >
               부적 저장하기
               <FiDownload className="downloadIcon" />
@@ -155,7 +155,7 @@ const Confirm = () => {
                 bgc={"#DA234F"}
                 color={"white"}
                 width={"136px"}
-                onClick={handleScreenShot}
+                onClick={() => handleScreenShot(userData.backUrl)}
               >
                 부적 저장하기
                 <FiDownload className="downloadIcon" />
