@@ -47,12 +47,12 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
               </BujeokText>
             </TextWrapper>
           )
-        ) : supporter ? ( // 응원메세지가 있을 때,
+        ) : supporter ? (
           <BujeokImgContainer
             onClick={handleChangeSupporterImg}
             src={imgUrl}
             alt="haveMessage"
-          /> // 응원메세지가 있고, 기본이미지
+          />
         ) : (
           <TextWrapper bgc={color} onClick={handleChangeSupporterImg}>
             <BujeokText>{message}</BujeokText>
