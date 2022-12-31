@@ -76,7 +76,7 @@ const Confirm = () => {
       .delete(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/reply`)
       .then((data) => {
         console.log(data);
-        setUserData(data);
+        setUserData(data.data.response);
       });
   };
 
@@ -84,8 +84,8 @@ const Confirm = () => {
 
   return (
     <div className="Confirm">
-      {userData.reply === null || userData.reply === undefined ? (
-        // {/* {userData.length !== 0 ? ( */}
+      {/* {userData.reply === null || userData.reply === undefined ? ( */}
+      {userData.length !== 1 ? (
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
           <ScreenShot
@@ -188,7 +188,7 @@ const BodyLarge = styled.div`
   font-weight: 300;
   line-height: 150%;
   letter-spacing: -0.07em;
-  margin-top: 2vh;
+  /* margin-top: 2vh; */
 `;
 
 const Wish = styled.div`
@@ -307,9 +307,10 @@ const ShareBorder = styled.div`
     content: "";
     display: inline-block;
     width: 36%;
-    height: auto;
+    height: 1.5px;
     margin-right: 10px;
-    border: 1.5px solid rgba(247, 247, 247, 0.2);
+    /* border: 1.5px solid rgba(247, 247, 247, 0.2); */
+    background-color: rgba(247, 247, 247, 0.2);
     transform: translateY(-6px);
   }
 
@@ -317,9 +318,10 @@ const ShareBorder = styled.div`
     content: "";
     display: inline-block;
     width: 36%;
-    height: auto;
+    height: 1.5px;
     margin-left: 10px;
-    border: 1.5px solid rgba(247, 247, 247, 0.2);
+    /* border: 1.5px solid rgba(247, 247, 247, 0.2); */
+    background-color: rgba(247, 247, 247, 0.2);
     transform: translateY(-6px);
   }
 `;

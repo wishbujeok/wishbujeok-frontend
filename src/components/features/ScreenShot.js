@@ -70,10 +70,13 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   margin: 20px 0px;
-  padding-bottom: 10px;
+  /* padding-bottom: 10px; */
 `;
 
-const Div = styled.div``;
+const Div = styled.div`
+  width: 275px;
+  height: 275px;
+`;
 
 const BujeokImgContainer = styled.img`
   width: 272px;
