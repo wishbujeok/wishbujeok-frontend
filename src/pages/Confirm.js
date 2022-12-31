@@ -5,20 +5,23 @@ import {
   ScreenShot,
   handleScreenShot,
 } from "../components/features/ScreenShot";
+import { useNavigate } from "react-router-dom";
 
 import { SiInstagram } from "react-icons/si";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { FiDownload } from "react-icons/fi";
-import { RxReload } from "react-icons/rx";
+// import { RxReload } from "react-icons/rx";
 
 // 카카오톡 공유할 때 이미지 넣어놓은 것.
 // import { mainPageImg } from "../assets/img/mainPageImg.svg";
 
 import "../components/shared/theme.css";
+import Lendering from "./HaveMessage";
 
 const Confirm = () => {
   const [userData, setUserData] = useState([]);
-  const [reply, setReply] = useState(null);
+  const navigate = useNavigate();
+  // const [reply, setReply] = useState(null);
 
   //imgURL, backColor
 
@@ -30,7 +33,14 @@ const Confirm = () => {
           "Authorization"
         ] = `Bearer ${sessionStorage.getItem("accessToken")}`;
         setUserData(res.data.response);
-        setReply(res.data.response.reply);
+        // setReply(res.data.response.reply);
+      })
+      .then(() => {
+        if (userData.reply === null || userData.reply === undefined) {
+          navigate("/confirm");
+        } else {
+          navigate("/support");
+        }
       });
   }, []);
   console.log(userData);
@@ -89,93 +99,47 @@ const Confirm = () => {
   // {userData.reply === null || userData.reply === undefined ? (
   return (
     <div className="Confirm">
-      {userData.length !== 1 ? (
-        <>
-          <TitleLarge>부적이 도착했어요!</TitleLarge>
-          <ScreenShot
-            message={userData.reply}
-            imgUrl={userData.imgURL}
-            color={userData.backColor}
-          />
-          <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
-          <Wish>
-            <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
-            <Content>{userData.content}</Content>
-            <BujeokBtn bgc={"#DA234F"} width={"100%"} onClick={handleSaveImg}>
-              부적 저장하기
-              <FiDownload className="downloadIcon" />
-            </BujeokBtn>
-            <Share>
-              <ShareBorder>공유하기</ShareBorder>
-              <Social>
-                <IconWrapper onClick={handleShareInstar}>
-                  <SiInstagram className="iconSize" />
-                </IconWrapper>
-                <IconWrapper>
-                  <RiKakaoTalkFill
-                    onClick={handleShareKakao}
-                    className="iconSize"
-                  />
-                </IconWrapper>
-              </Social>
-            </Share>
-          </Wish>
-        </>
-      ) : (
-        <>
-          <TitleLarge>응원 메세지가 도착했어요!</TitleLarge>
-          <ScreenShot
-            imgUrl={userData.imgURL}
-            message={userData.reply}
-            color={userData.backColor}
-          />
-          <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
-          <Wish>
-            <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
-            <Content>{userData.content}</Content>
-            <HaveMessageButtonContainer>
-              <BujeokBtn
-                haveMessage={userData.reply}
-                border={"red"}
-                bgc={"black"}
-                color={"#DA234F"}
-                width={"183px"}
-                onClick={handleRequest}
-              >
-                응원 메세지 다시받기
-                <RxReload className="reLender" />
-              </BujeokBtn>
-              <BujeokBtn
-                haveMessage={userData.reply}
-                bgc={"#DA234F"}
-                color={"white"}
-                width={"136px"}
-                onClick={handleSaveImg}
-              >
-                부적 저장하기
-                <FiDownload className="downloadIcon" />
-              </BujeokBtn>
-            </HaveMessageButtonContainer>
-            <Share>
-              <ShareBorder>공유하기</ShareBorder>
-              <Social>
-                <IconWrapper>
-                  <SiInstagram
-                    onClick={handleShareInstar}
-                    className="iconSize"
-                  />
-                </IconWrapper>
-                <IconWrapper>
-                  <RiKakaoTalkFill
-                    onClick={handleShareKakao}
-                    className="iconSize"
-                  />
-                </IconWrapper>
-              </Social>
-            </Share>
-          </Wish>
-        </>
-      )}
+      {/* {userData.length !== 0 ? ( */}
+      <>
+        <TitleLarge>부적이 도착했어요!</TitleLarge>
+        <ScreenShot
+          message={userData.reply}
+          imgUrl={userData.imgURL}
+          color={userData.backColor}
+        />
+        <BodyLarge>눌러서 뒷면을 확인해 보세요.</BodyLarge>
+        <Wish>
+          <TitleSmall>{userData.userName}님이 빌었던 소원이에요.</TitleSmall>
+          <Content>{userData.content}</Content>
+          <BujeokBtn bgc={"#DA234F"} width={"100%"} onClick={handleSaveImg}>
+            부적 저장하기
+            <FiDownload className="downloadIcon" />
+          </BujeokBtn>
+          <Share>
+            <ShareBorder>공유하기</ShareBorder>
+            <Social>
+              <IconWrapper>
+                <SiInstagram onClick={handleShareInstar} className="iconSize" />
+              </IconWrapper>
+              <IconWrapper>
+                <RiKakaoTalkFill
+                  onClick={handleShareKakao}
+                  className="iconSize"
+                />
+              </IconWrapper>
+            </Social>
+          </Share>
+        </Wish>
+      </>
+      {/* ) : (
+        <Lendering
+          userData={userData}
+          handleRequest={handleRequest}
+          handleSaveImg={handleSaveImg}
+          handleShareInstar={handleShareInstar}
+          handleShareKakao={handleShareKakao}
+        />
+      )} */}
     </div>
   );
 };
