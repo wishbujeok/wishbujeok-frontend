@@ -14,16 +14,16 @@ export const onSaveAs = (url, fillName) => {
 export const handleScreenShot = (url, item) => {
   console.log(item);
   console.log(url);
-  if (item === true) {
-    html2canvas(document.getElementById("div")).then((canvas) => {
-      console.log(canvas);
-      onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
-    });
-  } else {
-    let result = document.getElementById("backImg");
-    console.log(result);
-    // onSaveAs(result.toDataURL("image/png"), "image-download.png");
-  }
+  // if (item === true) {
+  html2canvas(document.getElementById("div")).then((canvas) => {
+    console.log(canvas);
+    onSaveAs(canvas.toDataURL("image/png"), "image-download.png");
+  });
+  // } else {
+  //   let result = document.getElementById("div");
+  //   console.log(result.toDataURL("image/png"));
+  //   // onSaveAs(result.toDataURL("image/png"), "image-download.png");
+  // }
 };
 
 export const ScreenShot = ({
@@ -47,7 +47,7 @@ export const ScreenShot = ({
                 onClick={handleChangeSupporterImg}
                 src={imgUrl}
                 alt="noneMessage"
-                id="backImg"
+                // id="backImg"
               />
               {/* <ImgBackground
                 img={imgUrl}
@@ -57,7 +57,7 @@ export const ScreenShot = ({
             </>
           ) : (
             <TextWrapper onClick={handleChangeSupporterImg} bgc={color}>
-              <BujeokText color={"none"}>
+              <BujeokText color={"none"} id="backImg">
                 응원 메세지가
                 <br />
                 아직 도착하지 않았어요
@@ -145,6 +145,7 @@ const BujeokText = styled.pre`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Hahmlet-Regular";
 
   overflow: auto;
   white-space: pre-wrap;
