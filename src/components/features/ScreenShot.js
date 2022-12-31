@@ -77,7 +77,8 @@ export const ScreenShot = ({ message, imgUrl, color }) => {
 };
 
 const ImgBackground = styled.div`
-  background-image: url(imgURL);
+  background-image: ${({ img }) =>
+    img !== null || img !== undefined ? `url(${img})` : null};
   background-size: cover;
   width: 272px;
   height: 272px;
