@@ -383,8 +383,8 @@ const HaveMessageButtonContainer = styled.div`
 
 const BujeokBtnReMessage = styled.button`
   box-sizing: border-box;
-  background-color: black;
-  color: red;
+  background-color: #151515;
+  color: #da234f;
   width: 100%;
   height: 56px;
   border-radius: 10px;
