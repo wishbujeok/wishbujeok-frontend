@@ -71,7 +71,6 @@ const Confirm = () => {
     }
   };
 
-  // 응원다시받기 onclick 후 일어나는 일.
   const handleRequest = () => {
     axios
       .delete(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/reply`)
@@ -86,7 +85,6 @@ const Confirm = () => {
   return (
     <div className="Confirm">
       {userData.reply === null || userData.reply === undefined ? (
-        // {userData.length !== 0 ? (
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
           <ScreenShot
@@ -103,12 +101,7 @@ const Confirm = () => {
             <BujeokBtn
               bgc={"#DA234F"}
               width={"100%"}
-              onClick={() =>
-                // supporter
-                //   ? imgData(userData.backUrl)
-                // :
-                handleScreenShot(userData.imgURL, supporter)
-              }
+              onClick={() => handleScreenShot(userData.imgURL, supporter)}
             >
               부적 저장하기
               <FiDownload className="downloadIcon" />
@@ -156,12 +149,7 @@ const Confirm = () => {
                 bgc={"#DA234F"}
                 color={"white"}
                 width={"136px"}
-                onClick={() =>
-                  // supporter
-                  // ? imgData(userData.backUrl)
-                  // :
-                  handleScreenShot(userData.imgURL, supporter)
-                }
+                onClick={() => handleScreenShot(userData.imgURL, supporter)}
               >
                 부적 저장하기
                 <FiDownload className="downloadIcon" />
