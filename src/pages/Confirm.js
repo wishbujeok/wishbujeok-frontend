@@ -196,7 +196,7 @@ export default Confirm;
 const TitleLarge = styled.div`
   color: white;
   font-family: "Hahmlet-Regular";
-  font-size: 1.5em;
+  font-size: 15vw;
   font-weight: 500;
   line-height: 145%;
   letter-spacing: -0.07em;
@@ -206,7 +206,7 @@ const TitleLarge = styled.div`
 const BodyLarge = styled.div`
   color: rgba(247, 247, 247, 0.5);
   font-family: "Hahmlet-Regular";
-  font-size: 1em;
+  font-size: 10vw;
   font-weight: 300;
   line-height: 150%;
   letter-spacing: -0.07em;
@@ -222,7 +222,7 @@ const TitleSmall = styled.div`
 
   color: #f7f7f7;
   font-family: "Hahmlet-Regular";
-  font-size: 1.125em;
+  font-size: 12vw;
   font-weight: 500;
   line-height: 150%;
   letter-spacing: -0.07em;
@@ -259,7 +259,7 @@ const Content = styled.pre`
   font-family: "Hahmlet-Regular";
   font-style: normal;
   font-weight: 300;
-  font-size: 1em;
+  font-size: 10vw;
   line-height: 150%;
   letter-spacing: -0.07em;
 
@@ -285,7 +285,7 @@ const BujeokBtn = styled.button`
   font-family: "Hahmlet-Regular";
   font-style: normal;
   font-weight: 600;
-  font-size: 1em;
+  font-size: 10vw;
   line-height: 150%;
   text-align: center;
   letter-spacing: -0.07em;
@@ -296,14 +296,14 @@ const BujeokBtn = styled.button`
   justify-content: center;
 
   .downloadIcon {
-    font-size: 1em;
+    font-size: 10vw;
     color: #ffffff;
     margin-left: 5px;
     transform: translateY(3px);
   }
 
   .reLender {
-    font-size: 1em;
+    font-size: 10vw;
     color: #da234f;
     margin-left: 5px;
     transform: translateY(1px);
@@ -314,7 +314,7 @@ const Share = styled.div`
   width: 100%;
   font-family: "Hahmlet-Regular";
   font-weight: 400;
-  font-size: 1.125em;
+  font-size: 12vw;
   line-height: 150%;
   letter-spacing: -0.07em;
   text-align: center;
@@ -395,7 +395,7 @@ const BujeokBtnReMessage = styled.button`
   font-family: "Hahmlet-Regular";
   font-style: normal;
   font-weight: 600;
-  font-size: 1em;
+  font-size: 10vw;
   line-height: 150%;
   text-align: center;
   letter-spacing: -0.07em;
@@ -408,14 +408,14 @@ const BujeokBtnReMessage = styled.button`
   justify-content: center;
 
   .downloadIcon {
-    font-size: 1em;
+    font-size: 10vw;
     color: #ffffff;
     margin-left: 5px;
     transform: translateY(3px);
   }
 
   .reLender {
-    font-size: 1em;
+    font-size: 10vw;
     color: #da234f;
     margin-left: 5px;
     transform: translateY(1px);
