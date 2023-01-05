@@ -71,6 +71,7 @@ const Confirm = () => {
     }
   };
 
+  // 응원다시받기 onclick 후 일어나는 일.
   const handleRequest = () => {
     axios
       .delete(`${process.env.REACT_APP_BACKEND_URL}/bujeok-management/reply`)
@@ -85,6 +86,7 @@ const Confirm = () => {
   return (
     <div className="Confirm">
       {userData.reply === null || userData.reply === undefined ? (
+        // {userData.length !== 0 ? (
         <>
           <TitleLarge>부적이 도착했어요!</TitleLarge>
           <ScreenShot
@@ -101,7 +103,12 @@ const Confirm = () => {
             <BujeokBtn
               bgc={"#DA234F"}
               width={"100%"}
-              onClick={() => handleScreenShot(userData.imgURL, supporter)}
+              onClick={() =>
+                // supporter
+                //   ? imgData(userData.backUrl)
+                // :
+                handleScreenShot(userData.imgURL, supporter)
+              }
             >
               부적 저장하기
               <FiDownload className="downloadIcon" />
@@ -149,7 +156,12 @@ const Confirm = () => {
                 bgc={"#DA234F"}
                 color={"white"}
                 width={"136px"}
-                onClick={() => handleScreenShot(userData.imgURL, supporter)}
+                onClick={() =>
+                  // supporter
+                  // ? imgData(userData.backUrl)
+                  // :
+                  handleScreenShot(userData.imgURL, supporter)
+                }
               >
                 부적 저장하기
                 <FiDownload className="downloadIcon" />
@@ -184,20 +196,22 @@ export default Confirm;
 const TitleLarge = styled.div`
   color: white;
   font-family: "Hahmlet-Regular";
-  font-size: 15vw;
+  font-size: 1.5em;
   font-weight: 500;
   line-height: 145%;
   letter-spacing: -0.07em;
   margin-top: 10vh;
+  text-size-adjust: auto;
 `;
 
 const BodyLarge = styled.div`
   color: rgba(247, 247, 247, 0.5);
   font-family: "Hahmlet-Regular";
-  font-size: 10vw;
+  font-size: 1em;
   font-weight: 300;
   line-height: 150%;
   letter-spacing: -0.07em;
+  text-size-adjust: auto;
 `;
 
 const Wish = styled.div`
@@ -210,13 +224,14 @@ const TitleSmall = styled.div`
 
   color: #f7f7f7;
   font-family: "Hahmlet-Regular";
-  font-size: 12vw;
+  font-size: 1.125em;
   font-weight: 500;
   line-height: 150%;
   letter-spacing: -0.07em;
   margin-top: 6vh;
   display: flex;
   text-align: left;
+  text-size-adjust: auto;
 `;
 
 const Content = styled.pre`
@@ -247,9 +262,10 @@ const Content = styled.pre`
   font-family: "Hahmlet-Regular";
   font-style: normal;
   font-weight: 300;
-  font-size: 10vw;
+  font-size: 1em;
   line-height: 150%;
   letter-spacing: -0.07em;
+  text-size-adjust: auto;
 
   overflow: scroll;
 
@@ -273,10 +289,11 @@ const BujeokBtn = styled.button`
   font-family: "Hahmlet-Regular";
   font-style: normal;
   font-weight: 600;
-  font-size: 10vw;
+  font-size: 1em;
   line-height: 150%;
   text-align: center;
   letter-spacing: -0.07em;
+  text-size-adjust: auto;
 
   display: flex;
   flex-direction: row;
@@ -284,17 +301,19 @@ const BujeokBtn = styled.button`
   justify-content: center;
 
   .downloadIcon {
-    font-size: 10vw;
+    font-size: 1em;
     color: #ffffff;
     margin-left: 5px;
     transform: translateY(3px);
+    text-size-adjust: auto;
   }
 
   .reLender {
-    font-size: 10vw;
+    font-size: 1em;
     color: #da234f;
     margin-left: 5px;
     transform: translateY(1px);
+    text-size-adjust: auto;
   }
 `;
 
@@ -302,12 +321,13 @@ const Share = styled.div`
   width: 100%;
   font-family: "Hahmlet-Regular";
   font-weight: 400;
-  font-size: 12vw;
+  font-size: 1.125em;
   line-height: 150%;
   letter-spacing: -0.07em;
   text-align: center;
   color: white;
   margin-top: 6vh;
+  text-size-adjust: auto;
 `;
 
 const ShareBorder = styled.div`
@@ -371,8 +391,8 @@ const HaveMessageButtonContainer = styled.div`
 
 const BujeokBtnReMessage = styled.button`
   box-sizing: border-box;
-  background-color: #151515;
-  color: #da234f;
+  background-color: black;
+  color: red;
   width: 100%;
   height: 56px;
   border-radius: 10px;
@@ -383,10 +403,11 @@ const BujeokBtnReMessage = styled.button`
   font-family: "Hahmlet-Regular";
   font-style: normal;
   font-weight: 600;
-  font-size: 10vw;
+  font-size: 1em;
   line-height: 150%;
   text-align: center;
   letter-spacing: -0.07em;
+  text-size-adjust: auto;
 
   flex-basis: 60%;
 
@@ -396,16 +417,18 @@ const BujeokBtnReMessage = styled.button`
   justify-content: center;
 
   .downloadIcon {
-    font-size: 10vw;
+    font-size: 1em;
     color: #ffffff;
     margin-left: 5px;
     transform: translateY(3px);
+    text-size-adjust: auto;
   }
 
   .reLender {
-    font-size: 10vw;
+    font-size: 1em;
     color: #da234f;
     margin-left: 5px;
     transform: translateY(1px);
+    text-size-adjust: auto;
   }
 `;
