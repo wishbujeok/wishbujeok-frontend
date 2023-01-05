@@ -285,7 +285,7 @@ const BujeokBtn = styled.button`
   font-family: "Hahmlet-Regular";
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1.5rem;
   line-height: 150%;
   text-align: center;
   letter-spacing: -0.07em;
@@ -395,7 +395,7 @@ const BujeokBtnReMessage = styled.button`
   font-family: "Hahmlet-Regular";
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1.5rem;
   line-height: 150%;
   text-align: center;
   letter-spacing: -0.07em;
